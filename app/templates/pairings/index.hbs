@@ -3,7 +3,9 @@
 <ul>
   {{#each pairing in content}}
   <li>
-    {{pairing.id}}:  {{pairing.primaryUser.name}}, {{pairing.secondaryUser.name}}
+  	{{#link-to 'pairings.pairing' pairing}} 
+  		{{pairing.id}}:  {{pairing.primaryUser.name}}, {{pairing.secondaryUser.name}}
+  	{{/link-to}}
   </li>
   {{/each}}
 </ul>
