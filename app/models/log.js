@@ -9,9 +9,9 @@ var Log = DS.Model.extend({
 
 Log.reopenClass({
   FIXTURES: [
-    { id: 1, user: 1, pairing: 1,  message: 'Hello world', date: Date.parse("2014/09/01") },
-    { id: 2, user: 1, pairing: 1, message: 'Brian does lots of hard things', date: Date.parse("2014/09/02")},
-    { id: 3, user: 2, pairing: 1, message: 'Charlie has a very easy job', date: Date.parse("2014/09/02") }
+    { id: 1, user: 1, pairing: 1,  message: 'Hello world', date: new Date("2014/09/01") },
+    { id: 2, user: 1, pairing: 1, message: 'Brian does lots of hard things', date: new Date("2014/09/02")},
+    { id: 3, user: 2, pairing: 1, message: 'Charlie has a very easy job', date: new Date("2014/09/02") }
   ]
 });
 
