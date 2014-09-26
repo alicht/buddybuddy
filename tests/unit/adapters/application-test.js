@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('adapter:fixture', 'FixtureAdapter', {
+moduleFor('adapter:application', 'FixtureAdapter', {
   // Specify the other units that are required for this test.
   // needs: ['serializer:foo']
 });
