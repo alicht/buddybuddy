@@ -1,5 +1,4 @@
 <h3>One pairing: </h3>
-
 <ul>
 	<li>ID: {{content.id}}</li>
 	<li>Buddy1: {{content.primaryUser.name}}</li>
@@ -8,12 +7,16 @@
 	<li>End Date: {{content.endDate}}</li>
 <ul>
 
-<h3>Logs: </h3>
+<h3>
+	Logs: 
+	<button {{action "checkin" content}}>check-in</button>
+</h3>
 
 <ul>
 {{#each content.logs}}
 	<li>{{date}}: {{message}}</li>
 {{/each}}
 <ul>
+
 
 {{outlet}}
