@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    debugger
     var today = new Date();
     var currentUser = this.get('currentUserService.user');
     return this.store.find('pairing').then(function(pairings){
@@ -15,7 +14,6 @@ export default Ember.Route.extend({
 
   afterModel: function(model, transition) {
     if (model[0]) {
-      debugger
       this.transitionTo('pairing', model[0])
     }
   }
