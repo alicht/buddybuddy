@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import AuthRoute from '../mixins/auth-route'
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthRoute, {
   model: function() {
     var today = new Date();
     var currentUser = this.get('currentUserService.user');
