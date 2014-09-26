@@ -1,0 +1,11 @@
+Docroot = "./public"
+
+
+[Mongo]
+Host = "localhost:27017"
+DB = "yourdb"
+Collection = "users"
+Domain="yourdomain.com"
+
+
+
