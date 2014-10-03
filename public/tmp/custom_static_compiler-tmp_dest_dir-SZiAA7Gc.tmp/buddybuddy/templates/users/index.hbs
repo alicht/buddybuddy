@@ -1,0 +1,11 @@
+<h2>Buddies</h2>
+
+<div class="container">
+  {{#each user in content}}
+  <div class="row">
+    <div class="col-md-4"> <span class="glyphicon glyphicon-user"></span> {{link-to user.name "users.user" user}}</div>
+  </div>
+  {{/each}}
+
+
+</div>

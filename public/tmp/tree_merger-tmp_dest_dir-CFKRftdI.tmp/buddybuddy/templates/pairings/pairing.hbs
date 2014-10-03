@@ -1,0 +1,24 @@
+<h3>Hi {{currentUserService.user.name}}!</h3>
+<hr />
+<div class="row">
+  <div class="col-xs-9">
+    <p>Your buddy is {{yourBuddy.name}} for {{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}.</p>
+  </div>
+  <div class="col-xs-3">
+    <button class="btn btn-primary btn-block btn-lg" {{action "checkin" content today}}><span class="glyphicon glyphicon-ok"></span> Check In Today</button>
+  </div>
+</div>
+<h4>
+
+<h4>
+	{{primaryUser.name}} <span class="glyphicon glyphicon-heart"></span> {{secondaryUser.name}}
+</h4>
+
+<h4>Checked-ins: </h4>
+<ul>
+{{#each logs}}
+	<li>{{format-date date "MMM DD, YYYY"}} {{message}} by {{user.name}}</li>
+{{/each}}
+</ul>
+
+{{outlet}}
