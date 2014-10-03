@@ -2,12 +2,10 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 	today: new Date(),
-
+	
 	yourBuddy: function(){
-		var primaryUser = this.get('content.primaryUser');
-		var secondaryUser = this.get('content.secondaryUser');
-		var currentUser = this.get('currentUserService.user');
-		
-		return primaryUser.get('id')===currentUser.get('id') ? secondaryUser : primaryUser;
-	}.property('currentUserService.user', 'content.primaryUser', 'content.secondaryUser')
+		if ( this.get('content.users.length') ){
+			return this.get('users').findBy('id', this.get('currentUserService.user.id'));
+		}
+	}.property('currentUserService.user', 'content.users.length')
 });
