@@ -1,6 +1,8 @@
 class BuddybuddyController < ApplicationController
   def index
-    template = File.join(Rails.public_path , 'buddybuddy', 'dist', params[:path] || 'index.html')
+
+    params[:path] = nil if File.extname(params[:path]).empty? #always send index if asking for html
+    template = File.join(Rails.public_path , 'dist', params[:path] || 'index.html')
 
     extname = File.extname(template)[1..-1]
     mime_type = Mime::Type.lookup_by_extension(extname)
