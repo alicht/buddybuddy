@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'looksee'
-  gem 'pry-rails'
-  gem 'pry-debugger'
-  gem 'pry-stack_explorer'
 end
 
 
