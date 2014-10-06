@@ -1,0 +1,354 @@
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2014-10-05 23:38:30 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (26.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BuddybuddyController#index as */*
+  Parameters: {"path"=>"assets/bootstrap.css.map"}
+Completed 500 Internal Server Error in 13ms
+
+ActionView::MissingTemplate (Missing template Users/hyejinkim/src/buddybuddy/rails/public/dist/assets/bootstrap.css.map with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder]}. Searched in:
+  * "/Users/hyejinkim/src/buddybuddy/rails/app/views"
+  * "/Users/hyejinkim/src/buddybuddy/rails"
+  * "/"
+):
+  app/controllers/buddybuddy_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/buddybuddy_controller.rb:12:in `index'
+
+
+  Rendered /Users/hyejinkim/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.9ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:38:31 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[35mUser Load (19.3ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 42ms (Views: 5.1ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2014-10-05 23:38:32 -0400
+Processing by BuddybuddyController#index as */*
+  Parameters: {"path"=>"assets/bootstrap.css.map"}
+Completed 500 Internal Server Error in 2ms
+
+ActionView::MissingTemplate (Missing template Users/hyejinkim/src/buddybuddy/rails/public/dist/assets/bootstrap.css.map with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder]}. Searched in:
+  * "/Users/hyejinkim/src/buddybuddy/rails/app/views"
+  * "/Users/hyejinkim/src/buddybuddy/rails"
+  * "/"
+):
+  app/controllers/buddybuddy_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/buddybuddy_controller.rb:12:in `index'
+
+
+  Rendered /Users/hyejinkim/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (0.3ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:38:32 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/pairings" for 127.0.0.1 at 2014-10-05 23:38:36 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPairing Load (19.5ms)[0m  [1mSELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 79ms (Views: 14.0ms | ActiveRecord: 22.7ms)
+
+
+Started GET "/api/pairings?user_id=1&date=Sun+Oct+05+2014+23%3A38%3A36+GMT-0400" for 127.0.0.1 at 2014-10-05 23:38:36 -0400
+Processing by Api::PairingsController#index as JSON
+  Parameters: {"user_id"=>"1", "date"=>"Sun Oct 05 2014 23:38:36 GMT-0400"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPairing Load (0.4ms)[0m  [1mSELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/pairings/1/users" for 127.0.0.1 at 2014-10-05 23:38:36 -0400
+Processing by Api::UsersController#by_pairing_id as JSON
+  Parameters: {"pairing_id"=>"1"}
+  [1m[35mPairing Load (0.5ms)[0m  SELECT  "pairings".* FROM "pairings"  WHERE "pairings"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "pairings_users" ON "users"."id" = "pairings_users"."user_id" WHERE "pairings_users"."pairing_id" = $1[0m  [["pairing_id", 1]]
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/pairings/1/users" for 127.0.0.1 at 2014-10-05 23:38:36 -0400
+Processing by Api::UsersController#by_pairing_id as JSON
+  Parameters: {"pairing_id"=>"1"}
+  [1m[35mPairing Load (0.2ms)[0m  SELECT  "pairings".* FROM "pairings"  WHERE "pairings"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "pairings_users" ON "users"."id" = "pairings_users"."user_id" WHERE "pairings_users"."pairing_id" = $1[0m  [["pairing_id", 1]]
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/pairings/1/users" for 127.0.0.1 at 2014-10-05 23:38:36 -0400
+Processing by Api::UsersController#by_pairing_id as JSON
+  Parameters: {"pairing_id"=>"1"}
+  [1m[35mPairing Load (0.2ms)[0m  SELECT  "pairings".* FROM "pairings"  WHERE "pairings"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "pairings_users" ON "users"."id" = "pairings_users"."user_id" WHERE "pairings_users"."pairing_id" = $1[0m  [["pairing_id", 1]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:38:39 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:38:40 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/3/pairings" for 127.0.0.1 at 2014-10-05 23:38:45 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"3"}
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mPairing Load (0.2ms)[0m  [1mSELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/pairings?user_id=3&date=Sun+Oct+05+2014+23%3A38%3A45+GMT-0400" for 127.0.0.1 at 2014-10-05 23:38:45 -0400
+Processing by Api::PairingsController#index as JSON
+  Parameters: {"user_id"=>"3", "date"=>"Sun Oct 05 2014 23:38:45 GMT-0400"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mPairing Load (0.2ms)[0m  [1mSELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:38:46 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/2/pairings" for 127.0.0.1 at 2014-10-05 23:38:55 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPairing Load (0.3ms)[0m  SELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/4/pairings" for 127.0.0.1 at 2014-10-05 23:38:57 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mPairing Load (0.2ms)[0m  SELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:38:58 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+  [1m[36mSQL (19.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.5ms)[0m  DROP TABLE "pairings"
+  [1m[36m (13.3ms)[0m  [1mCREATE TABLE "pairings" ("id" serial primary key, "start_date" timestamp, "end_date" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "pairings_users"
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "pairings_users" ("user_id" integer, "pairing_id" integer) [0m
+  [1m[35m (0.7ms)[0m  DROP TABLE "users"
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2014-10-05 23:39:55 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BuddybuddyController#index as */*
+  Parameters: {"path"=>"assets/bootstrap.css.map"}
+Completed 500 Internal Server Error in 8ms
+
+ActionView::MissingTemplate (Missing template Users/hyejinkim/src/buddybuddy/rails/public/dist/assets/bootstrap.css.map with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder]}. Searched in:
+  * "/Users/hyejinkim/src/buddybuddy/rails/app/views"
+  * "/Users/hyejinkim/src/buddybuddy/rails"
+  * "/"
+):
+  app/controllers/buddybuddy_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/buddybuddy_controller.rb:12:in `index'
+
+
+  Rendered /Users/hyejinkim/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.5ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:39:55 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 13ms (Views: 0.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2014-10-05 23:39:56 -0400
+Processing by BuddybuddyController#index as */*
+  Parameters: {"path"=>"assets/bootstrap.css.map"}
+Completed 500 Internal Server Error in 2ms
+
+ActionView::MissingTemplate (Missing template Users/hyejinkim/src/buddybuddy/rails/public/dist/assets/bootstrap.css.map with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder]}. Searched in:
+  * "/Users/hyejinkim/src/buddybuddy/rails/app/views"
+  * "/Users/hyejinkim/src/buddybuddy/rails"
+  * "/"
+):
+  app/controllers/buddybuddy_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/buddybuddy_controller.rb:12:in `index'
+
+
+  Rendered /Users/hyejinkim/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (0.3ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:39:57 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.3ms)[0m  DROP TABLE "pairings"
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "pairings" ("id" serial primary key, "start_date" timestamp, "end_date" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "pairings_users"
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "pairings_users" ("user_id" integer, "pairing_id" integer) [0m
+  [1m[35m (0.8ms)[0m  DROP TABLE "users"
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.1ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-06 03:40:06.005963"], ["name", "Charlie Ridley"], ["updated_at", "2014-10-06 03:40:06.005963"]]
+  [1m[35m (5.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-06 03:40:06.030281"], ["name", "Nick Blanchet"], ["updated_at", "2014-10-06 03:40:06.030281"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-10-06 03:40:06.034687"], ["name", "Designy Heyjin"], ["updated_at", "2014-10-06 03:40:06.034687"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-10-06 03:40:06.036946"], ["name", "Andre Malan"], ["updated_at", "2014-10-06 03:40:06.036946"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.1ms)[0m  [1mINSERT INTO "pairings" ("created_at", "end_date", "start_date", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-10-06 03:40:06.046217"], ["end_date", "2014-10-06 03:40:06.042006"], ["start_date", "2014-09-29 03:40:06.040688"], ["updated_at", "2014-10-06 03:40:06.046217"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pairings_users" ("pairing_id", "user_id") VALUES ($1, $2)  [["pairing_id", 1], ["user_id", 1]]
+  [1m[36m (5.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "pairings_users" ("pairing_id", "user_id") VALUES ($1, $2)[0m  [["pairing_id", 1], ["user_id", 2]]
+  [1m[35m (6.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2014-10-05 23:40:09 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BuddybuddyController#index as */*
+  Parameters: {"path"=>"assets/bootstrap.css.map"}
+Completed 500 Internal Server Error in 8ms
+
+ActionView::MissingTemplate (Missing template Users/hyejinkim/src/buddybuddy/rails/public/dist/assets/bootstrap.css.map with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder]}. Searched in:
+  * "/Users/hyejinkim/src/buddybuddy/rails/app/views"
+  * "/Users/hyejinkim/src/buddybuddy/rails"
+  * "/"
+):
+  app/controllers/buddybuddy_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/buddybuddy_controller.rb:12:in `index'
+
+
+  Rendered /Users/hyejinkim/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.5ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:40:09 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 14ms (Views: 3.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/bootstrap.css.map" for 127.0.0.1 at 2014-10-05 23:40:10 -0400
+Processing by BuddybuddyController#index as */*
+  Parameters: {"path"=>"assets/bootstrap.css.map"}
+Completed 500 Internal Server Error in 2ms
+
+ActionView::MissingTemplate (Missing template Users/hyejinkim/src/buddybuddy/rails/public/dist/assets/bootstrap.css.map with {:locale=>[:en], :formats=>[:js, :html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder]}. Searched in:
+  * "/Users/hyejinkim/src/buddybuddy/rails/app/views"
+  * "/Users/hyejinkim/src/buddybuddy/rails"
+  * "/"
+):
+  app/controllers/buddybuddy_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/buddybuddy_controller.rb:12:in `index'
+
+
+  Rendered /Users/hyejinkim/.rvm/gems/ruby-1.9.3-p547/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (0.3ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:40:10 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/pairings" for 127.0.0.1 at 2014-10-05 23:40:12 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPairing Load (0.4ms)[0m  [1mSELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 52ms (Views: 9.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/pairings?user_id=1&date=Sun+Oct+05+2014+23%3A40%3A12+GMT-0400" for 127.0.0.1 at 2014-10-05 23:40:12 -0400
+Processing by Api::PairingsController#index as JSON
+  Parameters: {"user_id"=>"1", "date"=>"Sun Oct 05 2014 23:40:12 GMT-0400"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPairing Load (0.2ms)[0m  [1mSELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/pairings/1/users" for 127.0.0.1 at 2014-10-05 23:40:12 -0400
+Processing by Api::UsersController#by_pairing_id as JSON
+  Parameters: {"pairing_id"=>"1"}
+  [1m[35mPairing Load (0.2ms)[0m  SELECT  "pairings".* FROM "pairings"  WHERE "pairings"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "pairings_users" ON "users"."id" = "pairings_users"."user_id" WHERE "pairings_users"."pairing_id" = $1[0m  [["pairing_id", 1]]
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/pairings/1/users" for 127.0.0.1 at 2014-10-05 23:40:12 -0400
+Processing by Api::UsersController#by_pairing_id as JSON
+  Parameters: {"pairing_id"=>"1"}
+  [1m[35mPairing Load (0.2ms)[0m  SELECT  "pairings".* FROM "pairings"  WHERE "pairings"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "pairings_users" ON "users"."id" = "pairings_users"."user_id" WHERE "pairings_users"."pairing_id" = $1[0m  [["pairing_id", 1]]
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/pairings/1/users" for 127.0.0.1 at 2014-10-05 23:40:12 -0400
+Processing by Api::UsersController#by_pairing_id as JSON
+  Parameters: {"pairing_id"=>"1"}
+  [1m[35mPairing Load (0.2ms)[0m  SELECT  "pairings".* FROM "pairings"  WHERE "pairings"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "pairings_users" ON "users"."id" = "pairings_users"."user_id" WHERE "pairings_users"."pairing_id" = $1[0m  [["pairing_id", 1]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:40:14 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/3/pairings" for 127.0.0.1 at 2014-10-05 23:40:15 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mPairing Load (0.3ms)[0m  SELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1  [["user_id", 3]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/4/pairings" for 127.0.0.1 at 2014-10-05 23:40:18 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mPairing Load (0.2ms)[0m  SELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/2/pairings" for 127.0.0.1 at 2014-10-05 23:40:20 -0400
+Processing by Api::PairingsController#by_user_id as JSON
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mPairing Load (0.2ms)[0m  SELECT "pairings".* FROM "pairings" INNER JOIN "pairings_users" ON "pairings"."id" = "pairings_users"."pairing_id" WHERE "pairings_users"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2014-10-05 23:40:21 -0400
+Processing by Api::UsersController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms)
