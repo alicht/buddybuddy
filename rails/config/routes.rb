@@ -7,10 +7,4 @@ Rails.application.routes.draw do
     get "users/:user_id/pairings", to: "pairings#by_user_id"
   end
 
-  root 'buddybuddy#index'
-
-  match '*path' => 'buddybuddy#index',
-    format: false,
-    via: [:get, :post]
-
 end

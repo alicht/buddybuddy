@@ -8,6 +8,6 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-/public/tmp
+rails/log/*.log
+rails/tmp
+rails/public/tmp
