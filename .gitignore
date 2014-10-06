@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+rails/.bundle
 
 # Ignore all logfiles and tempfiles.
 rails/log/*.log
