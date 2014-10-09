@@ -7,19 +7,82 @@ var Log = DS.Model.extend({
   pairing: DS.belongsTo('pairing', {async: true})
 });
 
+var fixtures = [];
+var users = [1,2,3,4]
+var dates = [
+  ['2014/10/06', '2014/10/07', '2014/10/08', '2014/10/09', '2014/10/10'],
+  ['2014/10/13', '2014/10/14', '2014/10/15', '2014/10/16', '2014/10/17'],
+  ['2014/10/20', '2014/10/21', '2014/10/22', '2014/10/23', '2014/10/24']
+];
+
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 1, created_at: new Date(d) } );
+});
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 1, created_at: new Date(d) } );
+});
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 1, created_at: new Date(d) } );
+});
+
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 2, created_at: new Date(d) } );
+});
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 2, created_at: new Date(d) } );
+});
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 2, created_at: new Date(d) } );
+});
+
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 3, created_at: new Date(d) } );
+});
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 3, created_at: new Date(d) } );
+});
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 3, created_at: new Date(d) } );
+});
+
+console.log(fixtures.map(function(m){return m.id;}));
+
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 4, created_at: new Date(d) } );
+});
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 4, created_at: new Date(d) } );
+});
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 4, created_at: new Date(d) } );
+});
+
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 5, created_at: new Date(d) } );
+});
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 5, created_at: new Date(d) } );
+});
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 5, created_at: new Date(d) } );
+});
+
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, created_at: new Date(d) } );
+});
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, created_at: new Date(d) } );
+});
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, created_at: new Date(d) } );
+});
+
+console.log(fixtures.map(function(m){return m.id;}));
+
+console.log('logs: ', fixtures)
+
 Log.reopenClass({
-  FIXTURES: [
-    { id: 1, user: 1, pairing: 1, created_at: new Date("2014/09/16"), message: 'Hello world'},
-    { id: 2, user: 2, pairing: 1, created_at: new Date("2014/09/17"), message: 'Brian does lots of hard things'},
-    { id: 3, user: 2, pairing: 1, created_at: new Date("2014/09/20"), message: 'Charlie has a very easy job'},
-    { id: 4, user: 3, pairing: 2, created_at: new Date("2014/09/18") },
-    { id: 5, user: 4, pairing: 2, created_at: new Date("2014/09/19") },
-    { id: 6, user: 1, pairing: 3, created_at: new Date("2014/09/23") },
-    { id: 7, user: 1, pairing: 3, created_at: new Date("2014/09/24") },
-    { id: 8, user: 1, pairing: 3, created_at: new Date("2014/09/25") },
-    { id: 9, user: 1, pairing: 3, created_at: new Date("2014/09/26") },
-    { id: 10, user: 1, pairing: 3, created_at: new Date("2014/09/27"), message: 'Talked about Buddy Buddy!' }
-  ]
+  FIXTURES: fixtures
 });
 
 export default Log;

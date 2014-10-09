@@ -7,10 +7,11 @@ var User = DS.Model.extend({
 
 User.reopenClass({
   FIXTURES: [
-    { id: 1, name: 'Charlie', pairings: [1, 3] },
-    { id: 2, name: 'Brian', pairings: [1, 2] },
-    { id: 3, name: 'Heyjin', pairings: [2, 3] },
-    { id: 4, name: 'André' }
+    { id: 1, name: 'Charlie', pairings: [1,2,3] },
+    { id: 2, name: 'Andre', pairings: [1,2,3] },
+    { id: 3, name: 'Nick', pairings: [4,5,6] },
+    { id: 4, name: 'Heyjin', pairings: [4,5,6] }
+
   ]
 });
 export default User;
