@@ -3,7 +3,11 @@ import DS from 'ember-data';
 var User = DS.Model.extend({
   name: DS.attr('string'),
   email: DS.attr('string'),
-  pairings: DS.hasMany('pairing', {async: true})
+  pairings: DS.hasMany('pairing', {async: true}),
+
+  isMe: function(){
+    return this.get('id') === this.get('currentUserService.user.id');
+  }.property('currentUserService.user')
 });
 
 User.reopenClass({
