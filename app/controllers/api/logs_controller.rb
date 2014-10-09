@@ -7,4 +7,9 @@ class Api::LogsController < ApplicationController
     render json: @logs
   end
 
+  def create
+    @log = Log.create(params.require(:log).permit!)
+    render json: @log
+  end
+
 end
