@@ -16,70 +16,46 @@ var dates = [
 ];
 
 dates[0].forEach(function(d){
-  console.log(d)
   fixtures.push( { id: fixtures.length+1, user: 1, pairing: 1, createdAt: new Date(d) } );
 });
-dates[1].forEach(function(d){
-  console.log(d)
-  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 1, createdAt: new Date(d) } );
-});
-dates[2].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 1, createdAt: new Date(d) } );
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 1, createdAt: new Date(d) } );
 });
 
-dates[0].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 2, createdAt: new Date(d) } );
-});
 dates[1].forEach(function(d){
   fixtures.push( { id: fixtures.length+1, user: 1, pairing: 2, createdAt: new Date(d) } );
 });
-dates[2].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 2, createdAt: new Date(d) } );
+dates[1].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 2, createdAt: new Date(d) } );
 });
 
-dates[0].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 3, createdAt: new Date(d) } );
-});
-dates[1].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 2, pairing: 3, createdAt: new Date(d) } );
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 1, pairing: 3, createdAt: new Date(d) } );
 });
 dates[2].forEach(function(d){
   fixtures.push( { id: fixtures.length+1, user: 2, pairing: 3, createdAt: new Date(d) } );
 });
 
-console.log(fixtures.map(function(m){return m.id;}));
-
 dates[0].forEach(function(d){
   fixtures.push( { id: fixtures.length+1, user: 3, pairing: 4, createdAt: new Date(d) } );
 });
+dates[0].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 4, createdAt: new Date(d) } );
+});
+
 dates[1].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 4, createdAt: new Date(d) } );
-});
-dates[2].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 4, createdAt: new Date(d) } );
-});
-
-dates[0].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 5, createdAt: new Date(d) } );
+  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 5, createdAt: new Date(d) } );
 });
 dates[1].forEach(function(d){
   fixtures.push( { id: fixtures.length+1, user: 4, pairing: 5, createdAt: new Date(d) } );
 });
-dates[2].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 5, createdAt: new Date(d) } );
-});
 
-dates[0].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, createdAt: new Date(d) } );
-});
-dates[1].forEach(function(d){
-  fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, createdAt: new Date(d) } );
+dates[2].forEach(function(d){
+  fixtures.push( { id: fixtures.length+1, user: 3, pairing: 6, createdAt: new Date(d) } );
 });
 dates[2].forEach(function(d){
   fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, createdAt: new Date(d) } );
 });
-
-console.log(fixtures.map(function(m){return m.id;}));
 
 console.log('logs: ', fixtures)
 
