@@ -3,7 +3,7 @@ class PairingSerializer < ActiveModel::Serializer
 
   def links
     {
-      users: "/api/users?pairing_id=#{object.id}"
+      users: "/api/users?pairing_id=#{object.id}",
       logs: "/api/logs?pairing_id=#{object.id}"
     }
   end
