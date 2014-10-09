@@ -24,8 +24,6 @@ fixtures.push({id: fixtures.length+1, users: [3,4], logs: [27, 28, 29, 30, 31, 3
 fixtures.push({id: fixtures.length+1, users: [3,4], logs: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46], startDate: new Date(dates[1][0]), endDate: new Date(dates[1][1])});
 fixtures.push({id: fixtures.length+1, users: [3,4], logs: [47, 48, 49, 50, 51, 52], startDate: new Date(dates[2][0]), endDate: new Date(dates[2][1])});
 
-console.log( 'pairings: ', fixtures );
-
 Pairing.reopenClass({
   FIXTURES: fixtures
 });
