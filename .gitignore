@@ -10,4 +10,17 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
 /public/tmp
+
+# dependencies
+/public/node_modules
+/public/bower_components/*
+
+/public/.sass-cache
+/public/connect.lock
+/public/coverage/*
+/public/libpeerconnection.log
+/public/npm-debug.log
+/public/testem.log
