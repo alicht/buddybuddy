@@ -28,6 +28,7 @@ def create(_date)
   end_date = _date.end_of_week
 
   Pairing.generate!
+  pairing = Pairing.first
 
   (start_date..end_date).each do |d|
     log = Log.create(created_at: d)
