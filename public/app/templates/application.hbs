@@ -4,9 +4,13 @@
       {{link-to "Welcome to Buddy Buddy" 'application' classNames="navbar-brand" }}
       <div class="navbar-left">
         <ul class="nav navbar-nav">
-          <li>{{link-to "Buddies" "users.index"}}</li>
           {{#if currentUserService.user}}
-          <li>{{#link-to  "users.user" currentUserService.user}} {{currentUserService.user.name}}{{/link-to}}</li><li> <a {{action "signOut"}}>Sign Out</a></li>
+            <li>
+              {{#link-to  "users.user" currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
+            </li>
+            <li>
+              <a {{action "signOut"}}>Sign Out</a>
+            </li>
           {{/if}}
         </ul>
       </div>
