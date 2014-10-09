@@ -1,52 +1,39 @@
 
-User.create([
-  { name: 'user1' },
-  { name: 'user2' },
-  { name: 'user3' },
-  { name: 'user4' },
-  { name: 'user5' },
-  { name: 'user6' },
-  { name: 'user7' },
-  ])
-
-
-
-# pairing = Pairing.create(start_date: DateTime.now - 7.days, end_date: DateTime.now)
-# pairing.users << charlie
-# pairing.users << nick
-# pairing.save
-# =======
-
-
-def create(_date)
-  charlie = User.create(name: "Charlie Ridley")
-  nick = User.create(name: "Nick Blanchet")
-  heyjin = User.create(name: "Designy Heyjin")
-  andre = User.create(name: "Andre Malan")
-
-  start_date = _date.beginning_of_week
-  end_date = _date.end_of_week
-
-  Pairing.generate!
-  pairing = Pairing.first
-
-  (start_date..end_date).each do |d|
-    log = Log.create(created_at: d)
-    log.pairing = pairing
-    log.user = charlie
-    log.save
+[
+  "kentkrekorian@gmail.com",
+  "alexis@simplereach.com",
+  "elubow@simplereach.com",
+  "dcroft@simplereach.com",
+  "steven@simplereach.com",
+  "eddie@simplereach.com",
+  "andrea@simplereach.com",
+  "amalan@simplereach.com",
+  "demo@simplereach.com",
+  "claire@simplereach.com",
+  "nblanchet@simplereach.com",
+  "jenn@simplereach.com",
+  "roy@simplereach.com",
+  "amit@simplereach.com",
+  "heyjin@simplereach.com",
+  "wemara@simplereach.com",
+  "dana@simplereach.com",
+  "evan@simplereach.com",
+  "sjiang@simplereach.com",
+  "rbradberry@simplereach.com",
+  "rachel@simplereach.com",
+  "bmason@simplereach.com",
+  "stetson@simplereach.com",
+  "zwilhelm@simplereach.com",
+  "cridley@simplereach.com",
+  "shansen@simplereach.com",
+  "adam@simplereach.com",
+  "aanders@simplereach.com",
+  "dave@simplereach.com",
+  "kent@simplereach.com",
+  "alvin@simplereach.com",
+  "csira@simplereach.com"
+  ].each do |email|
+    User.create(name: email)
   end
 
-  pairing.users << charlie
-  pairing.users << nick
-  pairing.logs
-  pairing.save
-end
-
-
-
-today = DateTime.now
-create(today)
-create(7.days.ago(today))
-create(14.days.ago(today))
-create(21.days.ago(today))
+Pairing.generate!
