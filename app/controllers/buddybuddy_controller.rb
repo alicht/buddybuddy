@@ -17,7 +17,7 @@ class BuddybuddyController < ApplicationController
         render template, layout: false
       }
       format.json  {
-        render json: { health: true }
+        render json: { health: true, error: 'If you are expecting data please ensure your api route is correct.' }
       }
     end
   end
