@@ -1,23 +1,19 @@
 class Api::PairingsController < ApplicationController
 
   def index
-    @pairings = Pairing.current
-    render json: @pairings
+    @pairings = Pairing.current(params[:user_id])
+    render json:{ pairings:  @pairings }
   end
 
   def generate
     @pairings = Pairing.generate!
-    render json: @pairings
+    render json: { pairings: @pairings }
   end
 
   def show
     @pairing = Pairing.find(params[:id])
-    render json: @pairing
-  end
-
-  def by_user_id
-    @pairings = User.find(params[:user_id]).pairings
-    render json: @pairings
+    render json: { pairing:  @pairing }
   end
 
 end
+
