@@ -1,7 +1,7 @@
 class Api::PairingsController < ApplicationController
 
   def index
-    @pairings = User.find(params[:user_id]).pairings
+    @pairings = Pairing.current
     render json: @pairings
   end
 
