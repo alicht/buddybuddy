@@ -1,4 +1,4 @@
-module( "Integration - buddybuddy", {
+module( "Integration - bbLogin", {
    setup: function() {
     // Sr.reset(); 
     //visit login page: 
@@ -75,6 +75,31 @@ test('select user from ddmenu and login', function(){
 		}
 	}
 });
+
+
+
+
+//LOGIN AS ANYONE: 
+//start at login page 
+//select a name
+//click loginButton
+//andThen: 
+//	equal( currentPath )
+//	equal( welcome message )
+
+
+
+//LOGIN IN AS EVERYONE: 
+
+
+
+
+
+
+
+
+
+
 
 
 
