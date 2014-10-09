@@ -17,7 +17,7 @@
 <h4>Checked-ins: </h4>
 <ul>
 {{#each logs}}
-	<li>{{format-date date "MMM DD, YYYY"}} {{message}} by {{user.name}}</li>
+	<li>{{format-date createdAt "MMM DD, YYYY"}} {{message}} by {{user.name}}</li>
 {{/each}}
 </ul>
 
