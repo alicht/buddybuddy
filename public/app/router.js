@@ -15,6 +15,10 @@ Router.map(function() {
   this.resource('pairings', function() { 
   	this.route('pairing', {path: ':pairing_id'});
   });
+
+  this.resource('logs', function() { 
+    this.route('log', {path: ':logs_id'});
+  });
 });
 
 export default Router;
