@@ -32,10 +32,8 @@ class Pairing < ActiveRecord::Base
     p.reload if p.save
   end
 
-  def self.current(user_id=nil)
-    pairings = Pairing.where(["start_date <= ? AND end_date >= ?", Time.now, Time.now])
-    pairings.to_a.select!{|p| p.user_ids.include?(user_id.to_i) } if user_id # could be done on query but.. meh, dislike for active record.
-    pairings
+  def self.current
+    Pairing.where(["start_date <= ? AND end_date >= ?", Time.now, Time.now])
   end
 
   def self.current_start_date
