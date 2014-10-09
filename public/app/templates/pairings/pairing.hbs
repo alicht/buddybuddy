@@ -1,24 +1,28 @@
+<div class="row">
 <h3>
-  {{#each buddies}}
-    {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart">{{/if}}</span>
-  {{/each}}
+  <div class="col-xs-9">
+    {{#each buddies}}
+      {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart">{{/if}}</span>
+    {{/each}}
+  </div>
+
+  <div class="col-xs-3">
+    {{format-date today "ddd MMM DD, YYYY"}}
+  </div>
 </h3>
+</div>
 
 <hr />
 
 <div class="row">
   <div class="col-xs-9">
-    <p>{{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}</p>
-  </div>
+    <p>{{format-date startDate "ddd MMM DD"}} - {{format-date endDate "ddd MMM DD"}}</p>
+  </div>  
+
   <div class="col-xs-3">
     <button class="btn btn-primary btn-block btn-lg" {{action "checkin" content}}><span class="glyphicon glyphicon-ok"></span> Check In Today</button>
   </div>
 </div>
-<h4>
-
-<h4>
-	
-</h4>
 
 <h4>Checked-ins: </h4>
 <ul>

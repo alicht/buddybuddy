@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  today: new Date(),
+  
   buddies: function(){
     if (this.get('users.length') > 0){
       var length = this.get('users.length') - 1;
