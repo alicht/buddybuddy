@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :pairings do
       get :generate, on: :collection
     end
-    get "users/:user_id/pairings", to: "pairings#by_user_id"
+    resources :logs
   end
 
   root 'buddybuddy#index'

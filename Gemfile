@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'looksee'
+  gem 'pry'
 end
 
 gem 'rails', '4.1.6'

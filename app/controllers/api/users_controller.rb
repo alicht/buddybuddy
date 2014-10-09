@@ -1,13 +1,10 @@
 class Api::UsersController < ApplicationController
 
   def index
+    # restrict on pairing id.
     @users = User.all
-    render json: @users
-  end
-
-  def by_pairing_id
-    @users = Pairing.find(params[:pairing_id]).users
-    render json: @users
+    @users = @users.select{|user| user.pairing_ids.include?(params[:pairing_id])} if params[:pairing_id]
+    render json: { users: @users }
   end
 
 end
