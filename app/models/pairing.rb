@@ -13,8 +13,12 @@ class Pairing < ActiveRecord::Base
     delete_current
     all_users = User.all.to_a
     all_users.shuffle! # randomize order for now
-    while valid_pair(all_users.first, all_users.last)
+    while all_users.length > 1
+     if valid_pair(all_users.first, all_users.last) || all_users.length == 2 # assuming 1/6 of the last 6 will work.
        p = new_pairing(all_users.shift, all_users.pop)
+     else
+       all_users.shuffle!
+     end
     end
     p.users << all_users if all_users.any? #
     current

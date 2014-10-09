@@ -8,7 +8,6 @@
   "eddie@simplereach.com",
   "andrea@simplereach.com",
   "amalan@simplereach.com",
-  "demo@simplereach.com",
   "claire@simplereach.com",
   "nblanchet@simplereach.com",
   "jenn@simplereach.com",
