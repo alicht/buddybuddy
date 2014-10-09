@@ -2,37 +2,47 @@ module( "Integration - buddybuddy", {
    setup: function() {
     // Sr.reset(); 
     //visit login page: 
-    //visit('/login');  
-    // create array of names:  
+    visit('/login');  
+    
+     
    } 
  }); 
 
 
 
 
-test('select user from ddmenu', function(){
-	visit('/login');  
-	//testData
+//check currentPath: 
+test('check correct page', function(){
+	equal(currentPath(), "login");
+});
+
+
+//click loginButton:
+test('loginButton can be clicked', function(){
+	//click($('.btn-primary'));
+});
+
+
+
+//check currentSelection equals username: 
+test('check the what is currently selected', function(){ 
 	var username = "Charlie Ridley";
-	//check currentSelection
-	var currentSelection = $('.ember-select option:selected'); 
-	if(currentSelection === username){
-		//click login button 
-		click($('.btn-primary'));
-	} else { 
-		//function to click login button
-		var fn = function(){
-			click($('.btn-primary')); 
-		};
-		//rotate through options  
-		for(var i=1; i < $('.ember-select option').length; i++){ 
-			var currentOption = $('.ember-select option')[i]; 
-			//until a match is found
-			if(currentOption === username){ 
-				//then login
-				click(currentOption); 
-				andThen(fn);
-			}
+	var currentSelection = $('.ember-select option:selected').text(); 
+	equal(currentSelection, username);
+});
+
+
+
+//check that username is in ddList: 
+test('username is in ddList', function(){ 
+	var username = "Nick Blanchet";
+	//rotate through list
+	for(var i=1; i < $('.ember-select option').length; i++){ 
+		var currentOption = $('.ember-select option')[i];
+		//and compare
+		if(currentOption === username){ 
+			//test passes on a match
+			equal(currentOption, username);
 		}
 	}
 });
@@ -40,68 +50,31 @@ test('select user from ddmenu', function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//login as anyone
-
-
-//login based on username
-
-
-
-
-
-
-//expect(1); 
-
-
-
-
-
-// checks that selected option matches username 
-
-
-
-// //successful login: assertions might need to be separated: 
-// test('logs in successfully', function(){
-// 	var button = $('button[data-ember-action=\'1575\']'); 
-// 	click(button); 
-// 	andThen( function(){
-// 		var welcome = "Hi " + username;   
-// 		equal($('h3').text(), welcome);  //welcome message  
-// 		equal(currentPath(), '/pairings/1');  //path 
-// 		equal( find('button[data-ember-action=\'1888\']'), true);  //checkinButton
-// 	});
-// });  
-
-
-//check pairing:{}
-
-//check dateRange 
-
-
-
-
-
-
-
-
-
-
-
-
+//login as existing user: 
+test('select user from ddmenu and login', function(){ 
+	var username = "Designy Heyjin";
+	//check currentSelection
+	var currentSelection = $('.ember-select option:selected').text(); 
+	//function to click login button
+	var clickLogin = function(){
+			click($('.btn-primary')); 
+		};
+	if(currentSelection === username){
+		//click login button 
+		clickLogin();
+	} else { 
+		//rotate through options  
+		for(var i=1; i < $('.ember-select option').length; i++){ 
+			var currentOption = $('.ember-select option')[i]; 
+			//until a match is found
+			if(currentOption === username){ 
+				//then login
+				click(currentOption); 
+				andThen(clickLogin);
+			}
+		}
+	}
+});
 
 
 
