@@ -32,7 +32,7 @@
   "alvin@simplereach.com",
   "csira@simplereach.com"
   ].each do |email|
-    User.create(name: email)
+    User.create(name: email.split('@').first)
   end
 
 Pairing.generate!
