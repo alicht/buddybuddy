@@ -2,12 +2,27 @@
 
 <h3>All Logs: </h3>
 
-{{log content}}
-<ul>
-  {{#each content}}
-  <li>
-    {{id}}
-  </li>
-  {{/each}}
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>user</th>
+      <th>pairing</th>
+      <th>created at</th>
+      <th>message</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each content}}
+    <tr>
+      <td>{{id}}</td>
+      <td>[{{user.id}}] {{user.name}}</td>
+      <td>[{{pairing.id}}] {{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}</td>
+      <td>{{format-date createdAt "MMM DD, YYYY"}}</td>
+      <td>{{message}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
 
