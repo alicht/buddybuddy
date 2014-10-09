@@ -3,7 +3,6 @@ nick = User.create(name: "Nick Blanchet")
 heyjin = User.create(name: "Designy Heyjin")
 andre = User.create(name: "Andre Malan")
 
-
 start_date = DateTime.now.beginning_of_week
 end_date = DateTime.now.end_of_week
 
