@@ -1,8 +1,8 @@
 class Api::PairingsController < ApplicationController
 
   def index
-    @pairings = Pairing.current
-    @pairings = Pairing.all
+    @pairings = params[:current] == 'true' ? Pairing.current : Pairing.all
+    @pairings.select!{|p| p.user_ids.include?(params[:user_id].to_i) } if params[:user_id]
     render json: @pairings
   end
 
