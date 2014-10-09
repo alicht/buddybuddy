@@ -1,11 +1,16 @@
 class Pairing < ActiveRecord::Base
   has_and_belongs_to_many :users
-    has_many :logs
+  has_many :logs
 
+
+  def self.delete_current
+    current.delete_all
+  end
   # This will generate pairings for this week
   #
 
   def self.generate!
+    delete_current
     all_users = User.all.to_a
     all_users.shuffle! # randomize order for now
     while valid_pair(all_users.first, all_users.last)
@@ -27,8 +32,10 @@ class Pairing < ActiveRecord::Base
     p.reload if p.save
   end
 
-  def self.current
-    Pairing.where(["start_date <= ? AND end_date >= ?", Time.now, Time.now])
+  def self.current(user_id=nil)
+    pairings = Pairing.where(["start_date <= ? AND end_date >= ?", Time.now, Time.now])
+    pairings.to_a.select!{|p| p.user_ids.include?(user_id.to_i) } if user_id # could be done on query but.. meh, dislike for active record.
+    pairings
   end
 
   def self.current_start_date
