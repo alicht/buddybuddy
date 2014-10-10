@@ -15,13 +15,19 @@ class BuddybuddyController < ApplicationController
 
     respond_to do |format|
       format.js {
+        puts 'rendering js'
         render file: template, layout: false, content_type: content_type
       }
       format.html  {
-        render template, layout: false
+        puts 'rendering html'
+        render file: template, layout: false
       }
       format.json  {
+        puts 'rendering json'
         render json: { health: true, error: 'If you are expecting data please ensure your api route is correct.' }
+      }
+      format.tff {
+        render file: template, layout: false
       }
     end
   end
