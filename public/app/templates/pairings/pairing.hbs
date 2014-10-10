@@ -23,7 +23,11 @@
 <ul class="list-group">
 {{#each logs}}
 	<li class="list-group-item">
-    {{format-date createdAt "MMM DD, YYYY"}} {{message}} by {{user.name}}
+    {{format-date createdAt "MMM DD, YYYY"}} {{message}} by {{user.screenName}}
+  </li>
+{{else}}
+  <li class="list-group-item">
+    You need love.
   </li>
 {{/each}}
 </ul>
