@@ -1,0 +1,6 @@
+{{#link-to "pairings.pairing" this}}
+  <span>{{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}: </span>
+  {{#each buddies}}
+    {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+  {{/each}}
+{{/link-to}}

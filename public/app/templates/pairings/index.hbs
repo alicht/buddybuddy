@@ -3,11 +3,7 @@
 <ul>
   {{#each content}}
   <li>
-  	{{#link-to 'pairings.pairing' this}} 
-  	 {{#each buddies}}
-        {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
-      {{/each}}
-  	{{/link-to}}
+  	{{partial 'pairings/pairing_show_link'}}
   </li>
   {{/each}}
 </ul>
