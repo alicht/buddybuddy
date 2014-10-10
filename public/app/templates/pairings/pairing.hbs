@@ -20,7 +20,11 @@
   </div>  
 
   <div class="col-xs-3">
-    <button class="btn btn-primary btn-block btn-lg" {{action "checkin" content}}><span class="glyphicon glyphicon-ok"></span> Check In Today</button>
+    {{#if isCheckedIn}}
+      <button class="btn btn-block btn-lg" disabled><span class="glyphicon glyphicon-ok"></span> Checked In</button>
+    {{else}}
+      <button class="btn btn-primary btn-block btn-lg" {{action "checkin" content}}><span class="glyphicon glyphicon-ok"></span> Check In Today</button>
+    {{/if}}
   </div>
 </div>
 

@@ -3,8 +3,19 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   today: new Date(),
   
+  isCheckedIn: function(){
+    if (this.get('logs.isFulfilled') && this.get('logs.length') > 0){
+      var last = this.get('logs').sortBy('createdAt').get('lastObject');
+      var a = moment(new Date());
+      var b = moment(last.get('createdAt'));
+      return a.diff(b, 'days') === 0;
+    }else{
+      return false;
+    }
+  }.property('logs.length'),
+
   buddies: function(){
-    if (this.get('users.length') > 0){
+    if (this.get('logs.isFulfilled') && this.get('users.length') > 0){
       var length = this.get('users.length') - 1;
 
       return this.get('users').map(function(user, i) {
@@ -14,5 +25,5 @@ export default Ember.ObjectController.extend({
         };
       });
     }
-  }.property('content.users.length')
+  }.property('users.length')
 });
