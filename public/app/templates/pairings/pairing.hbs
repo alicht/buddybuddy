@@ -2,12 +2,13 @@
 <h3>
   <div class="col-xs-9">
     {{#each buddies}}
-      {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart">{{/if}}</span>
+      {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart"></span>{{/if}}
     {{/each}}
   </div>
 
   <div class="col-xs-3">
-    {{format-date today "ddd MMM DD, YYYY"}}
+    {{format-date today "ddd MMM DD, YYYY"}} 
+    
   </div>
 </h3>
 </div>
