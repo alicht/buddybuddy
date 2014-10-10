@@ -1,38 +1,30 @@
-<div class="row">
+<h1>
+  {{#each buddies}}
+    {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+  {{/each}}
+</h1>
+
 <h3>
-  <div class="col-xs-9">
-    {{#each buddies}}
-      {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart"></span>{{/if}}
-    {{/each}}
-  </div>
-
-  <div class="col-xs-3">
-    {{format-date today "ddd MMM DD, YYYY"}} 
-    
-  </div>
+  {{format-date startDate "ddd MMM DD"}} - {{format-date endDate "ddd MMM DD"}}
 </h3>
-</div>
 
-<hr />
+<h3>
+  {{#if isCheckedIn}}
+    <button class="btn btn-block btn-lg" disabled>
+      <span class="glyphicon glyphicon-ok"></span> Checked In
+    </button>
+  {{else}}
+    <button class="btn btn-primary btn-block btn-lg" {{action "checkin" content}}>
+      <span class="glyphicon glyphicon-ok"></span> Check In Today
+    </button>
+  {{/if}}
+</h3>
 
-<div class="row">
-  <div class="col-xs-9">
-    <p>{{format-date startDate "ddd MMM DD"}} - {{format-date endDate "ddd MMM DD"}}</p>
-  </div>  
-
-  <div class="col-xs-3">
-    {{#if isCheckedIn}}
-      <button class="btn btn-block btn-lg" disabled><span class="glyphicon glyphicon-ok"></span> Checked In</button>
-    {{else}}
-      <button class="btn btn-primary btn-block btn-lg" {{action "checkin" content}}><span class="glyphicon glyphicon-ok"></span> Check In Today</button>
-    {{/if}}
-  </div>
-</div>
-
-<h4>Checked-ins: </h4>
-<ul>
+<ul class="list-group">
 {{#each logs}}
-	<li>{{format-date createdAt "MMM DD, YYYY"}} {{message}} by {{user.name}}</li>
+	<li class="list-group-item">
+    {{format-date createdAt "MMM DD, YYYY"}} {{message}} by {{user.name}}
+  </li>
 {{/each}}
 </ul>
 
