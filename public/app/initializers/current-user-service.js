@@ -4,6 +4,8 @@ export default {
   initialize: function(container, app) {
     app.inject('route', 'currentUserService', 'service:current-user');
     app.inject('controller', 'currentUserService', 'service:current-user');
+    app.inject('model', 'currentUserService', 'service:current-user');
+
     var currentUserJsonString = localStorage.getItem('currentUser');
     if (currentUserJsonString){
       var currentUserJson = JSON.parse(currentUserJsonString);

@@ -1,8 +1,8 @@
-<ul>
+<ul class="list-group">
 {{#each content.pairings}}
-	<li>
+	<li class="list-group-item">
     {{#link-to "pairings.pairing" this}}
-  		{{primaryUser.name}} <span class="glyphicon glyphicon-heart"></span> {{secondaryUser.name}}:
+  		{{primaryUser.screenName}} <span class="glyphicon glyphicon-heart" style="color:red;"></span> {{secondaryUser.screenName}}:
   		{{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}
     {{/link-to}}
 	</li>

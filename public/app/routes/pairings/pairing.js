@@ -2,11 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	actions: {
-		checkin: function(pairing, today){
+		checkin: function(pairing){
 			var log = this.store.createRecord('log', {
 				user: this.get('currentUserService.user'),
-				pairing: pairing,
-				date: today
+				pairing: pairing
 			});
 			log.save();
 		}

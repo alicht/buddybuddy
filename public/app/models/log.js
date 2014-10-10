@@ -56,8 +56,6 @@ dates[2].forEach(function(d){
   fixtures.push( { id: fixtures.length+1, user: 4, pairing: 6, createdAt: new Date(d) } );
 });
 
-console.log('logs: ', fixtures)
-
 Log.reopenClass({
   FIXTURES: fixtures
 });
