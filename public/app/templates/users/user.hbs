@@ -1,12 +1,14 @@
-<ul class="list-group">
-{{#each content.pairings}}
-	<li class="list-group-item">
-    {{#link-to "pairings.pairing" this}}
-      {{#each buddies}}
-        {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
-      {{/each}}
-  		<span>: {{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}</span>
-    {{/link-to}}
-	</li>
-{{/each}}
-</ul>
+<div class="text-center">
+  <ul class="list-group">
+  {{#each content.pairings}}
+  	<li class="list-group-item">
+      {{#link-to "pairings.pairing" this}}
+        {{#each buddies}}
+          {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+        {{/each}}
+    		<span>: {{format-date startDate "MMM DD, YYYY"}} - {{format-date endDate "MMM DD, YYYY"}}</span>
+      {{/link-to}}
+  	</li>
+  {{/each}}
+  </ul>
+</div>
