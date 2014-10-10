@@ -1,10 +1,12 @@
 {{outlet}}
 <h3>All Pairings: </h3>
 <ul>
-  {{#each pairing in content}}
+  {{#each content}}
   <li>
-  	{{#link-to 'pairings.pairing' pairing}} 
-  		{{pairing.id}}:  {{pairing.primaryUser.name}}, {{pairing.secondaryUser.name}}
+  	{{#link-to 'pairings.pairing' this}} 
+  	 {{#each buddies}}
+        {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+      {{/each}}
   	{{/link-to}}
   </li>
   {{/each}}
