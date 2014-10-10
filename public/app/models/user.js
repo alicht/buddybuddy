@@ -7,7 +7,11 @@ var User = DS.Model.extend({
 
   isMe: function(){
     return this.get('id') === this.get('currentUserService.user.id');
-  }.property('currentUserService.user')
+  }.property('currentUserService.user'),
+
+  screenName: function(){
+    return this.get('isMe') ? 'Me' : this.get('name');
+  }.property('isMe')
 });
 
 User.reopenClass({

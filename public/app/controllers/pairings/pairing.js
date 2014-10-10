@@ -20,7 +20,7 @@ export default Ember.ObjectController.extend({
 
       return this.get('users').map(function(user, i) {
         return {
-          name: user.get('isMe') ? 'You' : user.get('name'),
+          name: user.get('screenName'),
           heart: i < length 
         };
       });
