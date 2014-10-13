@@ -3,17 +3,18 @@ class Pairing < ActiveRecord::Base
   has_many :logs
 
 
-  def self.delete_current
-    current.delete_all
+  def self.delete_current(time = Time.now)
+    current(time).delete_all
   end
   # This will generate pairings for this week
   #
 
-  def self.generate!
+  def self.generate!(time = Time.now)
+    delete_current(time) # this only allows 1 of current pairings for the given 'time'
     all_users = User.all.to_a
     all_users.shuffle! # randomize order for now
     while all_users.length > 1
-     if valid_pair(all_users.first, all_users.last) || all_users.length == 2 # assuming 1/6 of the last 6 will work.
+     if valid_pair(all_users.first, all_users.last, time) || all_users.length == 2 # assuming 1/6 of the last 6 will work.
        p = new_pairing(all_users.shift, all_users.pop)
      else
        all_users.shuffle!
@@ -26,7 +27,7 @@ class Pairing < ActiveRecord::Base
   # Checks to make sure they are valid
   #
 
-  def self.valid_pair(user1, user2)
+  def self.valid_pair(user1, user2, time = Time.now)
     user1 != user2 && user1 && user2 # user is not the same && both are not nil.
   end
 
@@ -35,16 +36,16 @@ class Pairing < ActiveRecord::Base
     p.reload if p.save
   end
 
-  def self.current
-    Pairing.where(["start_date <= ? AND end_date >= ?", Time.now, Time.now])
+  def self.current(time = Time.now)
+    Pairing.where(["start_date <= ? AND end_date >= ?", time, time])
   end
 
-  def self.current_start_date
-    Time.now.utc.beginning_of_week
+  def self.current_start_date(time = Time.now)
+    time.utc.beginning_of_week
   end
 
-  def self.current_end_date
-    Time.now.utc.end_of_week
+  def self.current_end_date(time = Time.now)
+    time.utc.end_of_week
   end
 
 end
