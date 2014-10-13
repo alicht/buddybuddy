@@ -1,11 +1,9 @@
 {{outlet}}
 <h3>All Pairings: </h3>
 <ul>
-  {{#each pairing in content}}
+  {{#each content}}
   <li>
-  	{{#link-to 'pairings.pairing' pairing}} 
-  		{{pairing.id}}:  {{pairing.primaryUser.name}}, {{pairing.secondaryUser.name}}
-  	{{/link-to}}
+  	{{partial 'pairings/pairing_show_link'}}
   </li>
   {{/each}}
 </ul>
