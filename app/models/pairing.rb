@@ -10,7 +10,6 @@ class Pairing < ActiveRecord::Base
   #
 
   def self.generate!
-    delete_current
     all_users = User.all.to_a
     all_users.shuffle! # randomize order for now
     while all_users.length > 1
