@@ -2,10 +2,12 @@ class Pairing < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :logs
 
+  @@week_offset = 2
 
   def self.delete_current(time = Time.now)
     current(time).delete_all
   end
+
   # This will generate pairings for this week
   #
 
@@ -15,7 +17,7 @@ class Pairing < ActiveRecord::Base
     all_users.shuffle! # randomize order for now
     while all_users.length > 1
      if valid_pair(all_users.first, all_users.last, time) || all_users.length == 2 # assuming 1/6 of the last 6 will work.
-       p = new_pairing(all_users.shift, all_users.pop)
+       p = new_pairing(all_users.shift, all_users.pop, time)
      else
        all_users.shuffle!
      end
@@ -28,13 +30,24 @@ class Pairing < ActiveRecord::Base
   #
 
   def self.valid_pair(user1, user2, time = Time.now)
-    user1 != user2 && user1 && user2 # user is not the same && both are not nil.
+    user1 != user2 && user1 && user2 && no_past_pairing(user1, user2, time) # user is not the same && both are not nil.
   end
 
-  def self.new_pairing(user1, user2)
-    p = create(start_date: current_start_date, end_date: current_end_date, users: [user1, user2] )
-    p.reload if p.save
+  def self.no_past_pairing(user1, user2, time = Time.now)
+    Pairing.where( ["start_date <= ? AND end_date >= ?", time - @@week_offset.week, current_start_date(time) - 1.day]).select{ |p|
+      p.user_ids.includes?(user1.id) && p.user_ids.includes?(user2.id)
+    }.count == 0
   end
+
+  # default new pairing creation
+  #
+
+  def self.new_pairing(user1, user2, time = Time.now)
+    create(start_date: current_start_date(time), end_date: current_end_date(time), users: [user1, user2] )
+  end
+
+  # Time helpers
+  #
 
   def self.current(time = Time.now)
     Pairing.where(["start_date <= ? AND end_date >= ?", time, time])
