@@ -28,12 +28,13 @@
   "Dave",
   "Kent",
   "Alvin",
-  "Chris"
+  "Chris",
+  "Victoria"
   ].each do |email|
     User.find_or_create_by(name: email.split('@').first)
   end
 
 
-Pairing.delete_all
-Log.delete_all
-Pairing.generate!
+# Pairing.delete_all
+# Log.delete_all
+# Pairing.generate!
