@@ -7,10 +7,9 @@ class BuddybuddyController < ApplicationController
     template = File.join(Rails.public_path , 'dist', params[:path] || 'index.html')
 
     respond_to do |format|
-      format.js {  render file: template, layout: false }#, content_type: content_type }
+      format.js    { render file: template, layout: false }#, content_type: content_type }
       format.html  { render file: template, layout: false }
       format.json  { render json: { health: true, error: 'If you are expecting data please ensure your api route is correct.' } }
-      format.tff { render file: template, layout: false }
     end
   end
 
