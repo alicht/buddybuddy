@@ -1,7 +1,10 @@
 class Api::PairingsController < ApplicationController
 
   def index
-    @pairings = params[:current] == 'true' ? Pairing.at : Pairing.all
+    date = Time.parse(params[:date])
+    date = Time.now if params[:current] == 'true'
+    Pairing.generate!(date) if params[:generate] == 'true'
+    @pairings = date ? Pairing.at(date) : Pairing.all
     @pairings.to_a.select!{|p| p.user_ids.include?(params[:user_id].to_i) } if params[:user_id]
     render json: @pairings
   end
