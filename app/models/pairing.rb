@@ -4,15 +4,15 @@ class Pairing < ActiveRecord::Base
 
   @@week_offset = 2
 
-  def self.delete_current(time = Time.now)
-    current(time).delete_all
+  def self.delete_at(time = Time.now)
+    at(time).delete_all
   end
 
   # This will generate pairings for this week
   #
 
   def self.generate!(time = Time.now)
-    delete_current(time) # this only allows 1 of current pairings for the given 'time'
+    delete_at(time) # this only allows 1 of current pairings for the given 'time'
     all_users = User.all.to_a
     all_users.shuffle! # randomize order for now
     while all_users.length > 1
@@ -23,7 +23,7 @@ class Pairing < ActiveRecord::Base
      end
     end
     p.users << all_users if all_users.any? #
-    current
+    at(time)
   end
 
   # Checks to make sure they are valid
@@ -34,7 +34,7 @@ class Pairing < ActiveRecord::Base
   end
 
   def self.no_past_pairing(user1, user2, time = Time.now)
-    Pairing.where( ["start_date <= ? AND end_date >= ?", time - @@week_offset.week, current_start_date(time) - 1.day]).select{ |p|
+    Pairing.where( ["start_date <= ? AND end_date >= ?", time - @@week_offset.week, start_date(time) - 1.day]).select{ |p|
       p.user_ids.includes?(user1.id) && p.user_ids.includes?(user2.id)
     }.count == 0
   end
@@ -43,21 +43,21 @@ class Pairing < ActiveRecord::Base
   #
 
   def self.new_pairing(user1, user2, time = Time.now)
-    create(start_date: current_start_date(time), end_date: current_end_date(time), users: [user1, user2] )
+    create(start_date: start_date(time), end_date: end_date(time), users: [user1, user2] )
   end
 
   # Time helpers
   #
 
-  def self.current(time = Time.now)
+  def self.at(time = Time.now)
     Pairing.where(["start_date <= ? AND end_date >= ?", time, time])
   end
 
-  def self.current_start_date(time = Time.now)
+  def self.start_date(time = Time.now)
     time.utc.beginning_of_week
   end
 
-  def self.current_end_date(time = Time.now)
+  def self.end_date(time = Time.now)
     time.utc.end_of_week
   end
 
