@@ -1,9 +1,15 @@
 {{outlet}}
-<h3>All Pairings: </h3>
-<ul>
-  {{#each content}}
-  <li>
-  	{{partial 'pairings/pairing_show_link'}}
+
+<ul class="list-group">
+{{#each pairingsByDates}}
+  <li class="list-group-item active">
+    <h4>{{date}}</h4>
   </li>
+
+  {{#each pairings}}
+    <li class="list-group-item">
+  	 {{partial 'pairings/pairing_show_link'}}
+    </li>
   {{/each}}
+{{/each}}
 </ul>
