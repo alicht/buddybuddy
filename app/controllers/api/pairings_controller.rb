@@ -1,7 +1,7 @@
 class Api::PairingsController < ApplicationController
 
   def index
-    date = Time.parse(params[:date])
+    date = Time.parse(params[:date]) if params[:date]
     date = Time.now if params[:current] == 'true'
     Pairing.generate!(date) if params[:generate] == 'true'
     @pairings = date ? Pairing.at(date) : Pairing.all
