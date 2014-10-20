@@ -19,5 +19,17 @@ export default Ember.Controller.extend({
     });
 
     return result;
-  }.property('content')
+  }.property('content'),
+
+  actions: {
+    generate: function(){
+      var date = this.get('date');
+      var self = this;
+      alert('generate for date: ' + date);
+      Ember.$.getJSON('/api/pairings?generate=true&date='+date).then(function(response){
+        var newParings = self.store.pushPayload('pairing', response);
+        alert('Generated!');
+      });
+    }
+  }
 });
