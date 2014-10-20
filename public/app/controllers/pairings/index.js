@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
     var result = [];
 
     arr.forEach(function(sdate, i){
-      result[i] = {date: sdate, pairings: []};
+      result[i] = { date: sdate, pairings: [] };
 
       self.get('content').forEach(function(pairing){
         if (sdate == pairing.get('pairingDates')){
