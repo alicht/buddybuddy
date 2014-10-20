@@ -3,5 +3,5 @@ task :deploy do
   system 'cp public/dist/index.html app/views/layouts/application.html.erb'
   system "git add app/*"
   system "git commit -am 'deployment commit'"
-  system "git push heroku master"
+  system "git push origin master"
 end
