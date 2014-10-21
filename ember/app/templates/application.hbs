@@ -1,0 +1,26 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class=" navbar-header">
+      {{link-to "Buddy Buddy" 'application' classNames="navbar-brand" }}
+      <div class="navbar-left">
+        <ul class="nav navbar-nav">
+          {{#if currentUserService.user}}
+            <li>
+              {{#link-to  "users.user" currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
+            </li>
+            <li>
+              <a {{action "signOut"}}>Sign Out</a>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container main-container" style="width:80%;">
+
+  {{outlet}}
+
+</div><!-- /.container -->
+

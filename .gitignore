@@ -12,15 +12,19 @@
 /tmp
 
 
-/public/tmp
+/ember/tmp
 
 # dependencies
-/public/node_modules
-/public/bower_components/*
 
-/public/.sass-cache
-/public/connect.lock
-/public/coverage/*
-/public/libpeerconnection.log
-/public/npm-debug.log
-/public/testem.log
+ember/.sass-cache
+ember/connect.lock
+ember/coverage/*
+ember/libpeerconnection.log
+ember/npm-debug.log
+ember/testem.log
+ember/vendor
+ember/composer.lock
+ember/components
+ember/node_modules
+ember/emberjs
+ember/bower_components

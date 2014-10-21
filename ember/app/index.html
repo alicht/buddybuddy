@@ -13,12 +13,12 @@
 
   <body>
     <script>
-      window.EmberENV = {"modulePrefix":"buddybuddy","environment":"development","baseURL":"/","locationType":"hash","EmberENV":{"FEATURES":{}},"APP":{"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true}};
+      window.EmberENV = {{EMBER_ENV}};
     </script>
     <script src="assets/vendor.js"></script>
     <script src="assets/buddybuddy.js"></script>
     <script>
-      window.Buddybuddy = require('buddybuddy/app')['default'].create({"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true});
+      window.Buddybuddy = require('buddybuddy/app')['default'].create({{APP_CONFIG}});
     </script>
   </body>
 </html>

@@ -1,0 +1,24 @@
+<ul class="list-group">
+{{#each content.pairings}}
+  <li class="list-group-item row">
+    <div class="col-lg-4">
+      <span>{{format-date startDate "MMM DD"}} - {{format-date endDate "MMM DD"}}</span>
+      {{#link-to "pairings.pairing" this}}
+        {{#each buddies}}
+          {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+        {{/each}}
+      {{/link-to}}
+    </div>
+
+    <div class="col-lg">
+      {{#each logs}}
+        <div class="btn btn-default">
+          {{user.screenName}} 
+          <small>{{format-date createdAt "MM.DD"}}</small> 
+          <i class="glyphicon glyphicon-ok"></i>
+        </div>
+      {{/each}}
+    </div>
+  </li>
+{{/each}}
+</ul>
