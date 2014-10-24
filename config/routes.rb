@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     end
     resources :logs
   end
-
   root 'buddybuddy#index'
+  get '*path' => 'buddybuddy#index', :format => false
 end
