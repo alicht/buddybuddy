@@ -18,6 +18,6 @@ export default Ember.Controller.extend({
       });
     });
 
-    return result;
+    return result.reverse();
   }.property('content')
 });
