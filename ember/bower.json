@@ -16,6 +16,7 @@
     "moment": "~2.8.3"
   },
   "devDependencies": {
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "bones": "~0.1.4"
   }
 }
