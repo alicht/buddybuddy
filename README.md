@@ -1,10 +1,41 @@
-== README
+# BUDDYBUDDY README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## MAC INSTALL
+
+1. Install and run Postgres. We use brew, but use whatever suits your fancy.
+
+`brew install postgresql`
+
+2. Clone the repo, cd into it, run bundler, and initialize the database. 
+
+```
+git clone https://github.com/simplereach/buddybuddy.git
+cd buddybuddy
+bundle install
+rake db:setup
+```
+
+3. Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
+
+```
+cd ember
+npm install
+bower install
+```
+
+4. Start your Rails server
+
+5. From the ember directory, start the ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
+
+`ember server --proxy http://localhost:3000`
+
+6. Happy BuddyBuddying!
+
+Please feel free to use a different markup language if you do not plan to run
+`rake doc:app`.
 
 
-== LINUX INSTALL
+## LINUX INSTALL
 * System dependencies
 ```
 sudo apt-get install postgresql
@@ -44,19 +75,12 @@ GRANT ALL PRIVILEGES ON DATABASE "buddybuddy-rails_development" to bmason;
 -- close psql
 
 
-* Database initialization
-rake db:setup
 
+## TO DO
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
-
-* ...
-ember server --proxy http://localhost:300
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
 
