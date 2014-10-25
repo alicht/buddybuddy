@@ -15,6 +15,10 @@ if(index) {
 // Moment
 app.import('bower_components/moment/moment.js');
 
+//Sass
+var compileSass = require('broccoli-sass');
+
+
 // Bootstrap
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 

@@ -13,10 +13,10 @@
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
     "qunit": "~1.15.0",
-    "moment": "~2.8.3"
+    "moment": "~2.8.3",
+    "bones": "~0.1.4"
   },
   "devDependencies": {
-    "bootstrap": "~3.2.0",
-    "bones": "~0.1.4"
+    "bootstrap": "~3.2.0"
   }
 }
