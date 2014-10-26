@@ -1,32 +1,23 @@
 {{outlet}}
 
-<ul class="list-group">
+<ul>
 {{#each pairingsByDates}}
-  <li class="list-group-item active">
-    <h4>{{date}}</h4>
+  <li>
+    {{date}}
   </li>
 
   {{#each pairings}}
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-lg-3">
-          {{#link-to "pairings.pairing" this}}
-            {{#each buddies}}
-              {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
-            {{/each}}
-          {{/link-to}}
-        </div>
+    <li>
+      {{#link-to "pairings.pairing" this}}
+        {{#each buddies}}
+          {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+        {{/each}}
+      {{/link-to}}
 
-        <div class="col-lg">
-          {{#each logs}}
-            <div class="btn btn-default">
-              {{user.screenName}}
-              <small>{{format-date createdAt "MM.DD"}}</small>
-              <i class="glyphicon glyphicon-ok"></i>
-            </div>
-          {{/each}}
-        </div>
-      </div>
+      {{#each logs}}
+        {{user.screenName}}
+        {{format-date createdAt "MM.DD"}}
+      {{/each}}
     </li>
   {{/each}}
 {{/each}}
