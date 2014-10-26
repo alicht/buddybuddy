@@ -32,6 +32,6 @@
     "glob": "^4.0.5"
   },
   "dependencies": {
-    "broccoli-sass": "^0.3.0"
+    "broccoli-sass": "^0.3.2"
   }
 }
