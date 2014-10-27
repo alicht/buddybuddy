@@ -1,14 +1,31 @@
-{{link-to "Buddy Buddy" 'application' classNames="navbar-brand" }}
+<header>
+  <div class="inner">
+    {{link-to "Buddy Buddy" 'application' classNames="buddybuddy-logo" }}
 
-<ul>
-  {{#if currentUserService.user}}
-  <li>
-    {{#link-to  "users.user" currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
-  </li>
-  <li>
-    <a {{action "signOut"}}>Sign Out</a>
-  </li>
-  {{/if}}
-</ul>
+    <nav>
+      <ul>
+      {{#if currentUserService.user}}
+        <li>
+          {{#link-to  "users.user" currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
+        </li>
+        <li>
+          <a {{action "signOut"}}>Sign Out</a>
+        </li>
+      {{/if}}
+      </ul>
+    </nav>
+  </div>
+</header>
 
-{{outlet}}
+
+<section>
+  <div class="inner">
+    {{outlet}}
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <p>Made by <a href="http://simplereach.com">SimpleReach</a> in NYC</p>
+  </div>
+</footer>

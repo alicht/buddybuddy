@@ -1,3 +1,5 @@
+<h1 class="buddybuddy-logo"><img src="/images/logo.png" /></h1>
+
 <h2>Who are you?</h2>
 {{view Ember.Select content=arrangedContent 
                     value=selectedUser
@@ -5,4 +7,4 @@
                     prompt="Select your name"
                     class="form-control"}}
   
-<button {{action "login" selectedUser}}>Login</button>
+<a {{action "login" selectedUser}} class="login btn">Login</a>

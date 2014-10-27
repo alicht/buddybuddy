@@ -29,4 +29,20 @@ var bootstrapFonts = pickFiles('bower_components/bootstrap/fonts', {
   destDir: '/fonts'
 });
 
-module.exports = app.toTree(bootstrapFonts);
+var extraFonts = pickFiles('app/styles/fonts', {
+  srcDir: '/',
+  files: ['*'],
+  destDir: '/fonts'
+});
+
+var extraImages = pickFiles('app/styles/images', {
+  srcDir: '/',
+  files: ['*'],
+  destDir: '/images'
+});
+
+var mergeTrees = require("broccoli-merge-trees");
+
+var output = mergeTrees([extraFonts, extraImages, bootstrapFonts]);
+
+module.exports = app.toTree(output);
