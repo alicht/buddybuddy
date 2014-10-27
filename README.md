@@ -29,7 +29,13 @@ bower install
 
 `ember server --proxy http://localhost:3000`
 
-6. Happy BuddyBuddying!
+6. Generate pairs
+```
+rails c
+Pairing.generate!
+```
+
+7. Happy BuddyBuddying!
 
 Please feel free to use a different markup language if you do not plan to run
 `rake doc:app`.
