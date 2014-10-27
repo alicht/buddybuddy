@@ -2,11 +2,11 @@
 
 ## MAC INSTALL
 
-1. Install and run Postgres. We use brew, but use whatever suits your fancy.
+* Install and run Postgres. We use brew, but use whatever suits your fancy.
 
 `brew install postgresql`
 
-2. Clone the repo, cd into it, run bundler, and initialize the database. 
+* Clone the repo, cd into it, run bundler, and initialize the database. 
 
 ```
 git clone https://github.com/simplereach/buddybuddy.git
@@ -15,7 +15,7 @@ bundle install
 rake db:setup
 ```
 
-3. Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
+* Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
 
 ```
 cd ember
@@ -23,19 +23,19 @@ npm install
 bower install
 ```
 
-4. Start your Rails server
+* Start your Rails server
 
-5. From the ember directory, start the ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
+* From the ember directory, start the ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
 
 `ember server --proxy http://localhost:3000`
 
-6. Generate pairs
+* Generate pairs
 ```
 rails c
 Pairing.generate!
 ```
 
-7. Happy BuddyBuddying!
+* Happy BuddyBuddying!
 
 Please feel free to use a different markup language if you do not plan to run
 `rake doc:app`.
