@@ -59,7 +59,7 @@ rvm install 1.9.3
 ``
 git clone https://github.com/simplereach/buddybuddy.git
 cd buddybuddy
-cd ./public
+cd ./ember
 npm install -g ember-cli
 npm install -g bower
 npm install -g phantomjs
