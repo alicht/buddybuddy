@@ -32,6 +32,7 @@ GEM
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     coderay (1.1.0)
+    comprehend (0.0.3)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -82,6 +83,9 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
+    rgl (0.4.0)
+      rake
+      stream (>= 0.5)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -96,6 +100,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stream (0.5)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -117,12 +122,14 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  comprehend
   jbuilder (~> 2.0)
   looksee
   pg
   pry
   rails (= 4.1.6)
   rails_12factor
+  rgl
   sdoc (~> 0.4.0)
   spring
   therubyracer
