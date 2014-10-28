@@ -41,7 +41,7 @@ var extraImages = pickFiles('app/styles/images', {
   destDir: '/images'
 });
 
-var mergeTrees = require("broccoli-merge-trees");
+var mergeTrees = require('broccoli-merge-trees');
 
 var output = mergeTrees([extraFonts, extraImages, bootstrapFonts]);
 

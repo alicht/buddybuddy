@@ -1,5 +1,5 @@
 @import 'bower_components/bones/bones.scss';
-@import 'normalize.css';
+@import '_normalize.css';
 
 // TO DO: pull these into a proper palettes file and use color functions
 $light-blue: hsl(198, 75.6098%, 51.7647%);
@@ -102,6 +102,10 @@ img {
   max-width: 40em;
 }
 
+.main {
+  margin: 3em 0;
+}
+
 .btn {
   @extend %inlineBlock;
   @include prefix(border-radius, 3px);
@@ -161,7 +165,7 @@ footer {
 
 .buddy-pairing {
   text-align: center;
-  margin: 3em 0;
+  margin: 0 0 3em 0;
   ul, p {
     width: 100%;
     padding-left: 0;

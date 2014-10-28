@@ -6,13 +6,16 @@
       <ul>
       {{#if currentUserService.user}}
         <li>
-          {{#link-to  "users.user" currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
+          {{#link-to  'users.user' currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
         </li>
         <li>
-          {{#link-to "pairings"}}Pairings{{/link-to}}
+          {{#link-to 'pairings'}}Pairings{{/link-to}}
         </li>
         <li>
-          <a {{action "signOut"}}>Sign Out</a>
+          {{#link-to 'application'}}Check In{{/link-to}}
+        </li>
+        <li>
+          <a {{action 'signOut'}}>Sign Out</a>
         </li>
       {{/if}}
       </ul>
@@ -21,7 +24,7 @@
 </header>
 
 
-<section>
+<section class="main">
   <div class="inner">
     {{outlet}}
   </div>
