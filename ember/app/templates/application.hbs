@@ -9,6 +9,9 @@
           {{#link-to  "users.user" currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
         </li>
         <li>
+          {{#link-to "pairings"}}Pairings{{/link-to}}
+        </li>
+        <li>
           <a {{action "signOut"}}>Sign Out</a>
         </li>
       {{/if}}
