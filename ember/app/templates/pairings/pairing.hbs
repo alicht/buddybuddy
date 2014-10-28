@@ -1,26 +1,29 @@
-<h1>
-  {{#each buddies}}
-    {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
-  {{/each}}
-</h1>
+<section class="buddy-pairing">
+  <ul>
+    {{#each buddies}}
+      <li>{{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}</li>
+    {{/each}}
+  </ul>
 
-<h3>
-  {{format-date startDate "ddd MMM DD"}} - {{format-date endDate "ddd MMM DD"}}
-</h3>
+  <p>
+    {{format-date startDate "ddd MMM DD"}} - {{format-date endDate "ddd MMM DD"}}
+  </p>
+</section>
 
-<h3>
+<section class="checkin">
   {{#if currentUserService.user.checkedin}}
     <button disabled>
       <span class="glyphicon glyphicon-ok"></span> Checked In
     </button>
-    {{else}}
-      {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
-      <button {{action "checkin" content}}>
-        <i class="glyphicon glyphicon-ok"></i> Check In Today
-      </button>
+  {{else}}
+    {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
+    <a {{action "checkin" content}} class="btn">
+      Check In Today
+    </a>
   {{/if}}
-</h3>
+</section>
 
+<section class="checkins">
 <h5>Checkins</h5>
 {{#if logs}}
   <ul>
@@ -36,6 +39,6 @@
   {{else}}
     You need love.
   {{/if}}
-
-  {{outlet}}
-
+</section>
+  
+{{outlet}}

@@ -98,7 +98,7 @@ img {
 .inner {
   margin: 0 auto;
   padding: 0 1.5em;
-  max-width: 80em;
+  max-width: 40em;
 }
 
 .btn {
@@ -129,6 +129,9 @@ header {
     height: 18px;
     text-indent: -9999em;
   }
+  nav {
+    float: right;
+  }
   ul {
     margin: 0;
     text-align: right;
@@ -138,8 +141,51 @@ header {
   }
 }
 
+.buddybuddy-logo {
+  &.login {
+    margin: 3em 0;
+  }
+}
+
+.who {
+  text-align: center;
+  margin-bottom: .5em;
+}
+
 footer {
   font-family: 'bariol_light';
+  margin-top: 6em;
+  border-top: 1px solid #EEE;
+}
+
+.buddy-pairing {
+  text-align: center;
+  margin: 3em 0;
+  ul, p {
+    width: 100%;
+    padding-left: 0;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 0;
+  }
+  li {
+    @extend %inlineBlock;
+    @extend %font36;
+  }
+}
+
+.checkin {
+  input {
+    @include prefix(border-radius, 3px);
+    @extend %font24;
+    margin-bottom: .5em;
+    padding: .5em .2em;
+    width: 100%;
+    border: 1px solid #CCC;
+  }
 }
 
 
