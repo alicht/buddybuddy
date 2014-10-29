@@ -15,14 +15,12 @@ cd buddybuddy
 bundle install
 rake db:setup
 ```
-
 3. Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
 ```
 cd ember
 npm install
 bower install
 ```
-
 4. Start your Rails server
 
 5. From the ember directory, start the ember server: `ember server --proxy http://localhost:3000`. If your rails server is running on a port other than the default, specify that port when starting the ember server.
