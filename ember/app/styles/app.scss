@@ -1,6 +1,7 @@
 @import 'bower_components/bones/bones.scss';
 @import 'normalize.scss';
 @import 'icomoon.scss';
+@import 'forms.scss';
 
 // TO DO: pull these into a proper palettes file and use color functions
 $light-blue: hsl(198, 75.6098%, 51.7647%);
@@ -55,7 +56,7 @@ $fonts: (bariol_bold, bariol_light, bariol_thin, icomoon);
 // font sizes use extends to group logically in the output
 $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
 
-// set up extends for font-sizes - see functions/sizing for other unit options
+// set up extends for font-sizes
 @each $font-size in $font-sizes {
   %font#{$font-size} {
     font-size: calcRem( $font-size );
@@ -71,12 +72,10 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
   vertical-align: top;
 } 
 
+// global selector settings
 * {
-  position: relative;
-  //@include display( flex );
   @include prefix(box-sizing, border-box);
-  //flex-flow: column;
-  //flex-shrink: 0;
+  position: relative;
   overflow: hidden;
 }
 
@@ -201,6 +200,8 @@ footer {
   }
 }
 
+// has-hearts
+// Add this class to a ul when the li items will contain names that need <3
 .has-hearts {
   li {
     @extend %inlineBlock; 
@@ -221,46 +222,4 @@ footer {
     width: 100%;
     border: 1px solid #CCC;
   }
-}
-
-
-// pulled from Foundation for selectbox styling
-select {
-  -webkit-appearance: none !important;
-  background: #fafafa url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat;
-  background-position-x: 97%;
-  background-position-y: center;
-  border: 1px solid #cccccc;
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  -webkit-border-radius: 0;
-  border-radius: 0; 
-  width: 100%;
-}
-
-select.radius {
-  -webkit-border-radius: 3px;
-  border-radius: 3px; 
-}
-  
-select:hover {
-  background: #f2f2f2 url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat;
-  background-position-x: 97%;
-  background-position-y: center;
-  border-color: #999999; 
-}
-
-select:focus {
-  outline: none;
-}
-
-@-moz-document url-prefix() {
-  
-  select {
-    background: #fafafa; 
-  }
-
-  select:hover {
-    background: #f2f2f2; 
-  } 
 }
