@@ -72,11 +72,13 @@ bundle install
 sudo su - postgres
 psql postgres
 ```
+```
 -- open the psql commandline
 CREATE USER bmason;
 CREATE DATABASE "buddybuddy-rails_development" ENCODING = 'unicode';
 GRANT ALL PRIVILEGES ON DATABASE "buddybuddy-rails_development" to bmason;
 -- close psql
+```
 
 
 
