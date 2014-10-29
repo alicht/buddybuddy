@@ -17,7 +17,7 @@ bundle install
 rake db:setup
 ```
 
-* Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
+3. Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
 
 ```
 cd ember
