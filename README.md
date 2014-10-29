@@ -1,5 +1,5 @@
 # BUDDYBUDDY README
-[![Coverage Status](https://coveralls.io/repos/simplereach/buddybuddy/badge.png)](https://coveralls.io/r/simplereach/buddybuddy)
+Buddy Buddy is a simple pairing and check-in system for any type of organization or group. At SimpleReach, we use Buddy Buddy to keep cross-departmental communication open and facilitate comaraderie across the entire organization. Each week we generate a new list of pairings (if there is an odd number in your group don't worry - we'll generate a threesome). Each pair meets at least twice a week for a minimum of 10 minutes to chat. Once they've met up, they check-in on Buddy Buddy to track the event happened and record any notes they'd like to remember about the meeting.
 
 ## MAC INSTALL
 
