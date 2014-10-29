@@ -25,15 +25,14 @@
 <section class="checkins">
 <h3>Checkins</h3>
 {{#if logs}}
-  <ul>
-    {{#each logs}}
-    <li {{bind-attr class="user.isMe::timeline-inverted"}}>
-      {{format-date createdAt "dddd, MMMM DD - YY"}}
-      {{user.screenName}}
-      {{message}}
-    </li>
+  {{#each logs}}
+    <article {{bind-attr class="user.isMe::timeline-inverted"}}>
+      <span class="arrow"></span>
+      <span class="message">{{message}}</span>
+      <span class="buddy">{{user.screenName}}</span>
+      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
+    </article>
     {{/each}}
-  </ul>
   {{else}}
     You need love.
   {{/if}}
