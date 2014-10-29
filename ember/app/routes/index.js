@@ -1,11 +1,10 @@
 import Ember from 'ember';
-import AuthRoute from '../mixins/auth-route';
 /* global moment */
 
-export default Ember.Route.extend(AuthRoute, {
+export default Ember.Route.extend({
   model: function() {
-    var currentUser = this.get('currentUserService.user');
-    return this.store.find('pairing', {user_id: currentUser.get('id'), current: true});
+    var userId = this.get('session.user_id');
+    return this.store.find('pairing', {user_id: userId, current: true});
   },
 
   afterModel: function(model) {

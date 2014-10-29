@@ -2,10 +2,12 @@
 
 <h2 class="who">Who are you?</h2>
 
-{{view Ember.Select content=arrangedContent 
-                    value=selectedUser
-                    optionLabelPath="content.name"
-                    prompt="Select your name"
-                    class="form-control"}}
-  
-<a {{action "login" selectedUser}} class="login btn">Login</a>
+<form {{action 'authenticate' on='submit'}}>
+  <label for='identification'>Login</label>
+  {{input id='identification' placeholder='Enter Login'
+           value=identification}}
+  <label for='password'>Password</label>
+  {{input id='password' placeholder='Enter Password'
+           type='password' value=password}}
+  <button type='submit'>Login</button>
+</form>
