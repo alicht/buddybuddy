@@ -1,17 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
   groupedPairings: function(){
     var result = [];
     var group = 'pairingDates';
   
-    this.get('content').forEach(function(item){
+    this.get('content').forEach(function(item, i){
       var hasGroup = !!result.findBy('group', item.get(group));
 
       if (!hasGroup) {
         result.pushObject(Ember.Object.create({
           group: item.get(group),
+          index: i,
           content: []
         }));
       }

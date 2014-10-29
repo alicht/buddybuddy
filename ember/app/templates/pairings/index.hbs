@@ -2,21 +2,9 @@
 
 <ul class="pairings">
 {{#each groupedPairings}}
-<li>
-  <h2>{{group}}</h2>
-  {{#each content}}
-  <ul class="has-hearts">
-    {{#link-to "pairings.pairing" this}}
-      {{#each buddies}}
-        <li>{{name}}</li>
-      {{/each}}
-    {{/link-to}}
-  </ul>
-  {{#each logs}}
-    {{user.screenName}}
-    {{format-date createdAt "MM.DD"}}
-  {{/each}}
-{{/each}}
-</li>
+  <li>
+    <h2>{{group}}</h2>
+    {{pairing-logs content=content index=index}}
+  </li>
 {{/each}}
 </ul>
