@@ -14,6 +14,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 gem 'thin'
+gem 'rgl'
+gem 'comprehend'
 
 
 group :assets do
