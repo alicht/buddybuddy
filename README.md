@@ -5,11 +5,11 @@ Buddy Buddy is a simple pairing and check-in system for any type of organization
 
 ## MAC INSTALL
 
-* Install and run Postgres. We use brew, but use whatever suits your fancy.
+1. Install and run Postgres. We use brew, but use whatever suits your fancy.
 
 `brew install postgresql`
 
-* Clone the repo, cd into it, run bundler, and initialize the database. 
+2. Clone the repo, cd into it, run bundler, and initialize the database. 
 
 ```
 git clone https://github.com/simplereach/buddybuddy.git
