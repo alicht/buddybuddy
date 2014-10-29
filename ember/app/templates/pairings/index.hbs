@@ -1,22 +1,10 @@
 {{outlet}}
 
 <ul class="pairings">
-{{#each pairingsByDates}}
-<li>
-    <h2>{{date}}</h2>
-    {{#each pairings}}
-    <ul class="has-hearts">
-      {{#link-to "pairings.pairing" this}}
-        {{#each buddies}}
-          <li>{{name}}</li>
-        {{/each}}
-      {{/link-to}}
-    </ul>
-    {{#each logs}}
-      {{user.screenName}}
-      {{format-date createdAt "MM.DD"}}
-    {{/each}}
-  {{/each}}
-</li>
+{{#each groupedPairings}}
+  <li>
+    <h2>{{group}}</h2>
+    {{pairing-logs content=content index=index}}
+  </li>
 {{/each}}
 </ul>
