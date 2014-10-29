@@ -2,23 +2,21 @@
 
 <ul class="pairings">
 {{#each pairingsByDates}}
-  <li>
-    {{date}}
-  </li>
-
-  {{#each pairings}}
-    <li>
+<li>
+    <h2>{{date}}</h2>
+    {{#each pairings}}
+    <ul class="has-hearts">
       {{#link-to "pairings.pairing" this}}
         {{#each buddies}}
-          {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+          <li>{{name}}</li>
         {{/each}}
       {{/link-to}}
-
-      {{#each logs}}
-        {{user.screenName}}
-        {{format-date createdAt "MM.DD"}}
-      {{/each}}
-    </li>
+    </ul>
+    {{#each logs}}
+      {{user.screenName}}
+      {{format-date createdAt "MM.DD"}}
+    {{/each}}
   {{/each}}
+</li>
 {{/each}}
 </ul>

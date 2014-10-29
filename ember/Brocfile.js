@@ -16,9 +16,6 @@ app.import('bower_components/moment/moment.js');
 var compileSass = require('broccoli-sass');
 
 
-// Bootstrap
-//app.import('bower_components/bootstrap/dist/css/bootstrap.css');
-
 // Glyphicons
 var pickFiles = require('broccoli-static-compiler');
 var bootstrapFonts = pickFiles('bower_components/bootstrap/fonts', {
