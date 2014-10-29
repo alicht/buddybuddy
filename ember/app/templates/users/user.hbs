@@ -1,18 +1,16 @@
-<ul>
 {{#each sortedPairings}}
-  <li>
-    <span>{{format-date startDate "MMM DD"}} - {{format-date endDate "MMM DD"}}</span>
+  <h2>{{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}</h2>
+    <ul class="has-hearts">
     {{#link-to "pairings.pairing" this}}
       {{#each buddies}}
-        {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+        <li>{{name}}</li>
       {{/each}}
     {{/link-to}}
+    </ul> 
     
     {{#each logs}}
       {{user.screenName}} 
         <small>{{format-date createdAt "MM.DD"}}</small> 
         <i class="glyphicon glyphicon-ok"></i>
     {{/each}}
-  </li>
 {{/each}}
-</ul>
