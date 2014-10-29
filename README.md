@@ -1,4 +1,5 @@
 # BUDDYBUDDY README
+[![Coverage Status](https://coveralls.io/repos/simplereach/buddybuddy/badge.png)](https://coveralls.io/r/simplereach/buddybuddy)
 
 ## MAC INSTALL
 
