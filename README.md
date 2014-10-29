@@ -6,7 +6,6 @@ Buddy Buddy is a simple pairing and check-in system for any type of organization
 ## MAC INSTALL
 
 1. Install and run Postgres. We use brew, but use whatever suits your fancy.
-
 `brew install postgresql`
 
 2. Clone the repo, cd into it, run bundler, and initialize the database. 
