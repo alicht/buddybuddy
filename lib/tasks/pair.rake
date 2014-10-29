@@ -6,16 +6,6 @@ task :pair => :environment do
     require 'rgl/traversal'
 
     #------------------------------------------------------------------------------
-    # This is a sanity check to look for duplicate entries
-    #------------------------------------------------------------------------------
-    def bailout(path, vertices)
-        if path.to_set.length != vertices.count then
-            # emergency bail-out ... the search step must be reviewed
-            exit
-        end
-    end
-
-    #------------------------------------------------------------------------------
     # Delete all old pairings
     #------------------------------------------------------------------------------
     def delete_old_pairings!()
@@ -50,6 +40,27 @@ task :pair => :environment do
         end
     end
 
+    #------------------------------------------------------------------------------
+    # returns true if all adjacent pairs ids in the path represent valid pairings
+    #------------------------------------------------------------------------------
+    def verify_pairings(path, users, offset)
+        for v in 0..(path.count-2) do
+             if not Pairing.valid_pair(users[v].id, users[v+1].id, offset) then
+                return false
+             end
+        end
+        return true
+    end
+
+    #------------------------------------------------------------------------------
+    # This is a sanity check to look for duplicate entries
+    #------------------------------------------------------------------------------
+    def bailout(path, vertices, users, offset)
+        if path.to_set.length != vertices.count or not verify_pairings(path, users, offset) then
+            # emergency bail-out ... the search step must be reviewed
+            exit
+        end
+    end
     #------------------------------End Function Definitions------------------------
 
 
@@ -112,7 +123,7 @@ task :pair => :environment do
     #------------------------------------------------------------------------------
     # This is a sanity check to look for duplicate entries
     #------------------------------------------------------------------------------
-    bailout(path, vertices)
+    bailout(path, vertices, users, offset)
 
     #------------------------------------------------------------------------------
     # Save pairings to Postgresql
