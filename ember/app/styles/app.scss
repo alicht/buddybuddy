@@ -286,6 +286,13 @@ footer {
   }
 }
 
+.checkedin {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: darken($light-grey, 10%);
+}
+
 .checkins {
   h3 {
     text-align: center;
