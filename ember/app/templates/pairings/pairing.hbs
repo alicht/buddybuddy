@@ -8,34 +8,34 @@
   <p>
     {{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}
   </p>
+
+  {{#if currentUserService.user.checkedin}}
+    <span class="checkedin">You checked in!</span>
+  {{/if}}
 </section>
 
 <section class="checkin">
-  {{#if currentUserService.user.checkedin}}
-      Checked in!
-      <span class="glyphicon glyphicon-ok"></span> 
-  {{else}}
+  {{#unless currentUserService.user.checkedin}}
     {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
     <a {{action "checkin" content}} class="btn">
       Check In Today
     </a>
-  {{/if}}
+  {{/unless}}
 </section>
 
 <section class="checkins">
-<h3>Checkins</h3>
-{{#if logs}}
-  <ul>
-    {{#each logs}}
-    <li {{bind-attr class="user.isMe::timeline-inverted"}}>
-      {{format-date createdAt "dddd, MMMM DD - YY"}}
-      {{user.screenName}}
-      {{message}}
-    </li>
+{{#if logs}}  
+<h3>Checkins This Week</h3>
+  {{#each logs}}
+    <article {{bind-attr class="user.isMe::timeline-inverted"}}>
+      <span class="arrow"></span>
+      <span class="message">{{message}}</span>
+      <span class="buddy">{{user.screenName}}</span>
+      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
+    </article>
     {{/each}}
-  </ul>
   {{else}}
-    You need love.
+    <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
   {{/if}}
 </section>
   

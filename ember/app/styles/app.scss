@@ -8,6 +8,7 @@ $light-blue: hsl(198, 75.6098%, 51.7647%);
 $dark-blue: hsl(206, 74.8837%, 42.1569%);
 $white: hsl(0, 0, 100.0000%);
 $grey: hsl(0, 0.0000%, 13.5941%);
+$light-grey: hsl(0, 0.0000%, 93.3333%);
 
 %flex-column-center {
   @include display(flex);
@@ -71,6 +72,67 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
   *display: inline;
   vertical-align: top;
 } 
+
+@mixin arrow($arrow_direction: up, $arrow_position: middle) {
+  .arrow {
+    $arrow_size: 10px;
+    $corner_position_offset: 1rem;
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: $light-grey;
+
+    @if $arrow_direction == up {
+      top: -1 * $arrow_size;
+
+      border-left: $arrow_size solid transparent;
+      border-right: $arrow_size solid transparent;
+      border-bottom-width: $arrow_size;
+      border-bottom-style: solid;
+    } @else if $arrow_direction == left {
+      left: .08 * $arrow_size;
+
+      border-top: $arrow_size solid transparent;
+      border-bottom: $arrow_size solid transparent;
+      border-right-width: $arrow_size;
+      border-right-style: solid;
+    } @else if $arrow_direction == right {
+      right: -1 * $arrow_size;
+
+      border-top: $arrow_size solid transparent;
+      border-bottom: $arrow_size solid transparent;
+      border-left-width: $arrow_size;
+      border-left-style: solid;
+    } @else {
+      bottom: -1 * $arrow_size;
+
+      border-left: $arrow_size solid transparent;
+      border-right: $arrow_size solid transparent;
+      border-top-width: $arrow_size;
+      border-top-style: solid;
+    }
+
+    @if ($arrow_direction == left or $arrow_direction == right) {
+      @if $arrow_position == middle {
+        top: .9em;
+        margin-left: -1 * $arrow_size;
+      } @else if $arrow_position == top {
+        top: $corner_position_offset;
+      } @else if $arrow_position == bottom {
+        bottom: $corner_position_offset;
+      }
+    } @else if ($arrow_direction == up or $arrow_direction == down) {
+      @if $arrow_position == middle {
+        left: 50%;
+        margin-left: -1 * $arrow_size;
+      } @else if $arrow_position == left {
+        left: $corner_position_offset;
+      } @else if $arrow_position == right {
+        right: $corner_position_offset;
+      }
+    }
+  }
+}
 
 // global selector settings
 * {
@@ -222,4 +284,56 @@ footer {
     width: 100%;
     border: 1px solid #CCC;
   }
+}
+
+.checkedin {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: darken($light-grey, 10%);
+}
+
+.checkins {
+  h3 {
+    text-align: center;
+  }
+  &:before {
+    content: " ";
+    position: absolute;
+    left: calc(50% - 1px);
+    height: 100%;
+    top: 3.8em;
+    border-right: 1px solid $light-grey;
+  }
+  article {
+    @include prefix(border-radius, 3px);
+    padding: .5em 1em;
+    overflow: visible;
+    position: relative;
+    width: 45%;
+    clear: both;
+    background: $light-grey;
+    &:nth-of-type(odd) {
+      float: left;
+      @include arrow(right, middle);
+    }
+    &:nth-of-type(even) {
+      float: right;
+      @include arrow(left, middle);
+    }
+  }
+  span {
+    display: block;
+  }
+  .message {
+    @extend %font24;
+  }
+}
+
+.need-love {
+  display: block;
+  text-align: center;
+  background: white;
+  padding: 2em;
+  margin-top: 3em;
 }
