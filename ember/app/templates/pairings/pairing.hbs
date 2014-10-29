@@ -24,8 +24,8 @@
 </section>
 
 <section class="checkins">
+{{#if logs}}  
 <h3>Checkins This Week</h3>
-{{#if logs}}
   {{#each logs}}
     <article {{bind-attr class="user.isMe::timeline-inverted"}}>
       <span class="arrow"></span>
@@ -35,7 +35,7 @@
     </article>
     {{/each}}
   {{else}}
-    You need love.
+    <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
   {{/if}}
 </section>
   
