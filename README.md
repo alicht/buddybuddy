@@ -6,7 +6,7 @@ Buddy Buddy is a simple pairing and check-in system for any type of organization
 ## Set up
 ### MAC INSTALL
 
-1. Install and run Postgres. We use brew (`brew install postgresql`), but use whatever suits your fancy.
+1. Install and run Postgres. We use brew - `brew install postgresql` - but use whatever suits your fancy.
 
 2. Clone the repo, cd into it, run bundler, and initialize the database. 
     ```
@@ -40,21 +40,21 @@ Please feel free to use a different markup language if you do not plan to run
 
 
 ### LINUX INSTALL
-* System dependencies
-```
+1. System dependencies
+    ```
 sudo apt-get install postgresql
 sudo apt-get install libpq-dev
 sudo apt-get install npm
 sudo apt-get install rvm
 ```
 
-* Ruby version
-``
+2. Ruby version
+    ``
 rvm install 1.9.3
 ``
 
-* Configuration
-``
+3. Configuration
+    ``
 git clone https://github.com/simplereach/buddybuddy.git
 cd buddybuddy
 cd ./ember
@@ -67,8 +67,8 @@ cd ..
 bundle install
 ``
 
-* Database creation
-```
+4. Database creation
+    ```
 sudo su - postgres
 psql postgres
 ```
