@@ -18,10 +18,6 @@ var compileSass = require('broccoli-sass');
 
 // Glyphicons
 var pickFiles = require('broccoli-static-compiler');
-var bootstrapFonts = pickFiles('bower_components/bootstrap/fonts', {
-  srcDir: '/',
-  destDir: '/fonts'
-});
 
 var extraFonts = pickFiles('app/styles/fonts', {
   srcDir: '/',
@@ -37,6 +33,6 @@ var extraImages = pickFiles('app/styles/images', {
 
 var mergeTrees = require('broccoli-merge-trees');
 
-var output = mergeTrees([extraFonts, extraImages, bootstrapFonts]);
+var output = mergeTrees([extraFonts, extraImages]);
 
 module.exports = app.toTree(output);
