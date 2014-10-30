@@ -4,7 +4,7 @@ class Api::PairingsController < ApplicationController
     date = Time.parse(params[:date]) if params[:date]
     date = Time.now if params[:current] == 'true'
     Pairing.generate!(date) if params[:generate] == 'true'
-    @pairings = date ? Pairing.at(date) : Pairing.all
+    @pairings = date ? Pairing.at(date) : Pairing.order('start_date DESC')
     @pairings.to_a.select!{|p| p.user_ids.include?(params[:user_id].to_i) } if params[:user_id]
     render json: @pairings
   end

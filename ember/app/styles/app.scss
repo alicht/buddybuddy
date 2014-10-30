@@ -1,11 +1,14 @@
 @import 'bower_components/bones/bones.scss';
-@import '_normalize.css';
+@import 'normalize.scss';
+@import 'icomoon.scss';
+@import 'forms.scss';
 
 // TO DO: pull these into a proper palettes file and use color functions
 $light-blue: hsl(198, 75.6098%, 51.7647%);
 $dark-blue: hsl(206, 74.8837%, 42.1569%);
 $white: hsl(0, 0, 100.0000%);
 $grey: hsl(0, 0.0000%, 13.5941%);
+$light-grey: hsl(0, 0.0000%, 93.3333%);
 
 %flex-column-center {
   @include display(flex);
@@ -31,7 +34,15 @@ $grey: hsl(0, 0.0000%, 13.5941%);
   @include align-items(stretch);
 }
 
-$fonts: (bariol_bold, bariol_light, bariol_thin);
+%heart {
+  @extend %inlineBlock;
+  font-family: 'icomoon';
+  padding: 0 .3em;
+  margin-top: .2em;
+  color: red;
+}
+
+$fonts: (bariol_bold, bariol_light, bariol_thin, icomoon);
 
 @each $font in $fonts {
   @font-face {
@@ -46,7 +57,7 @@ $fonts: (bariol_bold, bariol_light, bariol_thin);
 // font sizes use extends to group logically in the output
 $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
 
-// set up extends for font-sizes - see functions/sizing for other unit options
+// set up extends for font-sizes
 @each $font-size in $font-sizes {
   %font#{$font-size} {
     font-size: calcRem( $font-size );
@@ -62,12 +73,71 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
   vertical-align: top;
 } 
 
+@mixin arrow($arrow_direction: up, $arrow_position: middle) {
+  .arrow {
+    $arrow_size: 10px;
+    $corner_position_offset: 1rem;
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: $light-grey;
+
+    @if $arrow_direction == up {
+      top: -1 * $arrow_size;
+
+      border-left: $arrow_size solid transparent;
+      border-right: $arrow_size solid transparent;
+      border-bottom-width: $arrow_size;
+      border-bottom-style: solid;
+    } @else if $arrow_direction == left {
+      left: .08 * $arrow_size;
+
+      border-top: $arrow_size solid transparent;
+      border-bottom: $arrow_size solid transparent;
+      border-right-width: $arrow_size;
+      border-right-style: solid;
+    } @else if $arrow_direction == right {
+      right: -1 * $arrow_size;
+
+      border-top: $arrow_size solid transparent;
+      border-bottom: $arrow_size solid transparent;
+      border-left-width: $arrow_size;
+      border-left-style: solid;
+    } @else {
+      bottom: -1 * $arrow_size;
+
+      border-left: $arrow_size solid transparent;
+      border-right: $arrow_size solid transparent;
+      border-top-width: $arrow_size;
+      border-top-style: solid;
+    }
+
+    @if ($arrow_direction == left or $arrow_direction == right) {
+      @if $arrow_position == middle {
+        top: .9em;
+        margin-left: -1 * $arrow_size;
+      } @else if $arrow_position == top {
+        top: $corner_position_offset;
+      } @else if $arrow_position == bottom {
+        bottom: $corner_position_offset;
+      }
+    } @else if ($arrow_direction == up or $arrow_direction == down) {
+      @if $arrow_position == middle {
+        left: 50%;
+        margin-left: -1 * $arrow_size;
+      } @else if $arrow_position == left {
+        left: $corner_position_offset;
+      } @else if $arrow_position == right {
+        right: $corner_position_offset;
+      }
+    }
+  }
+}
+
+// global selector settings
 * {
-  position: relative;
-  //@include display( flex );
   @include prefix(box-sizing, border-box);
-  //flex-flow: column;
-  //flex-shrink: 0;
+  position: relative;
   overflow: hidden;
 }
 
@@ -78,6 +148,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -99,7 +174,7 @@ img {
 .inner {
   margin: 0 auto;
   padding: 0 1.5em;
-  max-width: 40em;
+  max-width: 50em;
 }
 
 .main {
@@ -123,6 +198,10 @@ img {
 }
 
 header {
+  .inner {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+  }
   .buddybuddy-logo, nav {
     @extend %inlineBlock;
   }
@@ -142,6 +221,7 @@ header {
     text-align: right;
     li {
       @extend %inlineBlock;
+      padding: 0 .5em;
     }
   }
 }
@@ -182,6 +262,19 @@ footer {
   }
 }
 
+// has-hearts
+// Add this class to a ul when the li items will contain names that need <3
+.has-hearts {
+  li {
+    @extend %inlineBlock; 
+      &:nth-of-type(1):after, 
+      &:nth-of-type(3):before {
+      @extend %heart;
+      content: "\e615";
+    }
+  }
+}
+
 .checkin {
   input {
     @include prefix(border-radius, 3px);
@@ -193,44 +286,75 @@ footer {
   }
 }
 
-
-// pulled from Foundation for selectbox styling
-select {
-  -webkit-appearance: none !important;
-  background: #fafafa url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat;
-  background-position-x: 97%;
-  background-position-y: center;
-  border: 1px solid #cccccc;
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  -webkit-border-radius: 0;
-  border-radius: 0; 
+.checkedin {
+  display: block;
   width: 100%;
+  text-align: center;
+  color: darken($light-grey, 10%);
 }
 
-select.radius {
-  -webkit-border-radius: 3px;
-  border-radius: 3px; 
-}
-  
-select:hover {
-  background: #f2f2f2 url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat;
-  background-position-x: 97%;
-  background-position-y: center;
-  border-color: #999999; 
-}
-
-select:focus {
-  outline: none;
-}
-
-@-moz-document url-prefix() {
-  
-  select {
-    background: #fafafa; 
+.checkins {
+  h3 {
+    text-align: center;
+    margin-bottom: 1em;
   }
+  &:before {
+    content: " ";
+    position: absolute;
+    left: calc(50% - 1px);
+    height: 100%;
+    top: 3.8em;
+    border-right: 1px solid $light-grey;
+  }
+  article {
+    @include prefix(border-radius, 3px);
+    padding: .5em 1em;
+    overflow: visible;
+    position: relative;
+    width: 45%;
+    clear: both;
+    background: $light-grey;
+    &:nth-of-type(odd) {
+      float: left;
+      @include arrow(right, middle);
+      &:before {
+        content: " ";
+        position: absolute;
+        width: .5em;
+        height: .5em;
+        border-radius: 1em;
+        background: red;
+        right: -12.2968%;
+        top: 1.7em;
+      }
+    }
+    &:nth-of-type(even) {
+      float: right;
+      @include arrow(left, middle);
+      &:before {
+        content: " ";
+        position: absolute;
+        width: .5em;
+        height: .5em;
+        border-radius: 1em;
+        background: red;
+        left: -12.2968%;
+        top: 1.3em;
+      }
+    }
+  }
+  span {
+    display: block;
+  }
+  .message {
+    @extend %font24;
+  }
+}
 
-  select:hover {
-    background: #f2f2f2; 
-  } 
+.need-love {
+  display: block;
+  text-align: center;
+  background: white;
+  padding: 2em;
+  margin-top: 3em;
 }

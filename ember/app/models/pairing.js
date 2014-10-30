@@ -7,8 +7,8 @@ var Pairing = DS.Model.extend({
   logs: DS.hasMany('log', {async: true}),
 
   pairingDates: function(){
-    return moment( this.get('startDate') ).format('MMM DD, YYYY') + ' - ' +
-           moment( this.get('endDate') ).format('MMM DD, YYYY');
+    return moment( this.get('startDate') ).format('MMMM DD, YYYY') + ' - ' +
+           moment( this.get('endDate') ).format('MMMM DD, YYYY');
   }.property('startDate', 'endDate'),
 
   buddies: function(){

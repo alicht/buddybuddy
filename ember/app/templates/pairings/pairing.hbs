@@ -1,44 +1,42 @@
 <section class="buddy-pairing">
-  <ul>
+  <ul class="has-hearts">
     {{#each buddies}}
-      <li>{{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}</li>
+      <li> {{name}} </li>
     {{/each}}
   </ul>
 
   <p>
     {{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}
   </p>
+
+  {{#if currentUserService.user.checkedin}}
+    <span class="checkedin">You checked in!</span>
+  {{/if}}
 </section>
 
 <section class="checkin">
-  {{#if session.currentUser.checkedin}}
-    <button disabled>
-      <span class="glyphicon glyphicon-ok"></span> Checked In
-    </button>
-  {{else}}
+  {{#unless session.currentUser.checkedin}}
     {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
     <a {{action "checkin" content}} class="btn">
       Check In Today
     </a>
-  {{/if}}
+  {{/unless}}
 </section>
 
 <section class="checkins">
-<h5>Checkins</h5>
 {{#if logs}}
-  <ul>
-    {{#each logs}}
-    <li {{bind-attr class="true::timeline-inverted"}}>
-      <i {{bind-attr class=":glyphicon true:glyphicon-chevron-right:glyphicon-chevron-left"}}></i>
-      <i class="glyphicon glyphicon-time"></i> {{format-date createdAt "dddd, MMMM DD YY"}}
-      {{user.name}}
-      {{message}}
-    </li>
+<h3>Checkins This Week</h3>
+  {{#each logs}}
+    <article {{bind-attr class="user.isMe::timeline-inverted"}}>
+      <span class="arrow"></span>
+      <span class="message">{{message}}</span>
+      <span class="buddy">{{user.screenName}}</span>
+      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
+    </article>
     {{/each}}
-  </ul>
   {{else}}
-    You need love.
+    <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
   {{/if}}
 </section>
-  
+
 {{outlet}}
