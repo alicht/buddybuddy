@@ -42,6 +42,10 @@ $light-grey: hsl(0, 0.0000%, 93.3333%);
   color: red;
 }
 
+%no-margin {
+  margin: 0;
+}
+
 $fonts: (bariol_bold, bariol_light, bariol_thin, icomoon);
 
 @each $font in $fonts {
@@ -151,12 +155,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+h3 {
+  @extend %no-margin;
+  text-transform: uppercase;
+  color: darken($light-grey, 30%);
+}
+
 ul, ol {
   margin: 0;
   padding: 0;
 }
 
 input {
+  border: none;
   &:focus {
     outline: none;
   }
@@ -236,6 +247,23 @@ header {
 .buddybuddy-logo {
   &.login {
     margin: 3em 0;
+  }
+}
+
+.your-history {
+  margin-top: 3em;
+}
+
+.your-settings {
+  label {
+    display: block;
+    margin-top: .5em;
+  }
+  input {
+    @include prefix(border-radius, 3px);
+    @extend %font24;
+    background: $light-grey;
+    padding: .3em .5em;
   }
 }
 
@@ -370,8 +398,12 @@ footer {
   position: relative;
   margin: .5em 0;
   overflow: hidden;
-  &:hover {
-    background-color: $light-grey;
+  h2 {
+    @extend %font18;
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: .3em;
+    margin-top: 0;
+    margin-bottom: .7em;
   }
   .has-hearts {
     padding: .3em 0;
