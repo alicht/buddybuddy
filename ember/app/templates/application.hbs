@@ -6,7 +6,7 @@
       <ul>
         {{#if session.isAuthenticated}}
         <li>
-          {{#link-to  'users.user' currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
+          {{#link-to  'users.user' session.currentUser}} Hi, {{session.currentUser.name}}!{{/link-to}}
         </li>
         <li>
           {{#link-to 'pairings'}}Pairings{{/link-to}}

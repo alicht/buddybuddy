@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.ArrayController.extend({
   pairingsByDates: function(){
     var self = this;
     var arr = this.get('content').map(function(pairing){

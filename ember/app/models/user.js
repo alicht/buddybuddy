@@ -6,13 +6,7 @@ var User = DS.Model.extend({
   checkedin: DS.attr('boolean'),
   pairings: DS.hasMany('pairing', {async: true}),
 
-  isMe: function(){
-    return this.get('id') === this.get('currentUserService.user.id');
-  }.property('currentUserService.user'),
-
-  screenName: function(){
-    return this.get('isMe') ? 'Me' : this.get('name');
-  }.property('isMe')
+  screenName: Ember.computed.alias('name')
 });
 
 export default User;

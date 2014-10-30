@@ -11,7 +11,7 @@
 </section>
 
 <section class="checkin">
-  {{#if currentUserService.user.checkedin}}
+  {{#if session.currentUser.checkedin}}
     <button disabled>
       <span class="glyphicon glyphicon-ok"></span> Checked In
     </button>
@@ -28,10 +28,10 @@
 {{#if logs}}
   <ul>
     {{#each logs}}
-    <li {{bind-attr class="user.isMe::timeline-inverted"}}>
-      <i {{bind-attr class=":glyphicon user.isMe:glyphicon-chevron-right:glyphicon-chevron-left"}}></i>
+    <li {{bind-attr class="true::timeline-inverted"}}>
+      <i {{bind-attr class=":glyphicon true:glyphicon-chevron-right:glyphicon-chevron-left"}}></i>
       <i class="glyphicon glyphicon-time"></i> {{format-date createdAt "dddd, MMMM DD YY"}}
-      {{user.screenName}}
+      {{user.name}}
       {{message}}
     </li>
     {{/each}}
