@@ -9,13 +9,17 @@
     {{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}
   </p>
 
-  {{#if currentUserService.user.checkedin}}
-    <span class="checkedin">You checked in!</span>
+  {{#if isEnded}}
+    <span class="checkedin">Do you miss your ex-buddy?</span>
+  {{else}}
+    {{#if currentUserService.user.checkedin}}
+      <span class="checkedin">You checked in!</span>
+    {{/if}}
   {{/if}}
 </section>
 
 <section class="checkin">
-  {{#unless currentUserService.user.checkedin}}
+  {{#unless isCheckedInToday}}
     {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
     <a {{action "checkin" content}} class="btn">
       Check In Today
