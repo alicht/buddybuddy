@@ -24,8 +24,8 @@
     <ul class="checkin-marker">
     {{#each logs}}
       <li>
-        {{user.screenName}} 
-        {{format-date createdAt "MM.DD"}}
+        <span class="buddy-name">{{user.screenName}}</span>
+        <span class="date">{{format-date createdAt "MM.DD"}}</span>
       </li>
     {{/each}}
     </ul>

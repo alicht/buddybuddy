@@ -365,17 +365,22 @@ footer {
         height: .5em;
         border-radius: 1em;
         background: red;
-        right: -12.2968%;
         top: 1.2em;
       }
     }
     &:nth-of-type(odd) {
-      float: left;
       @include arrow(right, middle);
+      float: left;
+      &:before {
+        right: -12.2968%;
+      }
     }
     &:nth-of-type(even) {
-      float: right;
       @include arrow(left, middle);
+      float: right;
+      &:before {
+        left: -12.2968%;
+      }
     }
   }
   span {
@@ -397,44 +402,58 @@ footer {
 .row {
   position: relative;
   margin: .5em 0;
+  padding: .5em 0;
   overflow: hidden;
+  width: 100%;
+  //text-align: center;
   h2 {
     @extend %font18;
     border-bottom: 1px solid $light-grey;
-    padding-bottom: .3em;
     margin-top: 0;
     margin-bottom: .7em;
   }
   .has-hearts {
-    padding: .3em 0;
     @extend %inlineBlock;
+    margin-top: .4em;
     width: 14em;
-    border-right: 1px solid $light-grey;
     text-align: left;
-    height: 100%;
   }
   .checkin-marker {
-    position: relative;
     @extend %inlineBlock;
-    padding: .3em 0;
+    position: relative;
     overflow: visible;
+    border-left: 1px solid $light-grey;
     li {
       @include prefix(border-radius, 3px);
       @extend %inlineBlock;
       @extend %font12;
       position: static;
+      //&:before {
+      //  content: "\e632";
+      //  @extend %font24;
+      //  font-family: 'icomoon';
+      //}
       margin: 0 .3em;
       padding: .3em 1em;
       background: $light-blue;
       color: white;
-      &:nth-of-type(4):before {
+      // smiley face
+      &:nth-of-type(4):after {
         @extend %font16;
         position: absolute;
         left: -2em;
+        top: .53em;
         content: "\e617";
         font-family: 'icomoon';
         color: $grey;
       }
+    }
+    .buddy-name, .date {
+      display: block;
+      text-align: center;
+    }
+    .date {
+      @extend %font10;
     }
   }
 }
