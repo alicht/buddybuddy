@@ -74,9 +74,9 @@ psql postgres
 ```
     ```
 -- open the psql commandline
-CREATE USER bmason;
+CREATE USER <username>;
 CREATE DATABASE "buddybuddy-rails_development" ENCODING = 'unicode';
-GRANT ALL PRIVILEGES ON DATABASE "buddybuddy-rails_development" to bmason;
+GRANT ALL PRIVILEGES ON DATABASE "buddybuddy-rails_development" to <username>;
 -- close psql
 ```
 
