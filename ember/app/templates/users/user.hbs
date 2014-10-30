@@ -1,3 +1,9 @@
+
+<h1>Profile</h1>
+<label>Name</label>
+{{input value=content.name action="updateName" on="enter" size="50"}}
+
+<h1>Pairings</h1>
 {{#each sortedPairings}}
   <h2>{{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}</h2>
     <ul class="has-hearts">
