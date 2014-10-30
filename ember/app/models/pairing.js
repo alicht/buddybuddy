@@ -6,6 +6,10 @@ var Pairing = DS.Model.extend({
   users: DS.hasMany('user', {async: true}),
   logs: DS.hasMany('log', {async: true}),
 
+  isEnded: function(){
+    return +this.get('endDate') <= +moment().toDate();
+  }.property('endDate'),
+
   pairingDates: function(){
     return moment( this.get('startDate') ).format('MMMM DD, YYYY') + ' - ' +
            moment( this.get('endDate') ).format('MMMM DD, YYYY');

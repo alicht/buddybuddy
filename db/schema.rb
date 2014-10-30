@@ -16,12 +16,33 @@ ActiveRecord::Schema.define(version: 20141029152307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "log_pairing", id: false, force: true do |t|
+    t.integer "log_id"
+    t.integer "pairing_id"
+  end
+
+  create_table "log_user", id: false, force: true do |t|
+    t.integer "log_id"
+    t.integer "user_id"
+  end
+
+  create_table "log_user_pairing", id: false, force: true do |t|
+    t.integer "log_id"
+    t.integer "user_id"
+    t.integer "pairing_id"
+  end
+
   create_table "logs", force: true do |t|
     t.integer  "user_id"
     t.integer  "pairing_id"
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pairing_logs", id: false, force: true do |t|
+    t.integer "log_id"
+    t.integer "pairing_id"
   end
 
   create_table "pairings", force: true do |t|
@@ -34,6 +55,11 @@ ActiveRecord::Schema.define(version: 20141029152307) do
   create_table "pairings_users", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "pairing_id"
+  end
+
+  create_table "user_logs", id: false, force: true do |t|
+    t.integer "log_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
