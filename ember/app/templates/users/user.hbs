@@ -1,7 +1,26 @@
 
-<h1>Profile</h1>
-<label>Name</label>
-{{input value=content.name action="updateName" on="enter" size="50"}}
+<h1>{{content.name}} - Profile</h1>
+{{#if isMe}}
+<ul>
+      <li class="textbox">
+        <label>Current Password</label>
+        {{input type="password" value=content.currentPassword}}
+      </li>
+      <li class="textbox">
+        <label>New Password</label>
+        {{input type="password" value=content.password}}
+      </li>
+
+      <li class="textbox">
+        <label>New Password Confirmation</label>
+        {{input type="password" value=content.passwordConfirmation}}
+      </li>
+    </ul>
+
+{{input value=content.name on="enter" size="50"}}
+
+<button  {{action "update"}}>update</button>
+{{/if}}
 
 <h1>Pairings</h1>
 {{#each sortedPairings}}
