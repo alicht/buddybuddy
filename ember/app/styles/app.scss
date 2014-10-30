@@ -296,6 +296,7 @@ footer {
 .checkins {
   h3 {
     text-align: center;
+    margin-bottom: 1em;
   }
   &:before {
     content: " ";
@@ -316,10 +317,30 @@ footer {
     &:nth-of-type(odd) {
       float: left;
       @include arrow(right, middle);
+      &:before {
+        content: " ";
+        position: absolute;
+        width: .5em;
+        height: .5em;
+        border-radius: 1em;
+        background: red;
+        right: -12.2968%;
+        top: 1.7em;
+      }
     }
     &:nth-of-type(even) {
       float: right;
       @include arrow(left, middle);
+      &:before {
+        content: " ";
+        position: absolute;
+        width: .5em;
+        height: .5em;
+        border-radius: 1em;
+        background: red;
+        left: -12.2968%;
+        top: 1.3em;
+      }
     }
   }
   span {
