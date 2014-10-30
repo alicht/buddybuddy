@@ -1,11 +1,17 @@
 
-<h1>Profile</h1>
-<label>Name</label>
-{{input value=content.name action="updateName" on="enter" size="50"}}
+<h2>Profile</h2>
 
-<h1>Pairings</h1>
+<section class="your-settings">
+  <h3>Your Info</h3>
+  <label>Name</label>
+  {{input value=content.name action="updateName" on="enter" size="50"}}
+</section>
+
+<section class="your-history">
+<h3>Pairing and Checkin History</h3>
 {{#each sortedPairings}}
-  <h2>{{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}</h2>
+  <div class="row">
+    <h2>{{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}</h2>
     <ul class="has-hearts">
     {{#link-to "pairings.pairing" this}}
       {{#each buddies}}
@@ -13,4 +19,15 @@
       {{/each}}
     {{/link-to}}
     </ul> 
+    
+    <ul class="checkin-marker">
+    {{#each logs}}
+      <li>
+        {{user.screenName}} 
+        {{format-date createdAt "MM.DD"}}
+      </li>
+    {{/each}}
+    </ul>
+  </div>
 {{/each}}
+</section>

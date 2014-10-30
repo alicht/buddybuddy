@@ -1,4 +1,4 @@
-<a {{action "togglePairings"}}>
+<a {{action "togglePairings"}} class="toggle">
   {{#if isShow}}
     close
   {{else}}
@@ -8,6 +8,7 @@
 
 {{#if isShow}}
   {{#each content}}
+  <div class="row">
     <ul class="has-hearts">
       {{#link-to "pairings.pairing" this}}
         {{#each buddies}}
@@ -15,9 +16,14 @@
         {{/each}}
       {{/link-to}}
     </ul>
+    <ul class="checkin-marker">
     {{#each logs}}
-      {{user.screenName}}
-      {{format-date createdAt "MM.DD"}}
+      <li>
+        {{user.screenName}}
+        {{format-date createdAt "MM.DD"}}
+      </li>
     {{/each}}
+    </ul>
+  </div>
   {{/each}}
 {{/if}}
