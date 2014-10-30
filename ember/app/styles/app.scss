@@ -137,6 +137,7 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
 // global selector settings
 * {
   @include prefix(box-sizing, border-box);
+  @include prefix(transition, all .3s ease-in-out);
   position: relative;
   overflow: hidden;
 }
@@ -153,6 +154,12 @@ h1, h2, h3, h4, h5, h6 {
 ul, ol {
   margin: 0;
   padding: 0;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
 }
 
 a {
@@ -283,6 +290,12 @@ footer {
     padding: .5em .2em;
     width: 100%;
     border: 1px solid #CCC;
+    &:focus {
+      border-color: $light-blue;
+    }
+  }
+  .btn {
+    margin-bottom: 3em;
   }
 }
 
@@ -298,6 +311,7 @@ footer {
     text-align: center;
     margin-bottom: 1em;
   }
+  // timeline line down the middle of the screen
   &:before {
     content: " ";
     position: absolute;
@@ -314,9 +328,8 @@ footer {
     width: 45%;
     clear: both;
     background: $light-grey;
-    &:nth-of-type(odd) {
-      float: left;
-      @include arrow(right, middle);
+    // dot placement on the timeline
+    &:nth-of-type(odd), &:nth-of-type(even) {
       &:before {
         content: " ";
         position: absolute;
@@ -325,22 +338,16 @@ footer {
         border-radius: 1em;
         background: red;
         right: -12.2968%;
-        top: 1.7em;
+        top: 1.2em;
       }
+    }
+    &:nth-of-type(odd) {
+      float: left;
+      @include arrow(right, middle);
     }
     &:nth-of-type(even) {
       float: right;
       @include arrow(left, middle);
-      &:before {
-        content: " ";
-        position: absolute;
-        width: .5em;
-        height: .5em;
-        border-radius: 1em;
-        background: red;
-        left: -12.2968%;
-        top: 1.3em;
-      }
     }
   }
   span {
@@ -357,4 +364,45 @@ footer {
   background: white;
   padding: 2em;
   margin-top: 3em;
+}
+
+.row {
+  position: relative;
+  margin: .5em 0;
+  overflow: hidden;
+  &:hover {
+    background-color: $light-grey;
+  }
+  .has-hearts {
+    padding: .3em 0;
+    @extend %inlineBlock;
+    width: 14em;
+    border-right: 1px solid $light-grey;
+    text-align: left;
+    height: 100%;
+  }
+  .checkin-marker {
+    position: relative;
+    @extend %inlineBlock;
+    padding: .3em 0;
+    overflow: visible;
+    li {
+      @include prefix(border-radius, 3px);
+      @extend %inlineBlock;
+      @extend %font12;
+      position: static;
+      margin: 0 .3em;
+      padding: .3em 1em;
+      background: $light-blue;
+      color: white;
+      &:nth-of-type(4):before {
+        @extend %font16;
+        position: absolute;
+        left: -2em;
+        content: "\e617";
+        font-family: 'icomoon';
+        color: $grey;
+      }
+    }
+  }
 }
