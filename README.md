@@ -54,7 +54,7 @@ rvm install 1.9.3
 ``
 
 3. Configuration
-    ``
+    ```
 git clone https://github.com/simplereach/buddybuddy.git
 cd buddybuddy
 cd ./ember
@@ -65,7 +65,7 @@ npm install
 bower install
 cd ..
 bundle install
-``
+```
 
 4. Database creation
     ```
