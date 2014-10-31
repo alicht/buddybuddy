@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+/* global moment */
 
 var Pairing = DS.Model.extend({
   startDate: DS.attr('date'),
