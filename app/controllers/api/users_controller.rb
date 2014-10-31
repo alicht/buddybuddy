@@ -12,4 +12,8 @@ class Api::UsersController < ApplicationController
     user.update_attribute(:name, params[:user][:name])
     render json: user
   end
+
+  def show
+    render json: User.find(params[:id])
+  end
 end

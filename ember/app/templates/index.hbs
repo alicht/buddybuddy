@@ -1,3 +1,12 @@
 
-
-NEWS FEED
+<section class="checkins"> 
+  <h3>Check Ins</h3>
+  {{#each content}}
+    <article>
+      <span class="arrow"></span>
+      <span class="message">{{message}}</span>
+      <span class="buddy">{{user.name}}</span>
+      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
+    </article>
+  {{/each}}
+</section>
