@@ -34,12 +34,9 @@ $light-grey: hsl(0, 0.0000%, 93.3333%);
   @include align-items(stretch);
 }
 
-%heart {
+%icomoon {
   @extend %inlineBlock;
   font-family: 'icomoon';
-  padding: 0 .3em;
-  margin-top: .2em;
-  color: red;
 }
 
 %no-margin {
@@ -302,11 +299,24 @@ footer {
 .has-hearts {
   li {
     @extend %inlineBlock; 
-      &:nth-of-type(1):after, 
-      &:nth-of-type(3):before {
-      @extend %heart;
+    &:nth-of-type(1):after, 
+    &:nth-of-type(3):before {
+      @extend %icomoon;
+      color: red;
+      padding: 0 .3em;
+      margin-top: .2em;
       content: "\e615";
     }
+  }
+}
+
+.heart {
+  position: relative;
+  &:before {
+    @extend %icomoon;
+    content: "\e615";
+    color: red;
+    margin-top: .2em;
   }
 }
 
@@ -335,6 +345,7 @@ footer {
 }
 
 .checkins {
+  overflow: hidden;
   h3 {
     text-align: center;
     margin-bottom: 1em;
@@ -346,16 +357,18 @@ footer {
     left: calc(50% - 1px);
     height: 100%;
     top: 3.8em;
-    border-right: 1px solid $light-grey;
+    border-right: 2px solid $light-grey;
   }
   article {
     @include prefix(border-radius, 3px);
+    @extend %font14;
     padding: .5em 1em;
     overflow: visible;
     position: relative;
     width: 45%;
     clear: both;
     background: $light-grey;
+    color: lighten( $grey, 45% );
     // dot placement on the timeline
     &:nth-of-type(odd), &:nth-of-type(even) {
       &:before {
@@ -364,9 +377,14 @@ footer {
         width: .5em;
         height: .5em;
         border-radius: 1em;
-        background: red;
+        background: white;
         top: 1.2em;
+        @include prefix(box-shadow, 0 0 0 .2em red);
       }
+    }
+    .message {
+      color: lighten( $grey, 10% );
+      margin-bottom: .5em;
     }
     &:nth-of-type(odd) {
       @include arrow(right, middle);
