@@ -5,6 +5,7 @@ var User = DS.Model.extend({
   email: DS.attr('string'),
   checkedin: DS.attr('boolean'),
   pairings: DS.hasMany('pairing', {async: true}),
+  favorites: DS.hasMany('favorite', {async: true}),
 
   isMe: function(){
     return this.get('id') === this.get('currentUserService.user.id');

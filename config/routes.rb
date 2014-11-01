@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :generate, on: :collection
     end
     resources :logs
+    resources :favorites
   end
   root 'buddybuddy#index'
   get '*path' => 'buddybuddy#index', :format => false
