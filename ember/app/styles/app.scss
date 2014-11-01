@@ -252,6 +252,11 @@ header {
 }
 
 .your-settings {
+  @include prefix( border-radius, 3px );
+  background: $light-grey;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  padding: 1em;
   label {
     display: block;
     margin-top: .5em;
@@ -259,8 +264,9 @@ header {
   input {
     @include prefix(border-radius, 3px);
     @extend %font24;
-    background: $light-grey;
+    background: white;
     padding: .3em .5em;
+    width: 100%;
   }
 }
 
