@@ -10,13 +10,9 @@ export default Ember.Route.extend(AuthRoute, {
   actions: {
     favorite: function(log){
       var user = this.get('currentUserService.user');
-      
-      var fav = this.store.createRecord('favorite', {
-        user: user,
-        log: log
-      });
-
+      var fav = this.store.createRecord('favorite', {user: user, log: log});
       fav.save().then(function(f){
+        f.set('user', user);
         log.get('favorites').pushObject(f);
       }); 
     }

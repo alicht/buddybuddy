@@ -8,16 +8,12 @@
       <span class="message">{{message}}</span>
       <span class="buddy">{{user.id}} {{user.name}}</span>
       <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
-      <span>
-        {{#if this.favorited}}
-          fav
-        {{else}}
-          <a {{action "favorite" this}}>fav</a> 
-        {{/if}}
-        {{#each favorites}}
-          {{user.name}}
-        {{/each}}
-      </span>
+      <div>
+        <a {{action "favorite" this}} title="favorite">
+          {{#if this.favorited}}★{{else}}☆{{/if}}
+        </a> 
+        {{favorite-list content=favorites}}
+      </div>
     </article>
   {{/each}}
 </section>
