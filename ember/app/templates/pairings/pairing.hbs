@@ -17,15 +17,16 @@
     {{/if}}
   {{/if}}
 </section>
-
+{{#if hasMe}}
 <section class="checkin">
   {{#unless isCheckedInToday}}
-    {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
-    <a {{action "checkin" content}} class="btn">
-      Check In Today
-    </a>
+  {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
+  <a {{action "checkin" content}} class="btn">
+    Check In Today
+  </a>
   {{/unless}}
 </section>
+{{/if}}
 
 {{#if logs}}  
 <h3>Check Ins This Week</h3>
