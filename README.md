@@ -89,7 +89,8 @@ heroku create # if you are deploying a fresh instance.
 
 # add and commit files to your git environment. *git add, git push etc*
 
-git push heroku master # push to heroku
+rake build  # builds ember application
+rake deploy # properly commits and deploys to heroku
 
 heroku run rake db:setup # if this is your first deploy.
 heroku run rake db:migrate # run migrations if any.
