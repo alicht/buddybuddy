@@ -7,4 +7,10 @@ class Api::UsersController < ApplicationController
     render json: @users
   end
 
+  def delete
+    @user = User.find(params[:id])
+    @user.hide!
+    render json: {}
+  end
+
 end

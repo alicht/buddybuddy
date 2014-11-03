@@ -1,0 +1,1 @@
+export default {"modulePrefix":"buddybuddy","environment":"development","baseURL":"/","locationType":"hash","EmberENV":{"FEATURES":{}},"APP":{"LOG_ACTIVE_GENERATION":true,"LOG_VIEW_LOOKUPS":true}};

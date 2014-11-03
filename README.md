@@ -1,12 +1,18 @@
 # BUDDYBUDDY README
 
+
+## App Layout
+
+- Rails Api
+
+
 ## MAC INSTALL
 
 * Install and run Postgres. We use brew, but use whatever suits your fancy.
 
 `brew install postgresql`
 
-* Clone the repo, cd into it, run bundler, and initialize the database. 
+* Clone the repo, cd into it, run bundler, and initialize the database.
 
 ```
 git clone https://github.com/simplereach/buddybuddy.git
