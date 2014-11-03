@@ -1,18 +1,30 @@
-<ul>
+<h3>Your Info</h3>
+<section class="your-settings">
+  <label>Name</label>
+  {{input value=content.name action="updateName" on="enter" size="50"}}
+</section>
+
+<section class="your-history">
+<h3>Pairing and Checkin History</h3>
 {{#each sortedPairings}}
-  <li>
-    <span>{{format-date startDate "MMM DD"}} - {{format-date endDate "MMM DD"}}</span>
+  <div class="row">
+    <h2>{{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}</h2>
+    <ul class="has-hearts">
     {{#link-to "pairings.pairing" this}}
       {{#each buddies}}
-        {{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}
+        <li>{{name}}</li>
       {{/each}}
     {{/link-to}}
+    </ul> 
     
+    <ul class="checkin-marker">
     {{#each logs}}
-      {{user.screenName}} 
-        <small>{{format-date createdAt "MM.DD"}}</small> 
-        <i class="glyphicon glyphicon-ok"></i>
+      <li>
+        <span class="buddy-name">{{user.screenName}}</span>
+        <span class="date">{{format-date createdAt "MM.DD"}}</span>
+      </li>
     {{/each}}
-  </li>
+    </ul>
+  </div>
 {{/each}}
-</ul>
+</section>

@@ -1,0 +1,29 @@
+<a {{action "togglePairings"}} class="toggle">
+  {{#if isShow}}
+    close
+  {{else}}
+    expand
+  {{/if}}
+</a>
+
+{{#if isShow}}
+  {{#each content}}
+  <div class="row">
+    <ul class="has-hearts">
+      {{#link-to "pairings.pairing" this}}
+        {{#each buddies}}
+          <li>{{name}}</li>
+        {{/each}}
+      {{/link-to}}
+    </ul>
+    <ul class="checkin-marker">
+    {{#each logs}}
+      <li>
+        <span class="buddy-name">{{user.screenName}}</span>
+        <span class="date">{{format-date createdAt "MM.DD"}}</span>
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+  {{/each}}
+{{/if}}

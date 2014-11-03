@@ -1,23 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  pairingsByDates: function(){
-    var self = this;
-    var arr = this.get('content').map(function(pairing){
-      return pairing.get('pairingDates');
-    }).uniq();
+  groupedPairings: function(){
     var result = [];
+    var group = 'pairingDates';
+  
+    this.get('content').forEach(function(item, i){
+      var hasGroup = !!result.findBy('group', item.get(group));
 
-    arr.forEach(function(sdate, i){
-      result[i] = { date: sdate, pairings: [] };
+      if (!hasGroup) {
+        result.pushObject(Ember.Object.create({
+          group: item.get(group),
+          index: i,
+          content: []
+        }));
+      }
 
-      self.get('content').forEach(function(pairing){
-        if (sdate == pairing.get('pairingDates')){
-          result[i].pairings.push(pairing);
-        }
-      });
+      result.findBy('group', item.get(group)).get('content').pushObject(item);
     });
 
-    return result.reverse();
-  }.property('content')
+    return result;
+  }.property('content.@each.pairingDates')
 });

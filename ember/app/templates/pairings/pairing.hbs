@@ -1,43 +1,45 @@
 <section class="buddy-pairing">
-  <ul>
+  <ul class="has-hearts">
     {{#each buddies}}
-      <li>{{name}} {{#if heart}}<span class="glyphicon glyphicon-heart" style="color:red;"></span>{{/if}}</li>
+      <li> {{name}} </li>
     {{/each}}
   </ul>
 
   <p>
     {{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}
   </p>
+
+  {{#if isEnded}}
+    <span class="checkedin">Parting is such sweet sorrow. Say hi to your old buddy today!</span>
+  {{else}}
+    {{#if currentUserService.user.checkedin}}
+      <span class="checkedin">You checked in!</span>
+    {{/if}}
+  {{/if}}
 </section>
 
 <section class="checkin">
-  {{#if currentUserService.user.checkedin}}
-    <button disabled>
-      <span class="glyphicon glyphicon-ok"></span> Checked In
-    </button>
-  {{else}}
+  {{#unless isCheckedInToday}}
     {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
     <a {{action "checkin" content}} class="btn">
       Check In Today
     </a>
-  {{/if}}
+  {{/unless}}
 </section>
 
 <section class="checkins">
-<h5>Checkins</h5>
-{{#if logs}}
-  <ul>
-    {{#each logs}}
-    <li {{bind-attr class="user.isMe::timeline-inverted"}}>
-      <i {{bind-attr class=":glyphicon user.isMe:glyphicon-chevron-right:glyphicon-chevron-left"}}></i>
-      <i class="glyphicon glyphicon-time"></i> {{format-date createdAt "dddd, MMMM DD YY"}}
-      {{user.screenName}}
-      {{message}}
-    </li>
+{{#if logs}}  
+<h3>Check Ins This Week</h3>
+  {{#each logs}}
+    <article {{bind-attr class="user.isMe::timeline-inverted"}}>
+      <span class="arrow"></span>
+      <span class="message">{{message}}</span>
+      <span class="buddy">{{user.screenName}}</span>
+      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
+    </article>
     {{/each}}
-  </ul>
   {{else}}
-    You need love.
+    <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
   {{/if}}
 </section>
   
