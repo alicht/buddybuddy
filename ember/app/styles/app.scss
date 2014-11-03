@@ -140,7 +140,7 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
   @include prefix(box-sizing, border-box);
   @include prefix(transition, all .3s ease-in-out);
   position: relative;
-  overflow: scroll;
+  //overflow: scroll;
 }
 
 body {
@@ -168,6 +168,10 @@ input {
   &:focus {
     outline: none;
   }
+}
+
+select {
+  margin-bottom: 1em;
 }
 
 a {
