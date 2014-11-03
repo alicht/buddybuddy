@@ -3,11 +3,15 @@
 <h2 class="who">Who are you?</h2>
 
 <form {{action 'authenticate' on='submit'}}>
-  <label for='identification'>Login</label>
-  {{input id='identification' placeholder='Enter Login'
-           value=identification}}
-  <label for='password'>Password</label>
-  {{input id='password' placeholder='Enter Password'
-           type='password' value=password}}
-  <button type='submit'>Login</button>
+  <div class="row">
+    <label for='identification'>Login</label>
+    {{input id='identification' placeholder='Enter Login'
+    value=identification size='51'}}
+    <label for='password'>Password</label>
+    {{input id='password' placeholder='Enter Password'
+    type='password' value=password size='51'}}
+  </div>
+  <div class="row">
+    <a {{action "submit"}} class="btn">Login</a>
+  </div>
 </form>
