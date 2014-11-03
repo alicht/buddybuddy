@@ -86,10 +86,14 @@ GRANT ALL PRIVILEGES ON DATABASE "buddybuddy-rails_development" to <username>;
 
 ```
 heroku create # if you are deploying a fresh instance.
+
 # add and commit files to your git environment. *git add, git push etc*
+
 git push heroku master # push to heroku
+
 heroku run rake db:setup # if this is your first deploy.
 heroku run rake db:migrate # run migrations if any.
+
 heroku open # to open the site on the browser.
 
 ```
@@ -100,6 +104,5 @@ heroku open # to open the site on the browser.
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
 
