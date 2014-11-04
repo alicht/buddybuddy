@@ -7,6 +7,12 @@ class Api::UsersController < ApplicationController
     render json: @users
   end
 
+  def delete
+    @user = User.find(params[:id])
+    @user.hide!
+    render json: {}
+  end
+
   def update
     user = User.find(params[:id])
     user.update_attribute(:name, params[:user][:name])
