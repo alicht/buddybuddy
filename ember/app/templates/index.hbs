@@ -9,7 +9,7 @@
       <span class="buddy">{{user.id}} {{user.name}}</span>
       <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
       <div>
-        <a {{action "favorite" this}} title="favorite">
+        <a {{action "favorite" this}} {{bind-attr class=":favorite-button favorited:active"}} title="favorite">
           {{#if this.favorited}}★{{else}}☆{{/if}}
         </a> 
         {{favorite-list content=favorites}}
