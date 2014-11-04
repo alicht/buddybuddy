@@ -99,6 +99,13 @@ heroku open # to open the site on the browser.
 
 ```
 
+# Test
+We use [ember-cli-pretender](https://github.com/rwjblue/ember-cli-pretender) for faking remote responses.
+```
+npm install --save-dev ember-cli-pretender
+ember generate ember-cli-pretender
+```
+
 
 ## TO DO
 * How to run the test suite
