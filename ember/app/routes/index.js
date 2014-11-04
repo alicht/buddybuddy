@@ -9,12 +9,19 @@ export default Ember.Route.extend(AuthRoute, {
 
   actions: {
     favorite: function(log){
-      var user = this.get('currentUserService.user');
-      var fav = this.store.createRecord('favorite', {user: user, log: log});
-      fav.save().then(function(f){
-        f.set('user', user);
-        log.get('favorites').pushObject(f);
-      }); 
+      var currentUser = this.get('currentUserService.user');
+      if (log.get('favorited')){
+        var fav = log.get('favorites').findBy('user.id', currentUser.get('id'));
+        fav.destroyRecord().then(function(){
+          log.get('favorites').popObject(fav);
+        })
+      }else{
+        var fav = this.store.createRecord('favorite', {user: currentUser, log: log});
+        fav.save().then(function(f){
+          f.set('user', currentUser);
+          log.get('favorites').pushObject(f);
+        }); 
+      }
     }
   }
 });
