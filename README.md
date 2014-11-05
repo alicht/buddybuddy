@@ -67,12 +67,3 @@ heroku run rake db:migrate # run migrations if any.
 
 heroku open # to open the site on the browser.
 ```
-
-
-## TO DO
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-
-
