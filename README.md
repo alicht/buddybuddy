@@ -41,7 +41,7 @@ Please feel free to use a different markup language if you do not plan to run
 
 
 ### LINUX INSTALL
-[Read more](README4LINUX.md)
+[Read more](LINUXINSTALL.md)
 
 
 # Heroku Deploy
