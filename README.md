@@ -8,7 +8,7 @@ Buddy Buddy is a simple pairing and check-in system for any type of organization
 1. rails
 2. ember-cli
 3. postgresql
-4. beers :beers:
+4. :beers:
 
 ## Getting started
 1. Clone the repository using Git:
