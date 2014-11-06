@@ -17,7 +17,7 @@ class Pairing < ActiveRecord::Base
     all_users.shuffle! # randomize order for now
     while all_users.length > 1
      if valid_pair(all_users.first, all_users.last, time) || all_users.length == 2 # assuming 1/6 of the last 6 will work.
-       p = new_pairing(all_users.shift, all_users.pop, time)
+       p = new_pairing([ all_users.shift, all_users.pop], time)
      else
        all_users.shuffle!
      end
@@ -34,7 +34,7 @@ class Pairing < ActiveRecord::Base
   end
 
   def self.no_past_pairing(user1, user2, time = Time.now)
-    Pairing.where( ["start_date <= ? AND end_date >= ?", time - @@week_offset.week, start_date(time) - 1.day]).select{ |p|
+    where( ["start_date <= ? AND end_date >= ?", time - @@week_offset.week, start_date(time) - 1.day]).select{ |p|
       p.user_ids.includes?(user1.id) && p.user_ids.includes?(user2.id)
     }.count == 0
   end
@@ -42,15 +42,15 @@ class Pairing < ActiveRecord::Base
   # default new pairing creation
   #
 
-  def self.new_pairing(user1, user2, time = Time.now)
-    create(start_date: start_date(time), end_date: end_date(time), users: [user1, user2] )
+  def self.new_pairing(users, time = Time.now)
+    create(start_date: start_date(time), end_date: end_date(time), users: users )
   end
 
   # Time helpers
   #
 
   def self.at(time = Time.now)
-    Pairing.where(["start_date <= ? AND end_date >= ?", time, time])
+    where(["start_date <= ? AND end_date >= ?", time, time])
   end
 
   def self.start_date(time = Time.now)
