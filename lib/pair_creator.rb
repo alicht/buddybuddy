@@ -51,14 +51,61 @@ class PairCreator
     #------------------------------------------------------------------------------
     # find a user with a minimum number of past pairings
     #------------------------------------------------------------------------------
-    def find_user_with_fewest_past_pairings(graph)
+    def find_user_with_fewest_past_pairings(graph, exclude_list=[])
       min_user = nil
       for v in graph.each_vertex() do
-          if not min_user or graph.out_degree(v) > graph.out_degree(min_user) then
-              min_user = v
-          end
+         if not exclude_list.include?(v) then
+            if not min_user or graph.out_degree(v) > graph.out_degree(min_user) then
+               min_user = v
+            end
+         end
       end
       return min_user
+    end
+
+    #------------------------------------------------------------------------------
+    # if there's an odd number of people then greate a group of 3
+    #------------------------------------------------------------------------------
+    def create_threesome(users, graph)
+      min_user = find_user_with_fewest_past_pairings(graph)
+      threesome = [min_user]
+      exclude_list = [min_user]
+      
+      bailout_counter = users.count - 1
+      loop do
+        partner_1 = find_user_with_fewest_past_pairings(graph, exclude_list)
+        #puts partner_1.to_s
+        if verify_pairing(min_user, partner_1) then
+            threesome.push(partner_1)
+            if threesome.length == 3
+                return threesome
+            end
+        end
+        exclude_list.push(partner_1)
+
+        bailout_counter -= 1
+        if bailout_counter == 0 then
+            break
+        end
+      end
+
+      return []
+    end
+
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    def create_graph(vertices)
+      dg=RGL::AdjacencyGraph[]
+      dg.add_vertices(*vertices)
+      return dg
+    end
+
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    def delete_vertices(vertex_list, graph)
+      for v in vertex_list do
+          graph.remove_vertex(v)
+      end
     end
 
     #------------------------------------------------------------------------------
@@ -76,7 +123,7 @@ class PairCreator
     # return true if 2 users may be paired together
     #------------------------------------------------------------------------------
     def verify_pairing(user1, user2)
-        return Pairing.valid_pair(user1.id, user2.id, @offset)
+        return Pairing.valid_pair(user1, user2, @offset)
     end
 
     #------------------------------------------------------------------------------
@@ -84,7 +131,7 @@ class PairCreator
     #------------------------------------------------------------------------------
     def verify_pairings(path, users)
         for v in 0..(path.count-2) do
-             if not verify_pairing(users[v], users[v+1]) then
+             if not verify_pairing(users[v].id, users[v+1].id) then
                 return false
              end
         end
@@ -97,6 +144,7 @@ class PairCreator
     def bailout(path, vertices, users)
         if path.to_set.length != vertices.count or not verify_pairings(path, users) then
             # emergency bail-out ... the search step must be reviewed
+            puts 'emergency bail-out ... the search step must be reviewed'
             exit
         end
     end
@@ -118,32 +166,30 @@ class PairCreator
       # Create graph of possible pairings
       #------------------------------------------------------------------------------
       vertices = get_user_ids(users)
-      dg=RGL::AdjacencyGraph[]
-      dg.add_vertices(*vertices)
+      dg = create_graph(vertices)
       add_edges(users, dg)
 
       #------------------------------------------------------------------------------
       # If there's an odd number of people select the person with the fewest past pairings
       #------------------------------------------------------------------------------
-      extra_vertex = nil
       if (users.count % 2) == 1 then
-          extra_vertex = find_user_with_fewest_past_pairings(dg)
-          vertices.delete_at(vertices.index(extra_vertex))
+          threesome = create_threesome(users, dg)
+          delete_vertices(threesome, dg)
+          vertices = vertices.comprehend{|v| v if not threesome.include?(v)}
+          users = users.comprehend{ |u|  u if vertices.include?(u.id) }
+          dg = create_graph(vertices)
+          add_edges(users, dg)
+          threesome = threesome.comprehend{ |u| User.where("id = ?", u)[0]}
+          p = Pairing.new_pairing(threesome.shift(), threesome.pop(), @curr_time)
+          p.users << threesome.pop()
       end
 
       #------------------------------------------------------------------------------
       # Find a path through the graph
       #------------------------------------------------------------------------------
       path = []
-      if extra_vertex then
-          for v in dg.dfs_iterator(extra_vertex) do
-              path.append(v)
-          end
-          path.shift
-      else
-          for v in dg.dfs_iterator(vertices[0]) do
-              path.append(v)
-          end
+      for v in dg.dfs_iterator(vertices[0]) do
+          path.append(v)
       end
 
       #------------------------------------------------------------------------------
@@ -156,24 +202,6 @@ class PairCreator
       #------------------------------------------------------------------------------
       create_pairings!(path)
 
-      #------------------------------------------------------------------------------
-      # Make a group of three if there's an extra person
-      #------------------------------------------------------------------------------
-      if extra_vertex then
-          user = User.where("id = ?", extra_vertex)[0]
-          pairs = Pairing.all().to_a
-          for pair in pairs.shuffle! do
-              u1, u2 = pair.users
-              u1 = User.where("id = ?", u1)[0]
-              u2 = User.where("id = ?", u2)[0]
-              if Pairing.no_past_pairing(user.id, u1.id, @offset) and
-                 Pairing.no_past_pairing(user.id, u2.id, @offset) then
-                   Pairing.new_pairing(user, u1, @curr_time)
-                   Pairing.new_pairing(user, u2, @curr_time)
-                   break
-              end
-          end
-      end
     end
 
 end
