@@ -39,11 +39,18 @@ class PairCreator
     end
 
     #------------------------------------------------------------------------------
+    # return true if 2 users may be paired together
+    #------------------------------------------------------------------------------
+    def verify_pairing(user1, user2, offset)
+        return Pairing.valid_pair(user1.id, user2.id, offset)
+    end
+
+    #------------------------------------------------------------------------------
     # returns true if all adjacent pairs ids in the path represent valid pairings
     #------------------------------------------------------------------------------
     def verify_pairings(path, users, offset)
         for v in 0..(path.count-2) do
-             if not Pairing.valid_pair(users[v].id, users[v+1].id, offset) then
+             if not verify_pairing(users[v], users[v+1], offset) then
                 return false
              end
         end
