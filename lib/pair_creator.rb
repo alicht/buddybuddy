@@ -34,6 +34,19 @@ class PairCreator
     end
 
     #------------------------------------------------------------------------------
+    # Add edges to the graph
+    #------------------------------------------------------------------------------
+    def add_edges(users, graph)
+      for i1 in 0..(users.count-2) do
+          for i2 in (i1+1)..(users.count-1) do
+              if Pairing.no_past_pairing(users[i1].id, users[i2].id, @@offset) then
+                  graph.add_edge(users[i1].id, users[i2].id)
+              end
+          end
+      end
+    end
+
+    #------------------------------------------------------------------------------
     # Save new pairings from path
     #------------------------------------------------------------------------------
     def create_pairings!(path, start_time)
@@ -92,13 +105,7 @@ class PairCreator
       vertices = get_user_ids(users)
       dg=RGL::AdjacencyGraph[]
       dg.add_vertices(*vertices)
-      for i1 in 0..(users.count-1) do
-          for i2 in (i1+1)..(users.count-1) do
-              if Pairing.no_past_pairing(users[i1].id, users[i2].id, @@offset) then
-                  dg.add_edge(users[i1].id, users[i2].id)
-              end
-          end
-      end
+      add_edges(users, dg)
 
       #------------------------------------------------------------------------------
       # If there's an odd number of people select the person with the fewest past pairings
@@ -160,8 +167,4 @@ class PairCreator
     end
 
 end
-
- 
-
-   
 
