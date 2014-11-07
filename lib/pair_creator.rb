@@ -4,10 +4,13 @@ require 'rgl/traversal'
 
 class PairCreator
     #------------------------------------------------------------------------------
-    # constants
+    # constructor
     #------------------------------------------------------------------------------
-    weeks_without_repairing = 6
-    @@offset = Time.now - (1.days + weeks_without_repairing.weeks)
+    def initialize()
+        weeks_without_repairing = 6
+        @offset = Time.now - (1.days + weeks_without_repairing.weeks)
+        @curr_time = Time.now
+    end
 
     #------------------------------------------------------------------------------
     # Delete all old pairings
@@ -39,7 +42,7 @@ class PairCreator
     def add_edges(users, graph)
       for i1 in 0..(users.count-2) do
           for i2 in (i1+1)..(users.count-1) do
-              if Pairing.no_past_pairing(users[i1].id, users[i2].id, @@offset) then
+              if Pairing.no_past_pairing(users[i1].id, users[i2].id, @offset) then
                   graph.add_edge(users[i1].id, users[i2].id)
               end
           end
@@ -47,13 +50,26 @@ class PairCreator
     end
 
     #------------------------------------------------------------------------------
+    # find a user with a minimum number of past pairings
+    #------------------------------------------------------------------------------
+    def find_user_with_fewest_past_pairings(graph)
+      min_user = nil
+      for v in graph.each_vertex() do
+          if not min_user or graph.out_degree(v) > graph.out_degree(min_user) then
+              min_user = v
+          end
+      end
+      return min_user
+    end
+
+    #------------------------------------------------------------------------------
     # Save new pairings from path
     #------------------------------------------------------------------------------
-    def create_pairings!(path, start_time)
+    def create_pairings!(path)
         while path.length() > 1 do
             u1 = User.where("id = ?", path.pop())[0]
             u2 = User.where("id = ?", path.pop())[0]
-            Pairing.new_pairing(u1, u2, start_time)
+            Pairing.new_pairing(u1, u2, @curr_time)
         end
     end
 
@@ -61,7 +77,7 @@ class PairCreator
     # return true if 2 users may be paired together
     #------------------------------------------------------------------------------
     def verify_pairing(user1, user2)
-        return Pairing.valid_pair(user1.id, user2.id, @@offset)
+        return Pairing.valid_pair(user1.id, user2.id, @offset)
     end
 
     #------------------------------------------------------------------------------
@@ -112,11 +128,7 @@ class PairCreator
       #------------------------------------------------------------------------------
       extra_vertex = nil
       if (users.count % 2) == 1 then
-          for v in dg.each_vertex() do
-              if not extra_vertex or dg.out_degree(v) > dg.out_degree(extra_vertex) then
-                  extra_vertex = v
-              end
-          end
+          extra_vertex = find_user_with_fewest_past_pairings(dg)
           vertices.delete_at(vertices.index(extra_vertex))
       end
 
@@ -143,8 +155,7 @@ class PairCreator
       #------------------------------------------------------------------------------
       # Save pairings to Postgresql
       #------------------------------------------------------------------------------
-      start_time = Time.now
-      create_pairings!(path, start_time)
+      create_pairings!(path)
 
       #------------------------------------------------------------------------------
       # Make a group of three if there's an extra person
@@ -156,10 +167,10 @@ class PairCreator
               u1, u2 = pair.users
               u1 = User.where("id = ?", u1)[0]
               u2 = User.where("id = ?", u2)[0]
-              if Pairing.no_past_pairing(user.id, u1.id, @@offset) and
-                 Pairing.no_past_pairing(user.id, u2.id, @@offset) then
-                   Pairing.new_pairing(user, u1, start_time)
-                   Pairing.new_pairing(user, u2, start_time)
+              if Pairing.no_past_pairing(user.id, u1.id, @offset) and
+                 Pairing.no_past_pairing(user.id, u2.id, @offset) then
+                   Pairing.new_pairing(user, u1, @curr_time)
+                   Pairing.new_pairing(user, u2, @curr_time)
                    break
               end
           end
