@@ -4,6 +4,12 @@ require 'rgl/traversal'
 
 class PairCreator
     #------------------------------------------------------------------------------
+    # constants
+    #------------------------------------------------------------------------------
+    weeks_without_repairing = 6
+    @@offset = Time.now - (1.days + weeks_without_repairing.weeks)
+
+    #------------------------------------------------------------------------------
     # Delete all old pairings
     #------------------------------------------------------------------------------
     def delete_old_pairings!()
@@ -41,16 +47,16 @@ class PairCreator
     #------------------------------------------------------------------------------
     # return true if 2 users may be paired together
     #------------------------------------------------------------------------------
-    def verify_pairing(user1, user2, offset)
-        return Pairing.valid_pair(user1.id, user2.id, offset)
+    def verify_pairing(user1, user2)
+        return Pairing.valid_pair(user1.id, user2.id, @@offset)
     end
 
     #------------------------------------------------------------------------------
     # returns true if all adjacent pairs ids in the path represent valid pairings
     #------------------------------------------------------------------------------
-    def verify_pairings(path, users, offset)
+    def verify_pairings(path, users)
         for v in 0..(path.count-2) do
-             if not verify_pairing(users[v], users[v+1], offset) then
+             if not verify_pairing(users[v], users[v+1]) then
                 return false
              end
         end
@@ -60,8 +66,8 @@ class PairCreator
     #------------------------------------------------------------------------------
     # This is a sanity check to look for duplicate entries
     #------------------------------------------------------------------------------
-    def bailout(path, vertices, users, offset)
-        if path.to_set.length != vertices.count or not verify_pairings(path, users, offset) then
+    def bailout(path, vertices, users)
+        if path.to_set.length != vertices.count or not verify_pairings(path, users) then
             # emergency bail-out ... the search step must be reviewed
             exit
         end
@@ -83,14 +89,12 @@ class PairCreator
       #------------------------------------------------------------------------------
       # Create graph of possible pairings
       #------------------------------------------------------------------------------
-      weeks_without_repairing = 6
       vertices = get_user_ids(users)
       dg=RGL::AdjacencyGraph[]
       dg.add_vertices(*vertices)
-      offset = Time.now - (1 + 7*weeks_without_repairing).days
       for i1 in 0..(users.count-1) do
           for i2 in (i1+1)..(users.count-1) do
-              if Pairing.no_past_pairing(users[i1].id, users[i2].id, offset) then
+              if Pairing.no_past_pairing(users[i1].id, users[i2].id, @@offset) then
                   dg.add_edge(users[i1].id, users[i2].id)
               end
           end
@@ -127,7 +131,7 @@ class PairCreator
       #------------------------------------------------------------------------------
       # This is a sanity check to look for duplicate entries
       #------------------------------------------------------------------------------
-      bailout(path, vertices, users, offset)
+      bailout(path, vertices, users)
 
       #------------------------------------------------------------------------------
       # Save pairings to Postgresql
@@ -145,8 +149,8 @@ class PairCreator
               u1, u2 = pair.users
               u1 = User.where("id = ?", u1)[0]
               u2 = User.where("id = ?", u2)[0]
-              if Pairing.no_past_pairing(user.id, u1.id, offset) and
-                 Pairing.no_past_pairing(user.id, u2.id, offset) then
+              if Pairing.no_past_pairing(user.id, u1.id, @@offset) and
+                 Pairing.no_past_pairing(user.id, u2.id, @@offset) then
                    Pairing.new_pairing(user, u1, start_time)
                    Pairing.new_pairing(user, u2, start_time)
                    break
