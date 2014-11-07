@@ -6,8 +6,7 @@ class PairCreator
     #------------------------------------------------------------------------------
     # constructor
     #------------------------------------------------------------------------------
-    def initialize()
-        weeks_without_repairing = 6
+    def initialize(weeks_without_repairing=6)
         @offset = Time.now - (1.days + weeks_without_repairing.weeks)
         @curr_time = Time.now
     end
