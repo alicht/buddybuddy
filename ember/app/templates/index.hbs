@@ -4,13 +4,10 @@
     <article>
       <span class="arrow"></span>
       <span class="message">{{message}}</span>
-      <span class="buddy">{{user.id}} {{user.name}}</span>
+      <span class="buddy">{{user.name}}</span>
       <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
       <div>
-        <a {{action "favorite" this}} {{bind-attr class=":favorite-button favorited:active"}} title="favorite">
-          {{#if this.favorited}}★{{else}}☆{{/if}}
-        </a> 
-        {{favorite-list content=favorites}}
+        {{favorite-log log=this user=user currentUser=currentUserService.user content=favorites action="favorite"}}
       </div>
     </article>
   {{/each}}

@@ -1,0 +1,12 @@
+<a {{action "favorite" log}} {{bind-attr class=":favorite-button log.favorited:active"}} title="favorite">
+  {{#if favorited}}★{{else}}☆{{/if}}
+</a> 
+
+<a {{action "toggleList"}}>{{content.length}}</a>
+{{#if isShow}}
+<ul>
+  {{#each content}}
+    <li>{{user.name}}</li>
+  {{/each}}
+</ul>
+{{/if}}
