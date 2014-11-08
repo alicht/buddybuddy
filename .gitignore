@@ -13,6 +13,7 @@
 
 
 /ember/tmp
+npm-debug.log
 
 # dependencies
 ember/dist

@@ -12,22 +12,22 @@
   {{#if isEnded}}
     <span class="checkedin">Parting is such sweet sorrow. Say hi to your old buddy today!</span>
   {{else}}
-    {{#if currentUserService.user.checkedin}}
+    {{#if session.currentUser.checkedin}}
       <span class="checkedin">You checked in!</span>
     {{/if}}
   {{/if}}
 </section>
-
+{{#if hasMe}}
 <section class="checkin">
   {{#unless isCheckedInToday}}
-    {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
-    <a {{action "checkin" content}} class="btn">
-      Check In Today
-    </a>
+  {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
+  <a {{action "checkin" content}} class="btn">
+    Check In Today
+  </a>
   {{/unless}}
 </section>
+{{/if}}
 
-<section class="checkins">
 {{#if logs}}  
 <h3>Check Ins This Week</h3>
   {{#each logs}}
@@ -42,5 +42,5 @@
     <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
   {{/if}}
 </section>
-  
+
 {{outlet}}

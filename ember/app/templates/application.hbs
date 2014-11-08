@@ -4,9 +4,9 @@
 
     <nav>
       <ul>
-      {{#if currentUserService.user}}
+        {{#if session.isAuthenticated}}
         <li>
-          {{#link-to  'users.user' currentUserService.user}} Hi, {{currentUserService.user.name}}!{{/link-to}}
+          {{#link-to  'users.user' session.currentUser}} Hi, {{session.currentUser.name}}!{{/link-to}}
         </li>
         <li>
           {{#link-to 'pairings'}}Pairings{{/link-to}}
@@ -14,10 +14,12 @@
         <li>
           {{#link-to 'application'}}Check In{{/link-to}}
         </li>
-        <li>
-          <a {{action 'signOut'}} href="#">Sign Out</a>
+          <a {{action 'invalidateSession' }}>Sign Out</a>
         </li>
-      {{/if}}
+        {{else}}
+        {{#link-to 'login'}}Login{{/link-to}}
+        {{/if}}
+
       </ul>
     </nav>
   </div>
