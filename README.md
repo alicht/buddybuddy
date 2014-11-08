@@ -11,41 +11,47 @@ Buddy Buddy is a simple pairing and check-in system for any type of organization
 4. :beers:
 
 ## Getting started
-1. Clone the repository using Git:
-`clone https://github.com/simplereach/buddybuddy.git`
+* Clone the repository using Git:
+```
+clone https://github.com/simplereach/buddybuddy.git
+```
 
-2. Install ruby gem dependencies
+* Install ruby gem dependencies
 ```
 cd buddybuddy
 bundle install
 ```
 
-3. DB set up
-`rake db:setup`
+* DB set up
+```
+rake db:setup
+```
 
-4. Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
+* Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
 ```
 cd ember
 npm install
 bower install
 ```
 
-4. Start Rails server
-`rails s`
+* Start Rails server
+```
+rails s
+```
 
-5. Start Ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
+* Start Ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
 ```
 cd ember
 ember server --proxy http://localhost:3000'
 ```
 
-6. Generate pairs in Rails console
+* Generate pairs in Rails console
 ```
 rails c
 Pairing.generate!
 ```
 
-7. Happy BuddyBuddying!
+Happy BuddyBuddying!
 
 Please feel free to use a different markup language if you do not plan to run
 `rake doc:app`.
