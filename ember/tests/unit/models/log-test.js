@@ -5,7 +5,7 @@ import {
 
 moduleForModel('log', 'Log', {
   // Specify the other units that are required for this test.
-  needs: ['model:user', 'model:pairing']
+  needs: ['model:user', 'model:pairing', 'model:pairing']
 });
 
 test('it exists', function() {

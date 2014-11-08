@@ -2,11 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   favorited: function(){
+    var favorites = this.get('content.favorites') || [];
     var userId = this.get('currentUser.id');
-    return this.get('content.favorites').any(function(fav){
+    return favorites.any(function(fav){
       return fav.get('strUserId') === userId;
     });
-  }.property('content.favorites.@each.user'),
+  }.property('content.favorites.length'),
 
   actions: {
     doFavorite: function(log){
