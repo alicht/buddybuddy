@@ -2,7 +2,11 @@
   {{#if favorited}}★{{else}}☆{{/if}}
 </a> 
 
-<a {{action "toggleList"}}>{{content.favorites.length}}</a>
+{{#if content.favorites}}
+  <span>{{content.favorites.length}}</span>
+  <a {{action "toggleList"}}>favorites</a>
+{{/if}}
+
 {{#if isShow}}
 <ul>
   {{#each content.favorites}}
