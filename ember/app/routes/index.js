@@ -8,12 +8,12 @@ export default Ember.Route.extend(AuthRoute, {
   },
 
   actions: {
-    favorite: function(log){
+    favorite: function(log, isDelete){
       var fav;
       var currentUser = this.get('currentUserService.user');
 
-      if (log.get('favorited')){
-        fav = log.get('favorites').findBy('user.id', currentUser.get('id'));
+      if (isDelete){
+        fav = log.get('favorites').findBy('strUserId', currentUser.get('id'));
         fav.destroyRecord().then(function(){
           log.get('favorites').popObject(fav);
         });
