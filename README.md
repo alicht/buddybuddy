@@ -11,53 +11,59 @@ Buddy Buddy is a simple pairing and check-in system for any type of organization
 4. :beers:
 
 ## Getting started
-* Clone the repository using Git:
-```
+1. Clone the repository using Git:
+  ```
 clone https://github.com/simplereach/buddybuddy.git
 ```
 
-* Install ruby gem dependencies
-```
+2. Install ruby gem dependencies
+  ```
 cd buddybuddy
 bundle install
 ```
 
-* DB set up
-```
+3. DB set up
+  ```
 rake db:setup
 ```
 
-* Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
-```
+4. Set up ember-cli. If you have other instances of ember-cli, be sure to unlink them (@amalan can you expand on this?).
+  ```
 cd ember
 npm install
 bower install
 ```
 
-* Start Rails server
-```
+5. Start Rails server
+  ```
 rails s
 ```
 
-* Start Ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
-```
+6. Start Ember server. If your rails server is running on a port other than the default, specify that port when starting the ember server.
+  ```
 cd ember
 ember server --proxy http://localhost:3000'
 ```
 
-* Generate pairs in Rails console
-```
+7. Generate pairs in Rails console
+  ```
 rails c
 Pairing.generate!
 ```
 
-Happy BuddyBuddying!
+8. Happy BuddyBuddying!
 
 Please feel free to use a different markup language if you do not plan to run
 `rake doc:app`.
 
 Note: if you use Linux, read [`LINUXINSTALL.md`](LINUXINSTALL.md) to get started.
 
+# Test
+We use [ember-cli-pretender](https://github.com/rwjblue/ember-cli-pretender) for faking remote responses.
+```
+npm install --save-dev ember-cli-pretender
+ember generate ember-cli-pretender
+```
 
 # Heroku deploy
 ```
@@ -73,11 +79,3 @@ heroku run rake db:migrate # run migrations if any.
 
 heroku open # to open the site on the browser.
 ```
-
-# Test
-We use [ember-cli-pretender](https://github.com/rwjblue/ember-cli-pretender) for faking remote responses.
-```
-npm install --save-dev ember-cli-pretender
-ember generate ember-cli-pretender
-```
-
