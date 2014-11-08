@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20141103125729) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",                default: true
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
@@ -51,7 +52,6 @@ ActiveRecord::Schema.define(version: 20141103125729) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "authentication_token"
-    t.boolean  "visible",                default: true
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

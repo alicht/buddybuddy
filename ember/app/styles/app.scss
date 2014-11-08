@@ -196,6 +196,25 @@ img {
   max-width: 50em;
 }
 
+.login {
+  li, label {
+    display: block;
+    width: 100%;
+  }
+  input {
+    @extend %font24;
+    width: 100%;
+    background: $light-grey;
+    margin-bottom: 1em;
+  }
+  button {
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 .main {
   margin: 3em 0;
 }
