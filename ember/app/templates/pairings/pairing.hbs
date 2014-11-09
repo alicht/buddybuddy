@@ -28,7 +28,8 @@
 </section>
 {{/if}}
 
-{{#if logs}}  
+{{#if logs}} 
+<section class="checkins"> 
 <h3>Check Ins This Week</h3>
   {{#each logs}}
     <article {{bind-attr class="user.isMe::timeline-inverted"}}>

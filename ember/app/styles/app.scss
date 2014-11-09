@@ -140,7 +140,6 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
   @include prefix(box-sizing, border-box);
   @include prefix(transition, all .3s ease-in-out);
   position: relative;
-  //overflow: scroll;
 }
 
 body {
@@ -203,9 +202,11 @@ img {
   }
   input {
     @extend %font24;
+    @include prefix(border-radius, 3px);
+    margin-bottom: 1em;
+    padding: .5em;
     width: 100%;
     background: $light-grey;
-    margin-bottom: 1em;
   }
   button {
     border: 0;
