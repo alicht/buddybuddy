@@ -1,9 +1,9 @@
-<a {{action "doFavorite" content}} {{bind-attr class=":favorite-button favorited:active"}} title="favorite">
+<a {{action "toggleFavorite" content}} {{bind-attr class="favorited:active"}} title="favorite">
   {{#if favorited}}★{{else}}☆{{/if}}
 </a> 
 
 {{#if content.favorites}}
-  <span>{{content.favorites.length}}</span>
+  <b>{{content.favorites.length}}</b>
   <a {{action "toggleList"}}>favorites</a>
 {{/if}}
 

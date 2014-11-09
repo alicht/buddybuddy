@@ -37,7 +37,7 @@
       <span class="message">{{message}}</span>
       <span class="buddy">{{user.screenName}}</span>
       <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
-      {{favorite-log content=this currentUser=currentUserService.user store=store}}
+      {{favorite-log content=this currentUser=session.currentUser store=store}}
     </article>
     {{/each}}
 {{else}}

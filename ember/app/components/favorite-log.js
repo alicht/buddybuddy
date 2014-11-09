@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   }.property('content.favorites.length'),
 
   actions: {
-    doFavorite: function(log){
+    toggleFavorite: function(log){
       var favorite;
       var currentUser = this.get('currentUser');
       if (this.get('favorited')){
