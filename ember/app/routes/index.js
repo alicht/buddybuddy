@@ -1,8 +1,6 @@
 import Ember from 'ember';
-import AuthRoute from '../mixins/auth-route';
 
-
-export default Ember.Route.extend(AuthRoute, {
+export default Ember.Route.extend({
   model: function(){
     return this.store.find('log');
   }

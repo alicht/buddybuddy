@@ -1,3 +1,6 @@
+ Pairing.delete_all
+ Log.delete_all
+ User.delete_all
 
 [
   "Kent",
@@ -31,10 +34,8 @@
   "Chris",
   "Victoria"
   ].each do |email|
-    User.find_or_create_by(name: email.split('@').first)
+    User.create(name: email.split('@').first, email: "#{email.downcase.split(" ")[0]}@simplereach.com", password: "changeme")
   end
 
 
-# Pairing.delete_all
-# Log.delete_all
-# Pairing.generate!
+ Pairing.generate!

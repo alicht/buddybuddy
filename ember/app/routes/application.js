@@ -1,12 +1,14 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend({
-
+export default Ember.Route.extend(ApplicationRouteMixin, {
   actions: {
-    signOut: function() {
-      this.set('currentUserService.user', null);
-      localStorage.removeItem('currentUser');
-      this.transitionTo('login');
+    error: function(error, transition){
+      if (error.status == 401) {
+        this.transitionTo('login');
+      } else {
+        this._super();
+      }
     }
   }
 });

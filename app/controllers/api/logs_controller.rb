@@ -1,4 +1,5 @@
 class Api::LogsController < ApplicationController
+  before_filter :authorize!
 
   def index
     limit = 30

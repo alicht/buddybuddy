@@ -1,5 +1,5 @@
 class Api::PairingsController < ApplicationController
-
+  before_filter :authorize!
   def index
     date = Time.parse(params[:date]) if params[:date]
     date = Time.now if params[:current] == 'true'
@@ -18,6 +18,8 @@ class Api::PairingsController < ApplicationController
     @pairing = Pairing.find(params[:id])
     render json: @pairing
   end
+
+
 
 end
 
