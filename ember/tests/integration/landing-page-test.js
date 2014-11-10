@@ -8,9 +8,9 @@ module('Integration - Landing Page', {
   setup: function() {
     App = startApp();
 
-    var favorite = { id: 1, log_id: 1, user_id: 1, str_user_id: '1' };
+    var favorite = { id: 1, log_id: 1, user_id: 31, str_user_id: '31' };
     var logs = [{
-      id: 1, user_id: 1, pairing_id: 1, message: 'hello', created_at: '2014-11-03T15:04:58.442Z',
+      id: 1, user_id: 31, pairing_id: 1, message: 'hello', created_at: '2014-11-03T15:04:58.442Z',
       links: { favorites: "/api/favorites?log_id=1" }
     }];
 
@@ -25,6 +25,10 @@ module('Integration - Landing Page', {
 
       this.post('/api/favorites', function(request) {
         return [200, {"Content-Type": "application/json"}, JSON.stringify({favorite: favorite})];
+      });
+
+      this.delete('/api/favorites/1', function(request) {
+        return [204, {}, ""];
       });
     });
   },
@@ -66,6 +70,23 @@ test('favorite a check-in', function(){
     andThen(function(){
       equal(find('.favorites b').length, 1);
       equal(find('.favorites b').text(), 1);
+    });    
+  });
+});
+
+test('unfavorite a check-in', function(){
+  visit('/');
+
+  andThen(function(){
+    click('.checkins article button');
+    andThen(function(){
+      equal(find('.favorites b').length, 1);
+      equal(find('.favorites b').text(), 1);
+    }); 
+
+    click('.checkins article button');
+    andThen(function(){
+      equal(find('.favorites b').length, 0);
     });    
   });
 });
