@@ -6,9 +6,7 @@
       <span class="message">{{message}}</span>
       <span class="buddy">{{user.name}}</span>
       <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
-      <div>
-        {{favorite-log content=this currentUser=session.currentUser store=store}}
-      </div>
+      {{favorite-log content=this currentUser=session.currentUser store=store}}
     </article>
   {{/each}}
 </section>

@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: 'favorites',
+
   favorited: function(){
     var favorites = this.get('content.favorites') || [];
     var userId = this.get('currentUser.id');
@@ -22,7 +24,9 @@ export default Ember.Component.extend({
         favorite = this.store.createRecord('favorite', {user: currentUser, log: log});
         favorite.save().then(function(fav){
           fav.set('user', currentUser);
-          log.get('favorites').pushObject(fav);
+          log.get('favorites').then(function(favorites){
+            favorites.pushObject(fav);
+          });
         }); 
       }
     },
