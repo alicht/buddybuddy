@@ -19,6 +19,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    params[:user].delete(:checkedin)
     @user = User.find(params[:id])
     if @user = current_user
       if params[:user][:current_password]
@@ -36,7 +37,7 @@ class Api::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :current_password, :password, :password_confirmation)
+    params.require(:user).permit(:name, :current_password, :password, :password_confirmation, :email)
   end
 
 end
