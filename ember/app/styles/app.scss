@@ -196,17 +196,26 @@ img {
 }
 
 .login {
-  li, label {
-    display: block;
-    width: 100%;
-  }
-  input {
-    @extend %font24;
+  li {
     @include prefix(border-radius, 3px);
+    @extend %flex-row-stretch;
+    font-size: line-height( 11 );
     margin-bottom: 1em;
-    padding: .5em;
     width: 100%;
     background: $light-grey;
+  }
+  label {
+    @include prefix(border-top-left-radius, 3px);
+    @include prefix(border-bottom-left-radius, 3px);
+    text-align: right;
+    width: 6em;
+    background: $dark-blue;
+    color: $white;
+    padding: .7em 1em .7em .5em;
+  }
+  input {
+    background: none;
+    padding-left: 1em;
   }
   button {
     border: 0;
@@ -267,7 +276,7 @@ header {
 
 .buddybuddy-logo {
   &.login {
-    margin: 3em 0;
+    margin: 1em 0;
   }
 }
 
