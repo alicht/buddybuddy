@@ -440,7 +440,7 @@ footer {
       }
     }
   }
-  span {
+  .arrow, .message, .buddy, .date {
     display: block;
   }
   .message {
@@ -512,5 +512,38 @@ footer {
     .date {
       @extend %font10;
     }
+  }
+}
+
+.favorites {
+  @extend %font13;
+  margin-top: .5em;
+  padding: .3em 0 0 0;
+  border-top: 1px dotted darken($light-grey, 10%);
+  ul {
+    list-style-type: none;
+    li {
+      @extend %inlineBlock;
+    }
+  }
+}
+
+.star {
+  display: block;
+  &:hover {
+    cursor: pointer;
+  }
+  &.not-favorite:before {
+    content: "\e612";
+    color: darken($light-grey, 25%);
+    font-family: 'icomoon';
+    &:hover {
+      color: $light-blue !important;
+    }
+  }
+  &.favorite:before {
+    content: "\e614";
+    font-family: 'icomoon';
+    color: $light-blue;
   }
 }

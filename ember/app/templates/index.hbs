@@ -4,8 +4,7 @@
     <article>
       <span class="arrow"></span>
       <span class="message">{{message}}</span>
-      <span class="buddy">{{user.name}}</span>
-      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
+      <span class="buddy">{{user.name}} on {{format-date createdAt "dddd, MMMM DD"}} </span>
       {{favorite-log content=this currentUser=session.currentUser store=store}}
     </article>
   {{/each}}

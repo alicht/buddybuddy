@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: 'favorites',
 
-  favorited: function(){
+  isFavorited: function(){
     var favorites = this.get('content.favorites') || [];
     var userId = this.get('currentUser.id');
     return favorites.any(function(fav){
@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     toggleFavorite: function(log){
       var favorite;
       var currentUser = this.get('currentUser');
-      if (this.get('favorited')){
+      if (this.get('isFavorited')){
         favorite = log.get('favorites').findBy('strUserId', currentUser.get('id'));
         favorite.destroyRecord().then(function(){
           log.get('favorites').popObject(favorite);
@@ -29,10 +29,6 @@ export default Ember.Component.extend({
           });
         }); 
       }
-    },
-
-    toggleList: function(){
-      //this.toggleProperty('isShow');
     }
   }
 });
