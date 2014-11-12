@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     },
 
     toggleList: function(){
-      this.toggleProperty('isShow');
+      //this.toggleProperty('isShow');
     }
   }
 });
