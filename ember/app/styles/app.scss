@@ -272,6 +272,15 @@ header {
       padding: 0 .5em;
     }
   }
+  .check-in {
+    @include prefix(border-radius, 3px);
+    background: $light-blue;
+    color: $white;
+    padding: 0 .8em;
+    &:hover {
+      background: $dark-blue;
+    }
+  }
 }
 
 .buddybuddy-logo {
@@ -485,11 +494,6 @@ footer {
       @extend %inlineBlock;
       @extend %font12;
       position: static;
-      //&:before {
-      //  content: "\e632";
-      //  @extend %font24;
-      //  font-family: 'icomoon';
-      //}
       margin: 0 .3em;
       padding: .3em 1em;
       background: $light-blue;
@@ -517,14 +521,18 @@ footer {
 
 .favorites {
   @extend %font13;
-  margin-top: .5em;
-  padding: .3em 0 0 0;
+  margin-top: .7em;
+  padding: .7em 0 .3em 0;
   border-top: 1px dotted darken($light-grey, 10%);
   ul {
     list-style-type: none;
+    margin-left: 1.65em;
     li {
       @extend %inlineBlock;
     }
+  }
+  .icon-sad {
+    margin: .2em 0 0 .5em;
   }
 }
 
@@ -537,6 +545,7 @@ footer {
     content: "\e612";
     color: darken($light-grey, 25%);
     font-family: 'icomoon';
+    margin-right: .3em;
     &:hover {
       color: $light-blue !important;
     }
@@ -545,5 +554,6 @@ footer {
     content: "\e614";
     font-family: 'icomoon';
     color: $light-blue;
+    margin-right: .5em;
   }
 }

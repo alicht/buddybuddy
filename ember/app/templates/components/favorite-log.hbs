@@ -1,5 +1,5 @@
 <div {{action "toggleFavorite" content}} {{bind-attr class=":star isFavorited:favorite:not-favorite"}} title="favorite"> 
-  {{#if content.favorites}} {{pluralize-things content.favorites.length 'favorite' 'favorites'}} {{else}} No favorites! <span class="icon-sad"></span> {{/if}}
+  {{#if content.favorites}} {{pluralize-things content.favorites.length 'favorite' 'favorites'}} {{else}} No favorites! {{/if}}
 </div> 
 
 
