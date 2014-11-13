@@ -1,5 +1,4 @@
 <h3>Your Info</h3>
-{{#if isMe}}
 <section class="your-settings">
   <label>Name</label>
   {{input value=content.name action="updateName" size="100"}}
@@ -15,7 +14,6 @@
 
   <div class="row">  <a  {{action "update"}} class="btn">update</a></div>
 </section>
-{{/if}}
 
 <section class="your-history">
   <h3>Pairing and Checkin History</h3>
@@ -33,7 +31,7 @@
     <ul class="checkin-marker">
       {{#each logs}}
       <li>
-        <span class="buddy-name">{{user.screenName}}</span>
+        <span class="buddy-name">{{user.name}}</span>
         <span class="date">{{format-date createdAt "MM.DD"}}</span>
       </li>
       {{/each}}
