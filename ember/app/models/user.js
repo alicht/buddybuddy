@@ -10,17 +10,7 @@ var User = DS.Model.extend({
 
   checkedin: DS.attr('boolean'),
   pairings: DS.hasMany('pairing', {async: true}),
-  favorites: DS.hasMany('favorite', {async: true}),
-
-  screenName: Ember.computed.alias('name'),
-
-  isMe: function(){
-    if(this.get('id') === this.session.get('currentUser.id')){
-      return true;
-    } else {
-      return false;
-    }
-  }.property('content.id', 'session.currentUser.id'),
+  favorites: DS.hasMany('favorite', {async: true})
 });
 
 export default User;

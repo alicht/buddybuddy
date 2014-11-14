@@ -32,10 +32,10 @@
 {{#if logs}} 
   <h3>Check Ins This Week</h3>
   {{#each logs}}
-    <article {{bind-attr class="user.isMe::timeline-inverted"}}>
+    <article>
       <span class="arrow"></span>
       <span class="message">{{message}}</span>
-      <span class="buddy">{{user.screenName}}</span>
+      <span class="buddy">{{user.name}}</span>
       <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
       {{favorite-log content=this currentUser=session.currentUser store=store}}
     </article>
