@@ -20,9 +20,6 @@ app.import('bower_components/moment/moment.js');
 // along with the exports of each module as its value.
 
 
-var compileSass = require('broccoli-sass');
-
-
 // Glyphicons
 var pickFiles = require('broccoli-static-compiler');
 
@@ -60,8 +57,11 @@ var extraImages = pickFiles('app/styles/images', {
   destDir: '/images'
 });
 
+var appCss = compileSass(['app/styles'], 'app.scss', 'assets/app.css');
+
 var mergeTrees = require('broccoli-merge-trees');
 
-var output = mergeTrees([extraFonts, extraImages]);
+var output = mergeTrees([extraFonts, extraImages, appCss]);
+
 
 module.exports = app.toTree(output);

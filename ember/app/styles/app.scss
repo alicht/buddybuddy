@@ -529,6 +529,10 @@ footer {
     margin-left: 1.65em;
     li {
       @extend %inlineBlock;
+      &:after {
+        content: ", ";
+        background: red;
+      }
     }
   }
   .icon-sad {
