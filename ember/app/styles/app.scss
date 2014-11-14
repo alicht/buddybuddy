@@ -531,7 +531,9 @@ footer {
       @extend %inlineBlock;
       &:after {
         content: ", ";
-        background: red;
+      }
+      &:last-child:after {
+        content: " ";
       }
     }
   }
