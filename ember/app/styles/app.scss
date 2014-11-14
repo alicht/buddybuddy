@@ -402,23 +402,29 @@ footer {
   &:before {
     content: " ";
     position: absolute;
-    left: calc(50% - 1px);
+    left: .5em;
     height: 100%;
-    top: 3.8em;
+    top: 3em;
     border-right: 2px solid $light-grey;
   }
   article {
     @include prefix(border-radius, 3px);
+    @include arrow(left, middle);
     @extend %font14;
+    margin: 0 0 2em 0;
     padding: .5em 1em;
     overflow: visible;
     position: relative;
-    width: 45%;
+    width: 90%;
+    float: right;
     clear: both;
     background: $light-grey;
     color: lighten( $grey, 45% );
+    &:last-child {
+      margin-bottom: 0;
+    }
     // dot placement on the timeline
-    &:nth-of-type(odd), &:nth-of-type(even) {
+    //&:nth-of-type(odd), &:nth-of-type(even) {
       &:before {
         content: " ";
         position: absolute;
@@ -427,25 +433,26 @@ footer {
         border-radius: 1em;
         background: white;
         top: 1.2em;
+        left: calc(-11.3% + .5em);
         @include prefix(box-shadow, 0 0 0 .2em red);
       }
-    }
+    //}
     .message {
       color: lighten( $grey, 10% );
       margin-bottom: .5em;
     }
-    &:nth-of-type(odd) {
+    /*&:nth-of-type(odd) {
       @include arrow(right, middle);
       float: left;
       &:before {
         right: -12.2968%;
       }
-    }
+    }*/
     &:nth-of-type(even) {
       @include arrow(left, middle);
-      float: right;
+      //float: right;
       &:before {
-        left: -12.2968%;
+        //left: -12.2968%;
       }
     }
   }
