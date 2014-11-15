@@ -5,7 +5,9 @@
 
       <header>
         <span class="buddy">{{user.name}} </span>
-        <span class="date">{{format-date createdAt "MMM. DD, 'YY"}}</span>
+        <span class="date">
+          {{#link-to 'pairings.pairing' this.pairing}}{{format-date createdAt "MMM. DD, 'YY"}}{{/link-to}}
+        </span>
       </header>
 
       <div class="content">
