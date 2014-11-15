@@ -55,8 +55,8 @@ test('should display check-in list', function(){
 
   andThen(function(){
     equal(find('.checkins article').length, 1);
-    equal(find('.checkins article .message').text(), 'hello');
-    equal(find('.checkins article .date').text(), 'Monday, November 03');
+    equal(find('.checkins article .message').text(), "hello");
+    equal(find('.checkins article .date').text(), "Nov. 03, '14");
   });
 });
 
@@ -64,12 +64,11 @@ test('favorite a check-in', function(){
   visit('/');
 
   andThen(function(){
-    equal(find('.favorites b').length, 0);
-
-    click('.checkins article button');
+    equal(find('.favorites ul li').length, 0);
+    click('.checkins article .star');
     andThen(function(){
-      equal(find('.favorites b').length, 1);
-      equal(find('.favorites b').text(), 1);
+      equal(find('.favorites ul li').length, 1);
+      equal(find('.favorites .star ').text().trim(), '1 favorite');
     });    
   });
 });
@@ -78,15 +77,14 @@ test('unfavorite a check-in', function(){
   visit('/');
 
   andThen(function(){
-    click('.checkins article button');
+    click('.checkins article .star');
     andThen(function(){
-      equal(find('.favorites b').length, 1);
-      equal(find('.favorites b').text(), 1);
+      equal(find('.favorites .star ').text().trim(), '1 favorite');
     }); 
 
     click('.checkins article button');
     andThen(function(){
-      equal(find('.favorites b').length, 0);
+      equal(find('.favorites ul li').length, 0);
     });    
   });
 });
