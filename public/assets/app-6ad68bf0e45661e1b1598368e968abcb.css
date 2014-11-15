@@ -1,0 +1,1443 @@
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::   
+
+Sizing
+
+Rems, ems, and percentages, depending on what your flavor is.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::   
+
+List functions
+
+Inspired by and taken from Hugo Giraudel
+http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::   
+
+Z-index
+
+Another gem from Hugo Giraudel
+http://www.sitepoint.com/better-solution-managing-z-index-sass/
+
+Jackie Balzer also has an interesting approach
+http://www.smashingmagazine.com/2014/06/12/sassy-z-index-management-for-complex-layouts/
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Utility Functions
+
+Functions to assist in manipulating arguments and handle various calculations
+that are universal in nature (unit conversion, stripping units, etc.)
+
+References:
+- jonny gotham (https://github.com/jonnygotham)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::   
+
+PREFIXER
+
+Vendor prefix properties or values. The default prefixes the property. If you
+need to prefix the value, simply pass in 'value' as the third parameter in the
+mixin. If you need to prefix both, pass in 'both' as the third parameter.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::   
+
+Flexbox
+
+These mixins come from Bourbon's fantastic Sass library. Modified with the type
+of prefixer I use, flex-flow has been fleshed out a bit more, and annotated
+because Flexbox is still @#(*&@# confusing)
+
+Bourbon Flexbox:
+https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3
+/_flex-box.scss
+
+W3C Flexible Box Layout Module: http://www.w3.org/TR/css3-flexbox/
+
+Flexbox support matrix:
+http://flexboxlayouts.com/pdfs/flexbox%20browser%20Properties%20.pdf
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: 
+
+Flexbox Containers
+
+The 'flex' value causes an element to generate a block-level flex container box.
+
+The 'inline-flex' value causes an element to generate a inline-level flex
+container box.
+
+2009 - display (box | inline-box)
+2011 - display (flexbox | inline-flexbox)
+2012 - display (flex | inline-flex)
+
+http://w3.org/tr/css3-flexbox/#flex-containers
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::  
+
+Flexbox Containers
+ 
+The flex property specifies the components of a flexible length: the flex
+grow factor and flex shrink factor, and the flex basis. When a box is a flex
+item, flex is consulted instead of the main size property to determine the main
+size of the box. If a box is not a flex item, flex has no effect.
+
+2009 - box-flex (integer)
+2011 - flex (decimal | width decimal)
+2012 - flex (integer integer width)
+
+//
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* :::::::::::::::::::::::::::::::::::::::::::::::::: 
+
+Flexbox Direction
+
+The flex-direction property specifies how flex items are placed in the flex
+container, by setting the direction of the flex container’s main axis. This
+determines the direction that flex items are laid out in.
+
+2009 - box-orient ( horizontal | vertical | inline-axis | block-axis)
+      - box-direction (normal | reverse)      
+2011 - flex-direction (row | row-reverse | column | column-reverse)
+2012 - flex-direction (row | row-reverse | column | column-reverse)
+
+Default: row
+
+http://w3.org/tr/css3-flexbox/#flex-direction-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Wrap
+
+The flex-wrap property controls whether the flex container is single-line or multi-line, and the direction of the cross-axis, which determines the direction new lines are stacked in.
+
+2009 - box-lines (single | multiple)
+2011 - flex-wrap (nowrap | wrap | wrap-reverse)
+2012 - flex-wrap (nowrap | wrap | wrap-reverse)
+
+Default: nowrap
+ 
+http://w3.org/tr/css3-flexbox/#flex-wrap-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Flow (shorthand)
+
+The flex-flow property is a shorthand for setting the flex-direction and flex-
+wrap properties, which together define the flex container’s main and cross axes.
+
+Values: <flex-direction> | <flex-wrap> 
+
+2009 - no flex-flow (uses box-orient and box-direction - there is no flex-wrap)
+2011 - flex-flow (flex-direction || flex-wrap)
+2012 - flex-flow (flex-direction || flex-wrap)
+
+Default: row nowrap
+
+http://w3.org/tr/css3-flexbox/#flex-flow-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Order
+
+The order property controls the order in which flex items appear within their
+flex container, by assigning them to ordinal groups. It takes a single <integer>
+value, which specifies which ordinal group the flex item belongs to.
+
+2009 - box-ordinal-group (integer)
+2011 - flex-order (integer)
+2012 - order (integer)
+
+Default: 0
+
+http://w3.org/tr/css3-flexbox/#order-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Grow
+
+The flex property specifies the components of a flexible length: the flex grow
+factor and flex shrink factor, and the flex basis. When a box is a flex item,
+flex is consulted instead of the main size property to determine the main size
+of the box. If a box is not a flex item, flex has no effect.
+
+Default: 0
+
+http://w3.org/tr/css3-flexbox/#flex-grow-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Shrink
+
+This <number> component sets flex-shrink longhand and specifies the flex shrink
+factor, which determines how much the flex item will shrink relative to the rest
+of the flex items in the flex container when negative free spaaaaaace is
+distributed. When omitted, it is set to 1. The flex shrink factor is multiplied
+by the flex basis when distributing negative space.
+
+Default: 1
+
+http://w3.org/tr/css3-flexbox/#flex-shrink-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Basis
+
+The flex-basis property sets the flex basis. Negative lengths are invalid.
+
+Values: auto | <width> 
+Default: auto
+
+http://www.w3.org/TR/css3-flexbox/#flex-basis-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Justify Content
+
+The justify-content property aligns flex items along the main axis of the
+current line of the flex container. This is done after any flexible lengths and
+any auto margins have been resolved. Typically it helps distribute extra free
+spaaaaaace leftover when either all the flex items on a line are inflexible, or
+are flexible but have reached their maximum size. It also exerts some control
+over the alignment of items when they overflow the line.
+
+Note: 'space-*' values not supported in older syntaxes.
+
+2009 - box-pack (start | end | center | justify)
+2011 - flex-pack (start | end | center | justify)
+2012 - justify-content (flex-start | flex-end | center | space-between | space-around)
+
+Default: flex-start
+
+http://w3.org/tr/css3-flexbox/#justify-content-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Align Items
+
+Flex items can be aligned in the cross axis of the current line of the flex
+container, similar to justify-content but in the perpendicular direction. align-
+items sets the default alignment for all of the flex container’s items,
+including anonymous flex items. align-self allows this default alignment to be
+overridden for individual flex items. (For anonymous flex items, align-self
+always matches the value of align-items on their associated flex container.)
+
+2009 - box-align (start | end | center | baseline | stretch)
+2011 - flex-align (start | end | center | baseline | stretch)
+2012 - align-items (flex-start | flex-end | center | baseline | stretch)
+
+Default: stretch
+
+http://w3.org/tr/css3-flexbox/#align-items-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Align Self
+
+Flex items can be aligned in the cross axis of the current line of the flex
+container, similar to justify-content but in the perpendicular direction. align-
+items sets the default alignment for all of the flex container’s items,
+including anonymous flex items. align-self allows this default alignment to be
+overridden for individual flex items. (For anonymous flex items, align-self
+always matches the value of align-items on their associated flex container.)
+
+2011 - flex-item-align (auto | start | end | center | baseline | stretch)
+2012 - align-self (auto | flex-start | flex-end | center | baseline | stretch)
+
+Default: auto
+
+http://www.w3.org/TR/css3-flexbox/#align-items-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Flexbox Align Content
+
+The align-content property aligns a flex container’s lines within the flex
+container when there is extra spaaaaaace in the cross-axis, similar to how
+justify-content aligns individual items within the main-axis. Note, this
+property has no effect when the flex container has only a single line.
+
+2011 - flex-line-pack (start | end | center | justify | distribute | stretch)
+2012 - align-content (flex-start | flex-end | center | space-between | space-around | stretch)
+
+Default: stretch
+
+http://w3.org/tr/css3-flexbox/#align-content-property
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::   
+
+Extends
+
+A basic set of extends. Will break this out when length dictates, but for now
+seems good...
+
+::::::::::::::::::::::::::::::::::::::::::::::::::      
+*/
+.has-hearts li:nth-of-type(1):after, .has-hearts li:nth-of-type(3):before, .heart:before, .btn, header .buddybuddy-logo, header nav, header ul li, .buddy-pairing li, .has-hearts li, .row .has-hearts, .row .checkin-marker, .row .checkin-marker li, .favorites ul li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  vertical-align: top; }
+
+.row .checkin-marker .date {
+  font-size: 0.625rem; }
+
+.row .checkin-marker li {
+  font-size: 0.75rem; }
+
+.checkins article header, .checkins .content {
+  font-size: 0.875rem; }
+
+.row .checkin-marker li:nth-of-type(4):after {
+  font-size: 1rem; }
+
+.row h2 {
+  font-size: 1.125rem; }
+
+.your-settings input, .checkin textarea, .checkins .message {
+  font-size: 1.5rem; }
+
+.buddy-pairing li {
+  font-size: 2.25rem; }
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Color Functions
+
+Functions that work with colors.
+Beyond basic color functions, this file contains functions to work with color
+palettes (created as Sass maps), to allow for easy retrieval of base colors and
+tonal variants.
+
+References:
+http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+    FUNCTIONS
+   :::::::::::::::::::::::::::::::::::::::::::::::::: */
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Responsive Functions and Mixins
+
+Functions and Mixins to work with responsive behaviors
+The functions assist with responsive behaviors, handling things like named
+breakpoints and
+
+References:
+- Hugo Giradel: http://www.sitepoint.com/managing-responsive-breakpoints-sass/
+- jonny gotham (https://github.com/jonnygotham)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+    FUNCTIONS
+   :::::::::::::::::::::::::::::::::::::::::::::::::: */
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+    MIXINS
+   :::::::::::::::::::::::::::::::::::::::::::::::::: */
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Type Functions and Mixins
+
+Functions and Mixins to work with type
+These basic functions assist with various typography related styles in CSS.
+Many functions assist with correctly handling maths involved with line heights,
+unit conversions, etc.
+
+References:
+- jonny gotham (https://github.com/jonnygotham)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+*/
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+    FUNCTIONS
+   :::::::::::::::::::::::::::::::::::::::::::::::::: */
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::
+    MIXINS
+   :::::::::::::::::::::::::::::::::::::::::::::::::: */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0; }
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block; }
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio, canvas, progress, video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden], template {
+  display: none; }
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent; }
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active, a:hover {
+  outline: 0; }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b, strong {
+  font-weight: bold; }
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0; }
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto; }
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em; }
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button, input, optgroup, select, textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible; }
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button, select {
+  text-transform: none; }
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled], html input[disabled] {
+  cursor: default; }
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal; }
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box; }
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold; }
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td, th {
+  padding: 0; }
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-pacman:before {
+  content: "\e600"; }
+
+.icon-bubble:before {
+  content: "\e601"; }
+
+.icon-bubbles:before {
+  content: "\e602"; }
+
+.icon-bubbles2:before {
+  content: "\e603"; }
+
+.icon-bubble2:before {
+  content: "\e604"; }
+
+.icon-bubbles3:before {
+  content: "\e605"; }
+
+.icon-bubbles4:before {
+  content: "\e606"; }
+
+.icon-user:before {
+  content: "\e607"; }
+
+.icon-users:before {
+  content: "\e608"; }
+
+.icon-cog:before {
+  content: "\e609"; }
+
+.icon-cogs:before {
+  content: "\e60a"; }
+
+.icon-cog2:before {
+  content: "\e60b"; }
+
+.icon-mug:before {
+  content: "\e60c"; }
+
+.icon-food:before {
+  content: "\e60d"; }
+
+.icon-leaf:before {
+  content: "\e60e"; }
+
+.icon-fire:before {
+  content: "\e60f"; }
+
+.icon-lab:before {
+  content: "\e610"; }
+
+.icon-link:before {
+  content: "\e611"; }
+
+.icon-star:before {
+  content: "\e612"; }
+
+.icon-star2:before {
+  content: "\e613"; }
+
+.icon-star3:before {
+  content: "\e614"; }
+
+.icon-heart:before {
+  content: "\e615"; }
+
+.icon-heart2:before {
+  content: "\e616"; }
+
+.icon-happy:before {
+  content: "\e617"; }
+
+.icon-happy2:before {
+  content: "\e618"; }
+
+.icon-smiley:before {
+  content: "\e619"; }
+
+.icon-smiley2:before {
+  content: "\e61a"; }
+
+.icon-tongue:before {
+  content: "\e61b"; }
+
+.icon-tongue2:before {
+  content: "\e61c"; }
+
+.icon-sad:before {
+  content: "\e61d"; }
+
+.icon-sad2:before {
+  content: "\e61e"; }
+
+.icon-wink:before {
+  content: "\e61f"; }
+
+.icon-wink2:before {
+  content: "\e620"; }
+
+.icon-grin:before {
+  content: "\e621"; }
+
+.icon-grin2:before {
+  content: "\e622"; }
+
+.icon-cool:before {
+  content: "\e623"; }
+
+.icon-cool2:before {
+  content: "\e624"; }
+
+.icon-angry:before {
+  content: "\e625"; }
+
+.icon-angry2:before {
+  content: "\e626"; }
+
+.icon-evil:before {
+  content: "\e627"; }
+
+.icon-evil2:before {
+  content: "\e628"; }
+
+.icon-shocked:before {
+  content: "\e629"; }
+
+.icon-shocked2:before {
+  content: "\e62a"; }
+
+.icon-confused:before {
+  content: "\e62b"; }
+
+.icon-confused2:before {
+  content: "\e62c"; }
+
+.icon-neutral:before {
+  content: "\e62d"; }
+
+.icon-neutral2:before {
+  content: "\e62e"; }
+
+.icon-wondering:before {
+  content: "\e62f"; }
+
+.icon-wondering2:before {
+  content: "\e630"; }
+
+.icon-close:before {
+  content: "\e631"; }
+
+.icon-checkmark:before {
+  content: "\e632"; }
+
+.icon-checkmark2:before {
+  content: "\e633"; }
+
+.icon-checkbox-checked:before {
+  content: "\e634"; }
+
+.icon-checkbox-unchecked:before {
+  content: "\e635"; }
+
+.icon-checkbox-partial:before {
+  content: "\e636"; }
+
+.icon-radio-checked:before {
+  content: "\e637"; }
+
+.icon-radio-unchecked:before {
+  content: "\e638"; }
+
+.icon-facebook:before {
+  content: "\e639"; }
+
+.icon-twitter:before {
+  content: "\e63a"; }
+
+.icon-dribbble:before {
+  content: "\e63b"; }
+
+.icon-dribbble2:before {
+  content: "\e63c"; }
+
+.icon-github:before {
+  content: "\e63d"; }
+
+.icon-github2:before {
+  content: "\e63e"; }
+
+.icon-github3:before {
+  content: "\e63f"; }
+
+.icon-heart3:before {
+  content: "\e640"; }
+
+.icon-heart4:before {
+  content: "\e641"; }
+
+.icon-cloud:before {
+  content: "\e642"; }
+
+.icon-location:before {
+  content: "\e643"; }
+
+.icon-heart5:before {
+  content: "\e644"; }
+
+.icon-heart6:before {
+  content: "\e645"; }
+
+.icon-new:before {
+  content: "\e646"; }
+
+select {
+  -webkit-appearance: none !important;
+  background: #fafafa url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat;
+  background-position-x: 97%;
+  background-position-y: center;
+  border: 1px solid #cccccc;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  width: 100%; }
+
+select.radius {
+  -webkit-border-radius: 3px;
+  border-radius: 3px; }
+
+select:hover {
+  background: #f2f2f2 url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat;
+  background-position-x: 97%;
+  background-position-y: center;
+  border-color: #999999; }
+
+select:focus {
+  outline: none; }
+
+@-moz-document url-prefix() {
+  select {
+    background: #fafafa; }
+
+  select:hover {
+    background: #f2f2f2; } }
+
+.login li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  display: -ms-flexbox;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -ms-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-direction: row;
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  -ms-box-align: stretch;
+  -o-box-align: stretch;
+  box-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -o-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: stretch; }
+
+.has-hearts li:nth-of-type(1):after, .has-hearts li:nth-of-type(3):before, .heart:before {
+  font-family: 'icomoon'; }
+
+h3 {
+  margin: 0; }
+
+@font-face {
+  font-family: bariol_bold;
+  src: url('/fonts/bariol_bold.eot');
+  src: url('/fonts/bariol_bold.eot?#iefix') format('embedded-opentype'), url('/fonts/bariol_bold.woff') format('woff'), url('/fonts/bariol_bold.ttf') format('truetype'); }
+
+@font-face {
+  font-family: bariol_light;
+  src: url('/fonts/bariol_light.eot');
+  src: url('/fonts/bariol_light.eot?#iefix') format('embedded-opentype'), url('/fonts/bariol_light.woff') format('woff'), url('/fonts/bariol_light.ttf') format('truetype'); }
+
+@font-face {
+  font-family: bariol_thin;
+  src: url('/fonts/bariol_thin.eot');
+  src: url('/fonts/bariol_thin.eot?#iefix') format('embedded-opentype'), url('/fonts/bariol_thin.woff') format('woff'), url('/fonts/bariol_thin.ttf') format('truetype'); }
+
+@font-face {
+  font-family: icomoon;
+  src: url('/fonts/icomoon.eot');
+  src: url('/fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('/fonts/icomoon.woff') format('woff'), url('/fonts/icomoon.ttf') format('truetype'); }
+
+.row .checkin-marker .date {
+  font-size: 0.625rem; }
+
+.row .checkin-marker li {
+  font-size: 0.75rem; }
+
+.checkins article header, .checkins .content {
+  font-size: 0.875rem; }
+
+.row .checkin-marker li:nth-of-type(4):after {
+  font-size: 1rem; }
+
+.row h2 {
+  font-size: 1.125rem; }
+
+.your-settings input, .checkin textarea, .checkins .message {
+  font-size: 1.5rem; }
+
+.buddy-pairing li {
+  font-size: 2.25rem; }
+
+.has-hearts li:nth-of-type(1):after, .has-hearts li:nth-of-type(3):before, .heart:before, .btn, header .buddybuddy-logo, header nav, header ul li, .buddy-pairing li, .has-hearts li, .row .has-hearts, .row .checkin-marker, .row .checkin-marker li, .favorites ul li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  vertical-align: top; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  position: relative; }
+
+body {
+  font-family: 'bariol_bold';
+  color: #232323; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+h3 {
+  text-transform: uppercase;
+  color: #a1a1a1; }
+
+ul, ol {
+  margin: 0;
+  padding: 0; }
+
+input {
+  border: none; }
+  input:focus {
+    outline: none; }
+
+select {
+  margin-bottom: 1em; }
+
+a {
+  text-decoration: none;
+  color: #27a9e1; }
+  a:hover {
+    color: #1b76bc; }
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  height: auto; }
+
+.inner {
+  margin: 0 auto;
+  padding: 0 1.5em;
+  max-width: 50em; }
+
+.login li {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 1.03125rem;
+  margin-bottom: 1em;
+  width: 100%;
+  background: #eeeeee; }
+.login label {
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-top-left-radius: 3px;
+  -ms-border-top-left-radius: 3px;
+  -o-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-bottom-left-radius: 3px;
+  -ms-border-bottom-left-radius: 3px;
+  -o-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  text-align: right;
+  width: 6em;
+  background: #1b76bc;
+  color: white;
+  padding: 0.7em 1em 0.7em 0.5em; }
+.login input {
+  background: none;
+  padding-left: 1em; }
+.login button {
+  border: 0; }
+  .login button:focus {
+    outline: none; }
+
+.main {
+  margin: 3em 0; }
+
+.btn {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  width: 100%;
+  padding: 0.8em;
+  text-align: center;
+  text-transform: uppercase;
+  background: #27a9e1;
+  color: white; }
+  .btn:hover {
+    cursor: pointer;
+    color: white;
+    background: #1b76bc; }
+
+header .inner {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em; }
+header .buddybuddy-logo {
+  margin-top: 0.1em;
+  background: url('/images/logo-64deb70d732b46ee1adc236da2fb7a4d.png');
+  background-size: 100px 18px;
+  width: 100px;
+  height: 18px;
+  text-indent: -9999em; }
+header nav {
+  float: right; }
+header ul {
+  margin: 0;
+  text-align: right; }
+  header ul li {
+    padding: 0 0.5em; }
+header .check-in {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: #27a9e1;
+  color: white;
+  padding: 0 0.8em; }
+  header .check-in:hover {
+    background: #1b76bc; }
+
+.buddybuddy-logo.login {
+  margin: 1em 0; }
+
+.your-history {
+  margin-top: 3em; }
+
+.your-settings {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: #eeeeee;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  padding: 1em; }
+  .your-settings label {
+    display: block;
+    margin-top: 0.5em; }
+  .your-settings input {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    background: white;
+    padding: 0.3em 0.5em;
+    width: 100%; }
+
+.who {
+  text-align: center;
+  margin-bottom: 0.5em; }
+
+footer {
+  font-family: 'bariol_light';
+  margin-top: 6em;
+  border-top: 1px solid #EEE; }
+
+.buddy-pairing {
+  text-align: center;
+  margin: 0 0 3em 0; }
+  .buddy-pairing ul, .buddy-pairing p {
+    width: 100%;
+    padding-left: 0; }
+  .buddy-pairing ul {
+    margin-bottom: 0; }
+  .buddy-pairing p {
+    margin-top: 0; }
+
+.has-hearts li:nth-of-type(1):after, .has-hearts li:nth-of-type(3):before {
+  color: red;
+  padding: 0 0.3em;
+  margin-top: 0.2em;
+  content: "\e615"; }
+
+.heart {
+  position: relative; }
+  .heart:before {
+    content: "\e615";
+    color: red;
+    margin-top: 0.2em; }
+
+.checkin textarea {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 0.5em;
+  padding: 0.5em 0.2em;
+  width: 100%;
+  border: 1px solid #CCC; }
+  .checkin textarea:focus {
+    border-color: #27a9e1; }
+.checkin .btn {
+  margin-bottom: 3em; }
+
+.checkedin {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #d4d4d4; }
+
+.checkins {
+  overflow: hidden; }
+  .checkins h3 {
+    margin-bottom: 1em;
+    width: 70%;
+    float: right; }
+  .checkins:before {
+    content: " ";
+    position: absolute;
+    left: 20%;
+    height: 100%;
+    top: 3em;
+    border-right: 2px solid #eeeeee; }
+  .checkins article {
+    clear: both;
+    margin: 0 0 2em 0;
+    overflow: hidden; }
+    .checkins article header {
+      position: absolute;
+      top: 0.8em; }
+  .checkins .content {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    overflow: visible;
+    position: relative;
+    width: 70%;
+    float: right;
+    background: #eeeeee;
+    color: #959595; }
+    .checkins .content .arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      color: #eeeeee;
+      left: 0.8px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right-width: 10px;
+      border-right-style: solid;
+      top: 0.9em;
+      margin-left: -10px; }
+    .checkins .content:last-child {
+      margin-bottom: 0; }
+    .checkins .content:before {
+      content: " ";
+      position: absolute;
+      width: 0.5em;
+      height: 0.5em;
+      border-radius: 1em;
+      background: white;
+      top: 1.2em;
+      left: -15%;
+      -webkit-box-shadow: 0 0 0 0.2em red;
+      -moz-box-shadow: 0 0 0 0.2em red;
+      -ms-box-shadow: 0 0 0 0.2em red;
+      -o-box-shadow: 0 0 0 0.2em red;
+      box-shadow: 0 0 0 0.2em red; }
+    .checkins .content .message {
+      color: #3c3c3c;
+      margin-bottom: 0.5em; }
+    .checkins .content:nth-of-type(even) .arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      color: #eeeeee;
+      left: 0.8px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right-width: 10px;
+      border-right-style: solid;
+      top: 0.9em;
+      margin-left: -10px; }
+  .checkins .arrow, .checkins .message, .checkins .buddy, .checkins .date {
+    display: block; }
+
+.need-love {
+  display: block;
+  text-align: center;
+  background: white;
+  padding: 2em;
+  margin-top: 3em; }
+
+.row {
+  position: relative;
+  margin: 0.5em 0;
+  padding: 0.5em 0;
+  overflow: hidden;
+  width: 100%; }
+  .row h2 {
+    border-bottom: 1px solid #eeeeee;
+    margin-top: 0;
+    margin-bottom: 0.7em; }
+  .row .has-hearts {
+    margin-top: 0.4em;
+    width: 14em;
+    text-align: left; }
+  .row .checkin-marker {
+    position: relative;
+    overflow: visible;
+    border-left: 1px solid #eeeeee; }
+    .row .checkin-marker li {
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px;
+      position: static;
+      margin: 0 0.3em;
+      padding: 0.3em 1em;
+      background: #27a9e1;
+      color: white; }
+      .row .checkin-marker li:nth-of-type(4):after {
+        position: absolute;
+        left: -2em;
+        top: 0.53em;
+        content: "\e617";
+        font-family: 'icomoon';
+        color: #232323; }
+    .row .checkin-marker .buddy-name, .row .checkin-marker .date {
+      display: block;
+      text-align: center; }
+
+.favorites {
+  margin-top: 0.7em;
+  padding: 0.7em 0 0.3em 0;
+  border-top: 1px dotted #d4d4d4; }
+  .favorites ul {
+    list-style-type: none;
+    margin-left: 1.65em; }
+    .favorites ul li:after {
+      content: ", "; }
+    .favorites ul li:last-child:after {
+      content: " "; }
+  .favorites .icon-sad {
+    margin: 0.2em 0 0 0.5em; }
+
+.star {
+  display: block; }
+  .star:hover {
+    cursor: pointer; }
+  .star.not-favorite:before {
+    content: "\e612";
+    color: #aeaeae;
+    font-family: 'icomoon';
+    margin-right: 0.3em; }
+    .star.not-favorite:before:hover {
+      color: #27a9e1 !important; }
+  .star.favorite:before {
+    content: "\e614";
+    font-family: 'icomoon';
+    color: #27a9e1;
+    margin-right: 0.5em; }
