@@ -8,6 +8,6 @@ class Log < ActiveRecord::Base
   end
 
   def self.buddfeed(pairing_id)
-    pairing_id ? Log.where(pairing_id: pairing_id) : Log.limit(50)
+    pairing_id ? Log.where(pairing_id: pairing_id) : Log.order('created_at desc').limit(50)
   end
 end
