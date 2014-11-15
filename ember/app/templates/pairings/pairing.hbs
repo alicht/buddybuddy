@@ -29,9 +29,9 @@
 {{/if}}
 
 <section class="checkins"> 
-{{#if logs}} 
+{{#if sortedLogs}} 
   <h3>Check Ins This Week</h3>
-  {{#each logs}}
+  {{#each sortedLogs}}
     <article>
       <header>
         <span class="buddy">{{user.name}}</span>
