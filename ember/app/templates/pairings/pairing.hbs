@@ -33,11 +33,16 @@
   <h3>Check Ins This Week</h3>
   {{#each logs}}
     <article>
-      <span class="arrow"></span>
-      <span class="message">{{message}}</span>
-      <span class="buddy">{{user.name}}</span>
-      <span class="date">{{format-date createdAt "dddd, MMMM DD"}}</span>
-      {{favorite-log content=this currentUser=session.currentUser store=store}}
+      <header>
+        <span class="buddy">{{user.name}}</span>
+        <span class="date">{{format-date createdAt "MMM. d, 'YY"}}</span>
+      </header>
+      
+      <div class="content">
+        <span class="arrow"></span>
+        <span class="message">{{message}}</span>
+        {{favorite-log content=this currentUser=session.currentUser store=store}}
+      </div>
     </article>
     {{/each}}
 {{else}}
