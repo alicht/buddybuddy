@@ -20,7 +20,7 @@
 {{#if hasMe}}
 <section class="checkin">
   {{#unless isCheckedInToday}}
-  {{input value=logMessage class="form-control" placeholder="How's your buddy?"}}
+  {{textarea value=logMessage class="form-control" placeholder="How's your buddy?"}}
   <a {{action "checkin" content}} class="btn">
     Check In Today
   </a>

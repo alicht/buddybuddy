@@ -369,7 +369,7 @@ footer {
 }
 
 .checkin {
-  input {
+  textarea {
     @include prefix(border-radius, 3px);
     @extend %font24;
     margin-bottom: .5em;
