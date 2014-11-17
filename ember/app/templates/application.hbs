@@ -1,18 +1,16 @@
 {{#if session.isAuthenticated}} 
-<header>
+<header class="main-nav">
   <div class="inner">
   {{link-to "Buddy Buddy" 'application' classNames="buddybuddy-logo" }}
+  {{#link-to  'users.user' session.currentUser}} Hi, {{session.currentUser.name}}!{{/link-to}}
 
     <nav>
       <ul>
         <li>
-          {{#link-to  'users.user' session.currentUser}} Hi, {{session.currentUser.name}}!{{/link-to}}
+          {{#link-to 'checkin' classNames="check-in"}}Check In{{/link-to}}
         </li>
         <li>
           {{#link-to 'pairings'}}Pairings{{/link-to}}
-        </li>
-        <li>
-          {{#link-to 'checkin' classNames="check-in"}}Check In{{/link-to}}
         </li>
           <a {{action 'invalidateSession' }}>Sign Out</a>
         </li>

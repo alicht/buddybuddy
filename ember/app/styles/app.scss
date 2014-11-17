@@ -226,7 +226,7 @@ img {
 }
 
 .main {
-  margin: 3em 0;
+  margin: 2em 0;
 }
 
 .btn {
@@ -245,7 +245,8 @@ img {
   }
 }
 
-header {
+.main-nav {
+  background: $light-blue;
   .inner {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
@@ -255,11 +256,18 @@ header {
   }
   .buddybuddy-logo {
     margin-top: .1em;
-    background: url('/images/logo.png');
-    background-size: 100px 18px;
-    width: 100px;
+    background: url('/images/bb-reverse.png');
+    background-size: 30px 18px;
+    width: 30px;
     height: 18px;
     text-indent: -9999em;
+  }
+  a {
+    font-size: .9em;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 .5em;
   }
   nav {
     float: right;
@@ -269,16 +277,15 @@ header {
     text-align: right;
     li {
       @extend %inlineBlock;
-      padding: 0 .5em;
     }
   }
   .check-in {
     @include prefix(border-radius, 3px);
-    background: $light-blue;
-    color: $white;
-    padding: 0 .8em;
+    padding: .4em .8em;
+    border: 1px solid transparentize( white, .4 );
     &:hover {
-      background: $dark-blue;
+      background: $white;
+      color: $light-blue;
     }
   }
 }
@@ -397,9 +404,10 @@ footer {
   h3 {
     @include prefix(border-radius, 3px);
     //text-align: center;
-    background: #333;
-    color: white;
-    padding: .5em 1em;
+    //background: #333;
+    border-bottom: 2px solid $light-grey;
+    color: #333;
+    padding: .5em 0;
     margin-bottom: 3em;
     //width: 70%;
     //float: right;
