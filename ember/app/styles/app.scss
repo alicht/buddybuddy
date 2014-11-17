@@ -395,10 +395,14 @@ footer {
 .checkins {
   overflow: hidden;
   h3 {
+    @include prefix(border-radius, 3px);
     //text-align: center;
-    margin-bottom: 1em;
-    width: 70%;
-    float: right;
+    background: #333;
+    color: white;
+    padding: .5em 1em;
+    margin-bottom: 3em;
+    //width: 70%;
+    //float: right;
   }
   // timeline line down the middle of the screen
   &:before {
@@ -415,8 +419,12 @@ footer {
     overflow: hidden;
     header {
       @extend %font14;
-      position: absolute;
-      top: .8em;
+      margin-top: .7em;
+      //position: absolute;
+      //top: .8em;
+      float: left;
+      width: 17%;
+      text-align: right;
     }
   }
   .content {
@@ -426,7 +434,7 @@ footer {
     padding: .5em 1em;
     overflow: visible;
     position: relative;
-    width: 70%;
+    width: 75%;
     float: right;
     background: $light-grey;
     color: lighten( $grey, 45% );
@@ -442,7 +450,7 @@ footer {
       border-radius: 1em;
       background: white;
       top: 1.2em;
-      left: -15%;
+      left: calc( -7% - 1px);
       @include prefix(box-shadow, 0 0 0 .2em red);
     }
     .message {
