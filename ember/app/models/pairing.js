@@ -22,8 +22,7 @@ var Pairing = DS.Model.extend({
       return this.get('users').map(function(user, i) {
         return {
           name: user.get('name'),
-          id: user.get('id'),
-          heart: i < length 
+          id: user.get('id')
         };
       });
     }
