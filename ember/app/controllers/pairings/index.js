@@ -2,11 +2,14 @@ import Ember from 'ember';
 
 
 export default Ember.ArrayController.extend({
+  sortProperties: ['startDate'],
+  sortAscending: false,
+
   groupedPairings: function(){
     var result = [];
     var group = 'pairingDates';
   
-    this.get('content').forEach(function(item, i){
+    this.get('arrangedContent').forEach(function(item, i){
       var hasGroup = !!result.findBy('group', item.get(group));
 
       if (!hasGroup) {
