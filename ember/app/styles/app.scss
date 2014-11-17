@@ -396,7 +396,7 @@ footer {
   display: block;
   width: 100%;
   text-align: center;
-  color: darken($light-grey, 10%);
+  color: darken($light-grey, 20%);
 }
 
 .checkins {
@@ -467,9 +467,7 @@ footer {
     }
     &:nth-of-type(even) {
       @include arrow(left, middle);
-      //float: right;
       &:before {
-        //left: -12.2968%;
       }
     }
   }
@@ -489,13 +487,22 @@ footer {
   margin-top: 3em;
 }
 
+.pairings {
+  ul, li {
+    list-style-type: none !important;
+  }
+  h2 {
+    @extend %font18;
+    text-align: center;
+  }
+}
+
 .row {
   position: relative;
   margin: .5em 0;
   padding: .5em 0;
   overflow: hidden;
   width: 100%;
-  //text-align: center;
   h2 {
     @extend %font18;
     border-bottom: 1px solid $light-grey;
@@ -505,23 +512,29 @@ footer {
   .has-hearts {
     @extend %inlineBlock;
     margin-top: .4em;
-    width: 14em;
-    text-align: left;
+    padding: .4em 0;
+    width: 100%;
+    text-align: center;
+    border: 1px solid $light-grey;
   }
   .checkin-marker {
     @extend %inlineBlock;
+    padding-top: .8em;
     position: relative;
     overflow: visible;
-    border-left: 1px solid $light-grey;
+    width: 100%;
+    text-align: center;
+    //border-left: 1px solid $light-grey;
     li {
       @include prefix(border-radius, 3px);
       @extend %inlineBlock;
-      @extend %font12;
-      position: static;
+      @extend %font14;
+      position: relative;
       margin: 0 .3em;
       padding: .3em 1em;
-      background: $light-blue;
-      color: white;
+      background: $light-grey;
+      color: $grey;
+      overflow: visible;
       // smiley face
       &:nth-of-type(4):after {
         @extend %font16;

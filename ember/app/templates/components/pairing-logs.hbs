@@ -1,12 +1,12 @@
 <a {{action "togglePairings"}} class="toggle">
   {{#if isShow}}
-    close
+    
   {{else}}
-    expand
+    
   {{/if}}
 </a>
 
-{{#if isShow}}
+{{!#if isShow}}
   {{#each content}}
   <div class="row">
     <ul class="has-hearts">
@@ -26,4 +26,4 @@
     </ul>
   </div>
   {{/each}}
-{{/if}}
+{{!/if}}
