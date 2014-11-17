@@ -2,7 +2,7 @@ class Pairing < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :logs
 
-  @@week_offset = 2
+  @@week_offset = 5
 
   def self.delete_at(time = Time.now)
     at(time).delete_all
