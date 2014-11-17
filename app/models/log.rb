@@ -7,4 +7,7 @@ class Log < ActiveRecord::Base
     Log.where(["user_id = ? AND created_at >= ?", user_id, Time.now.beginning_of_day])
   end
 
+  def self.buddfeed(pairing_id)
+    pairing_id ? Log.where(pairing_id: pairing_id) : Log.order('created_at desc').limit(50)
+  end
 end

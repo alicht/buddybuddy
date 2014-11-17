@@ -29,13 +29,13 @@
 {{/if}}
 
 <section class="checkins"> 
-{{#if logs}} 
+{{#if sortedLogs}} 
   <h3>Check Ins This Week</h3>
-  {{#each logs}}
+  {{#each sortedLogs}}
     <article>
       <header>
         <span class="buddy">{{user.name}}</span>
-        <span class="date">{{format-date createdAt "MMM. d, 'YY"}}</span>
+        <span class="date">{{format-date createdAt "MMM. DD, 'YY"}}</span>
       </header>
       
       <div class="content">
