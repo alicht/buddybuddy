@@ -1,30 +1,41 @@
 <h3>Your Info</h3>
 <section class="your-settings">
   <label>Name</label>
-  {{input value=content.name action="updateName" on="enter" size="50"}}
+  {{input value=content.name action="updateName" size="100"}}
+
+  <label>Current Password</label>
+  {{input type="password" value=content.currentPassword  size="100"}}
+
+  <label>New Password</label>
+  {{input type="password" value=content.password  size="100"}}
+
+  <label>New Password Confirmation</label>
+  {{input type="password" value=content.passwordConfirmation  size="100"}}
+
+  <div class="row">  <a  {{action "update"}} class="btn">update</a></div>
 </section>
 
 <section class="your-history">
-<h3>Pairing and Checkin History</h3>
-{{#each sortedPairings}}
+  <h3>Pairing and Checkin History</h3>
+  {{#each sortedPairings}}
   <div class="row">
     <h2>{{format-date startDate "dddd, MMMM DD"}} - {{format-date endDate "dddd, MMMM DD"}}</h2>
     <ul class="has-hearts">
-    {{#link-to "pairings.pairing" this}}
+      {{#link-to "pairings.pairing" this}}
       {{#each buddies}}
-        <li>{{name}}</li>
+      <li>{{name}}</li>
       {{/each}}
-    {{/link-to}}
+      {{/link-to}}
     </ul> 
-    
+
     <ul class="checkin-marker">
-    {{#each logs}}
+      {{#each logs}}
       <li>
-        <span class="buddy-name">{{user.screenName}}</span>
+        <span class="buddy-name">{{user.name}}</span>
         <span class="date">{{format-date createdAt "MM.DD"}}</span>
       </li>
-    {{/each}}
+      {{/each}}
     </ul>
   </div>
-{{/each}}
+  {{/each}}
 </section>

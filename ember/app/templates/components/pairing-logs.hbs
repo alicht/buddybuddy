@@ -1,12 +1,12 @@
 <a {{action "togglePairings"}} class="toggle">
   {{#if isShow}}
-    close
+    
   {{else}}
-    expand
+    
   {{/if}}
 </a>
 
-{{#if isShow}}
+{{!#if isShow}}
   {{#each content}}
   <div class="row">
     <ul class="has-hearts">
@@ -19,11 +19,11 @@
     <ul class="checkin-marker">
     {{#each logs}}
       <li>
-        <span class="buddy-name">{{user.screenName}}</span>
+        <span class="buddy-name">{{user.name}}</span>
         <span class="date">{{format-date createdAt "MM.DD"}}</span>
       </li>
     {{/each}}
     </ul>
   </div>
   {{/each}}
-{{/if}}
+{{!/if}}

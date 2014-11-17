@@ -3,21 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Buddy Buddy</title>
+    <title>Buddybuddy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/buddybuddy.css">
-    <link href='/images/favicon.ico' rel='shortcut icon'>
-  </head>
 
+    {{content-for 'head'}}
+
+    <link rel="stylesheet" href="/assets/vendor.css">
+    <link rel="stylesheet" href="/assets/buddybuddy.css">
+  </head>
   <body>
-    <script>
-      window.EmberENV = {{EMBER_ENV}};
-    </script>
+    {{content-for 'body'}}
+
     <script src="/assets/vendor.js"></script>
     <script src="/assets/buddybuddy.js"></script>
-    <script>
-      window.Buddybuddy = require('buddybuddy/app')['default'].create({{APP_CONFIG}});
-    </script>
   </body>
 </html>

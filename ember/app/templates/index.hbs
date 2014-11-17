@@ -1,0 +1,20 @@
+<section class="checkins"> 
+  <h3>BuddFeed</h3>
+  {{#each arrangedContent}}
+    <article>
+
+      <header>
+        <span class="buddy">{{user.name}} </span>
+        <span class="date">
+          {{#link-to 'pairings.pairing' this.pairing}}{{format-date createdAt "MMM. DD, 'YY"}}{{/link-to}}
+        </span>
+      </header>
+
+      <div class="content">
+        <span class="arrow"></span>
+        <span class="message">{{message}}</span>
+        {{favorite-log content=this currentUser=session.currentUser store=store}}
+      </div>
+    </article>
+  {{/each}}
+</section>

@@ -5,7 +5,7 @@ export default Ember.ObjectController.extend({
   sortedPairings: Ember.computed.sort('pairings', 'pairingSort'),
 
   actions: {
-    updateName: function(){
+    update: function(){
       this.get('content').save();
     }
   }

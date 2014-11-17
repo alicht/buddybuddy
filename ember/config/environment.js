@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'history',
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:devise'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

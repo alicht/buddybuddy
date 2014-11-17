@@ -140,12 +140,12 @@ $font-sizes: (6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 21, 24, 36, 48, 60, 72);
   @include prefix(box-sizing, border-box);
   @include prefix(transition, all .3s ease-in-out);
   position: relative;
-  //overflow: scroll;
 }
 
 body {
   font-family: 'bariol_bold';
   color: $grey;
+  //background: url('/images/heart.svg');
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -196,8 +196,38 @@ img {
   max-width: 50em;
 }
 
+.login {
+  li {
+    @include prefix(border-radius, 3px);
+    @extend %flex-row-stretch;
+    font-size: line-height( 11 );
+    margin-bottom: 1em;
+    width: 100%;
+    background: $light-grey;
+  }
+  label {
+    @include prefix(border-top-left-radius, 3px);
+    @include prefix(border-bottom-left-radius, 3px);
+    text-align: right;
+    width: 6em;
+    background: $dark-blue;
+    color: $white;
+    padding: .7em 1em .7em .5em;
+  }
+  input {
+    background: none;
+    padding-left: 1em;
+  }
+  button {
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 .main {
-  margin: 3em 0;
+  margin: 2em 0;
 }
 
 .btn {
@@ -216,7 +246,8 @@ img {
   }
 }
 
-header {
+.main-nav {
+  background: $light-blue;
   .inner {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
@@ -226,11 +257,18 @@ header {
   }
   .buddybuddy-logo {
     margin-top: .1em;
-    background: url('/images/logo.png');
-    background-size: 100px 18px;
-    width: 100px;
+    background: url('/images/bb-reverse.png');
+    background-size: 30px 18px;
+    width: 30px;
     height: 18px;
     text-indent: -9999em;
+  }
+  a {
+    font-size: .9em;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 .5em;
   }
   nav {
     float: right;
@@ -240,14 +278,22 @@ header {
     text-align: right;
     li {
       @extend %inlineBlock;
-      padding: 0 .5em;
+    }
+  }
+  .check-in {
+    @include prefix(border-radius, 3px);
+    padding: .4em .8em;
+    border: 1px solid transparentize( white, .4 );
+    &:hover {
+      background: $white;
+      color: $light-blue;
     }
   }
 }
 
 .buddybuddy-logo {
   &.login {
-    margin: 3em 0;
+    margin: 1em 0;
   }
 }
 
@@ -331,7 +377,7 @@ footer {
 }
 
 .checkin {
-  input {
+  textarea {
     @include prefix(border-radius, 3px);
     @extend %font24;
     margin-bottom: .5em;
@@ -351,67 +397,82 @@ footer {
   display: block;
   width: 100%;
   text-align: center;
-  color: darken($light-grey, 10%);
+  color: darken($light-grey, 20%);
 }
 
 .checkins {
   overflow: hidden;
   h3 {
-    text-align: center;
-    margin-bottom: 1em;
+    @include prefix(border-radius, 3px);
+    //text-align: center;
+    //background: #333;
+    border-bottom: 2px solid $light-grey;
+    color: #333;
+    padding: .5em 0;
+    margin-bottom: 3em;
+    //width: 70%;
+    //float: right;
   }
   // timeline line down the middle of the screen
   &:before {
     content: " ";
     position: absolute;
-    left: calc(50% - 1px);
+    left: 20%;
     height: 100%;
-    top: 3.8em;
+    top: 3em;
     border-right: 2px solid $light-grey;
   }
   article {
+    clear: both;
+    margin: 0 0 2em 0;
+    overflow: hidden;
+    header {
+      @extend %font14;
+      margin-top: .7em;
+      //position: absolute;
+      //top: .8em;
+      float: left;
+      width: 17%;
+      text-align: right;
+    }
+  }
+  .content {
     @include prefix(border-radius, 3px);
+    @include arrow(left, middle);
     @extend %font14;
     padding: .5em 1em;
     overflow: visible;
     position: relative;
-    width: 45%;
-    clear: both;
+    width: 75%;
+    float: right;
     background: $light-grey;
     color: lighten( $grey, 45% );
+    &:last-child {
+      margin-bottom: 0;
+    }
     // dot placement on the timeline
-    &:nth-of-type(odd), &:nth-of-type(even) {
-      &:before {
-        content: " ";
-        position: absolute;
-        width: .5em;
-        height: .5em;
-        border-radius: 1em;
-        background: white;
-        top: 1.2em;
-        @include prefix(box-shadow, 0 0 0 .2em red);
-      }
+    &:before {
+      content: " ";
+      position: absolute;
+      width: .5em;
+      height: .5em;
+      border-radius: 1em;
+      background: white;
+      top: 1.2em;
+      left: calc( -7% - 1px);
+      @include prefix(box-shadow, 0 0 0 .2em red);
     }
     .message {
       color: lighten( $grey, 10% );
       margin-bottom: .5em;
     }
-    &:nth-of-type(odd) {
-      @include arrow(right, middle);
-      float: left;
-      &:before {
-        right: -12.2968%;
-      }
-    }
     &:nth-of-type(even) {
       @include arrow(left, middle);
-      float: right;
       &:before {
-        left: -12.2968%;
       }
     }
   }
-  span {
+  .arrow, .message, .buddy, .date {
     display: block;
   }
   .message {
@@ -427,13 +488,22 @@ footer {
   margin-top: 3em;
 }
 
+.pairings {
+  ul, li {
+    list-style-type: none !important;
+  }
+  h2 {
+    @extend %font18;
+    text-align: center;
+  }
+}
+
 .row {
   position: relative;
   margin: .5em 0;
   padding: .5em 0;
   overflow: hidden;
   width: 100%;
-  //text-align: center;
   h2 {
     @extend %font18;
     border-bottom: 1px solid $light-grey;
@@ -443,28 +513,29 @@ footer {
   .has-hearts {
     @extend %inlineBlock;
     margin-top: .4em;
-    width: 14em;
-    text-align: left;
+    padding: .4em 0;
+    width: 100%;
+    text-align: center;
+    border: 1px solid $light-grey;
   }
   .checkin-marker {
     @extend %inlineBlock;
+    padding-top: .8em;
     position: relative;
     overflow: visible;
-    border-left: 1px solid $light-grey;
+    width: 100%;
+    text-align: center;
+    //border-left: 1px solid $light-grey;
     li {
       @include prefix(border-radius, 3px);
       @extend %inlineBlock;
-      @extend %font12;
-      position: static;
-      //&:before {
-      //  content: "\e632";
-      //  @extend %font24;
-      //  font-family: 'icomoon';
-      //}
+      @extend %font14;
+      position: relative;
       margin: 0 .3em;
       padding: .3em 1em;
-      background: $light-blue;
-      color: white;
+      background: $light-grey;
+      color: $grey;
+      overflow: visible;
       // smiley face
       &:nth-of-type(4):after {
         @extend %font16;
@@ -483,5 +554,50 @@ footer {
     .date {
       @extend %font10;
     }
+  }
+}
+
+.favorites {
+  @extend %font13;
+  margin-top: .7em;
+  padding: .7em 0 .3em 0;
+  border-top: 1px dotted darken($light-grey, 10%);
+  ul {
+    list-style-type: none;
+    margin-left: 1.65em;
+    li {
+      @extend %inlineBlock;
+      &:after {
+        content: ", ";
+      }
+      &:last-child:after {
+        content: " ";
+      }
+    }
+  }
+  .icon-sad {
+    margin: .2em 0 0 .5em;
+  }
+}
+
+.star {
+  display: block;
+  &:hover {
+    cursor: pointer;
+  }
+  &.not-favorite:before {
+    content: "\e612";
+    color: darken($light-grey, 25%);
+    font-family: 'icomoon';
+    margin-right: .3em;
+    &:hover {
+      color: $light-blue !important;
+    }
+  }
+  &.favorite:before {
+    content: "\e614";
+    font-family: 'icomoon';
+    color: $light-blue;
+    margin-right: .5em;
   }
 }

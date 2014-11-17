@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   actions: {
     checkin: function(pairing){
       var route = this;
-      var user = this.get('currentUserService.user');
+      var user = this.get('session.currentUser');
       var message = this.get('controller.logMessage');
 
       var log = this.store.createRecord('log', {

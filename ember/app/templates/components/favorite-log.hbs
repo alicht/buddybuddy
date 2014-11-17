@@ -1,0 +1,11 @@
+<div {{action "toggleFavorite" content}} {{bind-attr class=":star isFavorited:favorite:not-favorite"}} title="favorite"> 
+  {{#if content.favorites}} {{pluralize-things content.favorites.length 'favorite' 'favorites'}} {{else}} No favorites! {{/if}}
+</div> 
+
+{{#if content.favorites}}
+  <ul>
+  {{#each content.favorites}}
+    <li>{{user.name}}</li>
+  {{/each}}
+  </ul>
+{{/if}}

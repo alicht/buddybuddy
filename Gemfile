@@ -16,6 +16,7 @@ gem 'rails_12factor', group: :production
 gem 'thin'
 gem 'rgl'
 gem 'comprehend'
+gem 'devise'
 
 
 group :assets do
