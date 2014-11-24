@@ -25,14 +25,15 @@
   "Brian",
   "Stetson",
   "Zareen",
-  "Charlie 2",
   "Adam",
   "Alan",
   "Dave",
   "Kent",
   "Alvin",
   "Chris",
-  "Victoria"
+  "Victoria",
+  "Rose",
+  "Elson",
   ].each do |email|
     User.create(name: email.split('@').first, email: "#{email.downcase.split(" ")[0]}@simplereach.com", password: "changeme")
   end

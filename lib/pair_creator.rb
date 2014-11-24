@@ -7,7 +7,7 @@ class PairCreator
     # Delete all old pairings
     #------------------------------------------------------------------------------
     def delete_old_pairings!()
-        Pairing.delete_at(Time.now - 1.day)
+        Pairing.delete_at(Time.now)
     end
 
     #------------------------------------------------------------------------------
