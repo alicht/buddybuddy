@@ -8,9 +8,16 @@ FactoryGirl.define do
     "name#{n}"
   end
 
+  sequence :id do |n|
+  	"#{n}"
+  end
+
 	factory :user do
 		name {generate(:name)}
 		email {generate(:email)}
+		id {generate(:id)}
+		password 'password-length'
+		password_confirmation 'password-length'
 	end
 
 	factory :pairing do

@@ -1,3 +1,4 @@
+
 class Pairing < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :logs
@@ -34,23 +35,27 @@ class Pairing < ActiveRecord::Base
   end
 
   def self.no_past_pairing(user1, user2, time = Time.now)
-    where( ["start_date <= ? AND end_date >= ?", time - @@week_offset.week, start_date(time) - 1.day]).select{ |p|
-      p.user_ids.includes?(user1.id) && p.user_ids.includes?(user2.id)
-    }.count == 0
+    past_pairings(user1, user2, time).count == 0
+  end
+
+  def self.past_pairings(user1, user2, time = Time.now)
+    where( ["start_date >= ? AND end_date >= ?", time - @@week_offset.week, time - @@week_offset.week]).select{ |p|
+      p.user_ids.include?(user1.id) && p.user_ids.include?(user2.id)
+    }
   end
 
   # default new pairing creation
   #
 
   def self.new_pairing(users, time = Time.now)
-    create(start_date: start_date(time), end_date: end_date(time), users: users )
+    create!(start_date: start_date(time), end_date: end_date(time), users: users )
   end
 
   # Time helpers
   #
 
   def self.at(time = Time.now)
-    where(["start_date <= ? AND end_date >= ?", time, time])
+    where(["start_date >= ? AND end_date <= ?", start_date(time), end_date(time)])
   end
 
   def self.start_date(time = Time.now)
