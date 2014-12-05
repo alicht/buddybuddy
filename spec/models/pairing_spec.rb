@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'pry'
-
 
 describe Pairing do
   let(:pairing1) { create(:pairing) }
@@ -19,9 +17,6 @@ describe Pairing do
   end
 
   describe '.delete_at()' do
-    before do
-      Pairing.delete_all
-    end
 
     it 'deletes current pairings' do
       Pairing.new_pairing([user1, user2], Time.now)
@@ -31,9 +26,6 @@ describe Pairing do
   end
 
   describe '.valid_pair' do
-    before do
-      Pairing.delete_all
-    end
 
     it 'returns false if passed the same user twice' do
       expect(Pairing.valid_pair(user1,user1)).to eq(false)
@@ -57,7 +49,6 @@ describe Pairing do
 
   describe '.no_past_pairing' do
     before do 
-      Pairing.delete_all
       Pairing.new_pairing([user1, user2], Time.now.beginning_of_week - 1.day)
     end
 
@@ -73,7 +64,6 @@ describe Pairing do
 
   describe '.past_pairings' do
     before do 
-      Pairing.delete_all
       Pairing.new_pairing([user1, user2], Time.now.beginning_of_week - 1.day)
     end
 
@@ -90,7 +80,6 @@ describe Pairing do
 
   describe '.new_pairing' do
     before do
-      Pairing.delete_all
       @time = Time.now.utc
       @users = [user1,user2,user3,user4]
       @new_pairing = Pairing.new_pairing(@users, @time)
