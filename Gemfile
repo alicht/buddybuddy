@@ -6,6 +6,14 @@ group :development do
   gem 'pry'
 end
 
+group :test do
+	gem 'rspec'
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'coveralls'
+	gem 'database_cleaner'
+end
+
 
 gem 'pg'
 gem 'active_model_serializers'
@@ -17,6 +25,7 @@ gem 'thin'
 gem 'rgl'
 gem 'comprehend'
 gem 'devise'
+
 
 
 group :assets do
