@@ -24,5 +24,4 @@ FactoryGirl.define do
 		start_date { Time.now.getutc }
 		end_date { Time.now.getutc + 7.day }
 	end
-
 end
