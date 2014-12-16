@@ -1,0 +1,21 @@
+<article>
+      <header>
+
+        <span class="buddy">{{model.user.name}}</span>
+        <span class="date">{{format-date model.createdAt "MMM. DD, 'YY"}}</span>
+      </header>
+      
+      <div class="content">
+      {{#if isEditing}}
+     
+      <button {{action 'doneEditing'}}>Done</button>
+      {{input value=model.message}}
+    {{else}}
+      <button {{action 'edit'}}>Edit</button>
+      <span class="arrow"></span>
+        <span class="message">{{model.message}}</span>
+    {{/if}}
+        
+        {{favorite-log content=model currentUser=session.currentUser store=store}}
+      </div>
+    </article>

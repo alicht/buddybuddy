@@ -32,18 +32,10 @@
 {{#if sortedLogs}} 
   <h3>Check Ins This Week</h3>
   {{#each sortedLogs}}
-    <article>
-      <header>
-        <span class="buddy">{{user.name}}</span>
-        <span class="date">{{format-date createdAt "MMM. DD, 'YY"}}</span>
-      </header>
-      
-      <div class="content">
-        <span class="arrow"></span>
-        <span class="message">{{message}}</span>
-        {{favorite-log content=this currentUser=session.currentUser store=store}}
-      </div>
-    </article>
+
+{{checkin-status model=this}}
+
+    
     {{/each}}
 {{else}}
   <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
