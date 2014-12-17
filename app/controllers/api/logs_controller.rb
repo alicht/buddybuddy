@@ -11,4 +11,10 @@ class Api::LogsController < ApplicationController
     render json: log
   end
 
+  def update
+  	log = Log.find(params[:id])
+  	log.update_attributes!(params.require(:log).permit!)
+  	render json: log
+  end
+
 end

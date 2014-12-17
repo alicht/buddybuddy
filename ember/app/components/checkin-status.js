@@ -10,6 +10,7 @@ export default Ember.Component.extend({
 
     doneEditing: function() {
       this.set('isEditing', false);
+      this.model.save();
     }
   }
 

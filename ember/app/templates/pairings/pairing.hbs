@@ -31,9 +31,9 @@
 <section class="checkins"> 
 {{#if sortedLogs}} 
   <h3>Check Ins This Week</h3>
-  {{#each sortedLogs}}
+  {{#each log in sortedLogs}}
 
-{{checkin-status model=this}}
+{{checkin-status model=log}}
 
     
     {{/each}}
