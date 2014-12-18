@@ -18,6 +18,7 @@
   {{/if}}
 </section>
 {{#if hasMe}}
+
 <section class="checkin">
   {{#unless isCheckedInToday}}
   {{textarea value=logMessage class="form-control" placeholder="How's your buddy?"}}
@@ -33,13 +34,14 @@
   <h3>Check Ins This Week</h3>
   {{#each log in sortedLogs}}
 
-{{checkin-status model=log}}
+{{checkin-status model=log currentUser=session.currentUser store=store}}
 
     
     {{/each}}
 {{else}}
   <span class="need-love"><a href="http://www.youtube.com/watch?v=pM8_HuQ0b34">you need love</a></span>
 {{/if}}
+
 </section>
 
 {{outlet}}
